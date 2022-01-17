@@ -1,0 +1,14 @@
+{
+  "name": "ipayroll",
+  "version": "1.0.0",
+  "description": "Amalitech capstone project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Bontii and Phinehas Sersah",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^17.3.1"
+  }
+}
