@@ -12,14 +12,14 @@ const Employee = () => {
         <h3>Add Employee</h3>
         <form className="form">
           <div className="first-info-section">
-            <label for="first-name">FirstName</label>
+            <label htmlFor="first-name">FirstName</label>
             <input
               name="first-name"
               id="first-name"
               type="text"
               placeholder="Employee FirstName"
             />
-            <label for="last-name">LastName</label>
+            <label htmlFor="last-name">LastName</label>
             <input
               name="last-name"
               id="last-name"
@@ -36,7 +36,7 @@ const Employee = () => {
               type="email"
               placeholder="Email Address"
             />
-            <label for="birth-date">Date of Birth</label>
+            <label htmlFor="birth-date">Date of Birth</label>
             <input
               name="birth-date"
               id="birth-date"
@@ -45,20 +45,20 @@ const Employee = () => {
             />
           </div>
           <div className="third-info-section">
-            <label for="joining-date">Joining Date</label>
+            <label htmlFor="joining-date">Joining Date</label>
             <input
               name="joining-date"
               id="joining-date"
               type="date"
               placeholder="Joining Date"
             />
-            <label for="telephone">Phone Number</label>
+            <label htmlFor="telephone">Phone Number</label>
             <input id="telephone" type="tel" placeholder="Contact Number" />
           </div>
           <div className="department">
-            <label for="department">Add Department</label>
-            <select id="department" name="department">
-              <option value="" disabled selected hidden>
+            <label htmlFor="department">Add Department</label>
+            <select id="department" name="department" defaultValue='Select Department'>
+              <option value="" hidden>
                 Select Department
               </option>
               <option value="Service Center">Service Center</option>
@@ -68,9 +68,9 @@ const Employee = () => {
               </option>
             </select>
 
-            <label for="salary">Rank</label>
-            <select id="salary" name="salary">
-              <option value="" disabled selected hidden>
+            <label htmlFor="salary">Rank</label>
+            <select id="salary" name="salary" defaultValue='Set Rank'>
+              <option disabled hidden>
                 Set Rank
               </option>
               <option value="Level 1">Level 1</option>
