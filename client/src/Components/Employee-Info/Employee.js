@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Employee = () => {
   return (
@@ -9,42 +9,51 @@ const Employee = () => {
       </div>
 
       <div className="employee-information">
-          <h3>Add Employee</h3>
+        <h3>Add Employee</h3>
         <form className="form">
           <div className="first-info-section">
             <label for="first-name">FirstName</label>
             <input
+              name="first-name"
               id="first-name"
               type="text"
               placeholder="Employee FirstName"
-            ></input>
+            />
             <label for="last-name">LastName</label>
             <input
+              name="last-name"
               id="last-name"
               type="text"
               placeholder="Employee Surname"
-            ></input>
+            />
           </div>
 
           <div className="second-info-section">
-            <label for="email">E-mail</label>
-            <input id="email" type="email" placeholder="Email Address"></input>
+            <label htmlFor="email">E-mail</label>
+            <input
+              name="email"
+              id="email"
+              type="email"
+              placeholder="Email Address"
+            />
             <label for="birth-date">Date of Birth</label>
-            <input id="birth-date" type="date" placeholder="Birth Date"></input>
+            <input
+              name="birth-date"
+              id="birth-date"
+              type="date"
+              placeholder="Birth Date"
+            />
           </div>
           <div className="third-info-section">
             <label for="joining-date">Joining Date</label>
             <input
+              name="joining-date"
               id="joining-date"
               type="date"
               placeholder="Joining Date"
-            ></input>
+            />
             <label for="telephone">Phone Number</label>
-            <input
-              id="telephone"
-              type="tel"
-              placeholder="Contact Number"
-            ></input>
+            <input id="telephone" type="tel" placeholder="Contact Number" />
           </div>
           <div className="department">
             <label for="department">Add Department</label>
@@ -69,7 +78,7 @@ const Employee = () => {
               <option value="Level 3">Level 3</option>
             </select>
           </div>
-          <input type='submit'>Submit</input>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     </section>
