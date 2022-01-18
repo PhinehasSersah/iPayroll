@@ -1,7 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
+import React, { useState } from "react";
 
 function App() {
+  const [state, setState] = useState("null");
+  axios
+    .get("http://localhost:4000/home")
+    .then((res) => {
+      console.log(res);
+      return setState(res.data);
+    })
+    .catch((err) => console.log(err));
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +26,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+          <p>{state}</p>
         </a>
       </header>
     </div>
