@@ -4,6 +4,9 @@ import Header from "./Components/Header/header";
 import Employee from "./Components/Employee-Info/Employee";
 import Department from "./features/department/department";
 import Rank from "./features/rank/rank";
+import Login from "./features/login/login";
+import Footer from "./Components/Footer/footer";
+import Admin from "./Components/Admin/admin";
 
 export default function App() {
   const [state, setState] = useState("null");
@@ -16,11 +19,15 @@ export default function App() {
     .catch((err) => console.log(err));
   return (
     <div>
-      <p>{state}</p>
-      <Header />
-      <Employee />
-      <Department />
-      <Rank />
+      {/* <Employee /> */}
+      {/* <p>{state}</p> */}
+       {/* <Header />  */}
+      
+      {/* <Department /> */}
+      {/* <Rank />  */}
+      <Admin />
+       {/* <Login /> */}
+      {/* <Footer />  */}
     </div>
   );
 }
