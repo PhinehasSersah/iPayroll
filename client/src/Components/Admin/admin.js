@@ -1,35 +1,51 @@
-import React from 'react';
-import { hydrate } from 'react-dom/cjs/react-dom.development';
+import React, { useState } from 'react';
 
 const Admin = () => {
+  const initialValue = {
+    rank: '',
+    salary: '',
+    incomeTax: '',
+    staffloan: '',
+    loanDeductionRate: '',
+    tier1: '',
+    tier2: '',
+    taxRelief: '',
+  };
+  const [inputValues, setInputValues] = useState(initialValue);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   return (
     <section>
+      {/* <p>{JSON.stringify(inputValues)}</p> */}
       <div className="admin-banner">
         <h1>Administrative Data Management</h1>
         <hr></hr>
       </div>
 
       <div className="data-table">
-        <form>
+        <form onSubmit={handleSubmit}>
           <br></br>
           <div>
             <h4>Salary Management</h4>
           </div>
-          {/* <label>Select Department</label>
+          <label htmlFor="rank">Select Rank</label>
           <select
-            id="department"
-            name="department"
-            defaultValue="Select Department"
+            id="rank"
+            name="rank"
+            value={inputValues.rank}
+            onChange={handleChange}
           >
-            <option value="" hidden>
-              Select Department
-            </option>
-            <option value="Service Center">Service Center</option>
-            <option value="Training Center">Training Center</option>
-            <option value="Operations Department">Operations Department</option>
-          </select> */}
-          <label htmlFor="salary">Select Rank</label>
-          <select id="salary" name="salary" defaultValue="Set Rank">
             <option disabled hidden>
               Set Rank
             </option>
@@ -43,23 +59,25 @@ const Admin = () => {
             id="salary"
             name="salary"
             placeholder="Enter Amount"
-            min='0'
-            max='10000'
+            min="0"
+            value={inputValues.salary}
+            onChange={handleChange}
           />
           <div>
             <br></br>
             <div>
               <h4>Rate Management</h4>
             </div>
-
-            <label htmlFor="income-tax-rate">Set Income Tax Rate</label>
+            <label htmlFor="incomeTax">Set Income Tax Rate</label>
             <input
               type="number"
-              id="income-tax-rate"
-              name="income-tax-rate"
+              id="incomeTax"
+              name="incomeTax"
               placeholder="Set rate in %"
-              min='0'
-              max='1'
+              min="0"
+              max="100"
+              value={inputValues.incomeTax}
+              onChange={handleChange}
             />
             <label htmlFor="staffloan">Set Staffloan Value</label>
             <input
@@ -67,52 +85,60 @@ const Admin = () => {
               id="staffloan"
               name="staffloan"
               placeholder="Set loan amount"
-              min='0'
-              max='5000'
+              min="0"
+              value={inputValues.staffloan}
+              onChange={handleChange}
             />
           </div>
           <div>
-            <label htmlFor="deduction-rate">Loan Deduction Rate</label>
+            <label htmlFor="loanDeductionRate">Loan Deduction Rate</label>
             <input
               type="number"
-              id="deduction-rate"
-              name="deduction-rate"
+              id="loanDeductionRate"
+              name="loanDeductionRate"
               placeholder="Set rate in %"
-              min='0'
-              max='1'
+              min="0"
+              max="100"
+              value={inputValues.loanDeductionRate}
+              onChange={handleChange}
             />
-            <label htmlFor="ssnit-tier-1">Set SSNIT Tier 1 Rate</label>
+            <label htmlFor="tier1">Set SSNIT Tier 1 Rate</label>
             <input
               type="number"
-              id="ssnit-tier-1"
-              name="ssnit-tier-1"
+              id="tier1"
+              name="tier1"
               placeholder="Set rate in %"
-              min='0'
-              max='1'
+              min="0"
+              max="100"
+              value={inputValues.tier1}
+              onChange={handleChange}
             />
           </div>
-
           <div>
-            <label htmlFor="ssnit-tier-2">Set SSNIT Tier 2 Rate</label>
+            <label htmlFor="tier2">Set SSNIT Tier 2 Rate</label>
             <input
               type="number"
-              id="ssnit-tier-2"
-              name="ssnit-tier-2"
+              id="tier2"
+              name="tier2"
               placeholder="Set rate in %"
-              min='0'
-              max='1'
+              min="0"
+              max="100"
+              value={inputValues.tier2}
+              onChange={handleChange}
             />
-            <label htmlFor="tax-relief">Tax Relief Rate</label>
+            <label htmlFor="taxRelief">Tax Relief Rate</label>
             <input
               type="number"
-              id="tax-relief"
-              name="tax-relief"
+              id="taxRelief"
+              name="taxRelief"
               placeholder="Set rate in %"
-              min='0'
-              max='1'
+              min="0"
+              max="100"
+              value={inputValues.taxRelief}
+              onChange={handleChange}
             />
           </div>
-         <button>Submit</button> 
+          <button>Submit</button>
         </form>
       </div>
     </section>

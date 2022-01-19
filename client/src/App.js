@@ -9,6 +9,7 @@ import Footer from "./Components/Footer/footer";
 import Admin from "./Components/Admin/admin";
 
 export default function App() {
+
   const [state, setState] = useState("null");
   axios
     .get("http://localhost:4000/home")
@@ -23,10 +24,10 @@ export default function App() {
       {/* <p>{state}</p> */}
        {/* <Header />  */}
       
-      {/* <Department /> */}
-      {/* <Rank />  */}
-      <Admin />
-       {/* <Login /> */}
+      {/* <Department />
+      <Rank />  */}
+      {/* <Admin /> */}
+       <Login />
       {/* <Footer />  */}
     </div>
   );
