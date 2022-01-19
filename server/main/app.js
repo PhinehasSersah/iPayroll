@@ -59,4 +59,22 @@ app.post('/ipayroll/api/v1/departments', async (req, res) => {
   }
 });
 
+app.put('/ipayroll/api/v1/departments/:id', async (req, res) => {
+  try {
+    console.log('putting....');
+    const { id } = req.params;
+    const { name } = req.body;
+    const department = await pool.query(
+      'UPDATE departments SET name=$1 WHERE id=$2',
+      [name, id]
+    );
+    if (department.rowCount < 1) {
+      return res.status(404).json({ message: 'No such deparment to update' });
+    }
+    res.json({ message: 'Successfully updated department' });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 module.exports = app;
