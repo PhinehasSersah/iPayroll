@@ -77,4 +77,19 @@ app.put('/ipayroll/api/v1/departments/:id', async (req, res) => {
   }
 });
 
+app.delete('/ipayroll/api/v1/departments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const department = await pool.query('DELETE FROM departments WHERE id=$1', [
+      id,
+    ]);
+    if (department.rowCount < 1) {
+      return res.status(404).json({ message: 'No Department to delete' });
+    }
+    res.status(204).send();
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 module.exports = app;
