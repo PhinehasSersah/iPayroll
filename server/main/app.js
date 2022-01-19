@@ -43,4 +43,20 @@ app.get('/ipayroll/api/v1/departments/:id', async (req, res) => {
   }
 });
 
+app.post('/ipayroll/api/v1/departments', async (req, res) => {
+  try {
+    const { name } = req.body;
+    if (!name) {
+      return res.json({ message: 'No department to add' });
+    }
+    const newDept = await pool.query(
+      'INSERT INTO departments (name) VALUES($1) RETURNING *',
+      [name]
+    );
+    res.status(201).json(newDept.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 module.exports = app;
