@@ -1,36 +1,36 @@
-import logo from "./logo.svg";
-import "./App.css";
 import axios from "axios";
 import React, { useState } from "react";
+import Header from "./Components/Header/header";
+import Employee from "./Components/Employee-Info/Employee";
+import Department from "./features/department/department";
+import Rank from "./features/rank/rank";
+import Login from "./features/login/login";
+import Footer from "./Components/Footer/footer";
+import Admin from "./Components/Admin/admin";
 
-function App() {
-  const [state, setState] = useState("null");
-  axios
-    .get("http://localhost:4000/home")
-    .then((res) => {
-      console.log(res);
-      return setState(res.data);
-    })
-    .catch((err) => console.log(err));
+export default function App() {
+
+  // const [state, setState] = useState("null");
+  // axios
+  //   .get("http://localhost:4000/home")
+  //   .then((res) => {
+  //     console.log(res);
+  //     return setState(res.data);
+  //   })
+  //   .catch((err) => console.log(err));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <p>{state}</p>
-        </a>
-      </header>
+    <div>
+       {/* <Login /> */}
+      {/* <Employee /> */}
+      {/* <p>{state}</p> */}
+       {/* <Header />  */}
+      
+       <Department /> 
+      {/* <Rank />   */}
+      {/* <Admin /> */}
+      
+      {/* <Footer />  */}
+      
     </div>
   );
 }
-
-export default App;
