@@ -5,8 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const hrRouter = require('./routes/hrRoutes');
-const pool = require('./db');
+const deptsRouter = require('./routes/departmentsRoutes');
 const app = express();
 
 app.use(cors());
@@ -16,15 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', hrRouter);
-
-app.get('/ipayroll/api/v1/departments', async (req, res) => {
-  try {
-    const departments = await pool.query('SELECT * FROM departments');
-    res.status(200).json(departments.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+app.use('/ipayroll/api/v1/departments', deptsRouter);
 
 module.exports = app;
