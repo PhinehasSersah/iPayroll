@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import'./login.css'
+import './login.css';
 import amalitech from './amalitech.png';
 
 const Login = () => {
@@ -43,41 +43,49 @@ const Login = () => {
   return (
     <div className="login-page container">
       {/* <p>{JSON.stringify(inputValues)}</p> */}
-     <div className='row logo-banner' > 
-     <img src={amalitech} alt='company logo'/>
-      <h1>Welcome to <strong>i</strong>Payroll</h1>
-      <i className="far fa-user"></i>
+      <div className="row logo-banner">
+        <img src={amalitech} alt="company logo" />
+        <h1>
+          Welcome to <strong>i</strong>Payroll
+        </h1>
+        <i className="far fa-user"></i>
       </div>
       <br></br>
-      <div className='row form-div'>
-      <form onSubmit={handleSubmit} className='form'>
-        <p>{inputErrors.username}</p>
-        <label htmlFor="username">User Name</label>
-        <input
-          name="username"
-          id="username"
-          type="text"
-          placeholder="Enter User Name"
-          value={inputValues.username}
-          onChange={handleChange}
-          className='username'
-        />
-        <br></br>
-        <p>{inputErrors.password}</p>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          id="password"
-          type="password"
-          placeholder="Enter Password"
-          value={inputValues.password}
-          onChange={handleChange}
-          className='password'
-        />
-        <br></br>
-        <br></br>
-        <button>LOGIN</button>
-      </form>
+      <div className="row form-div">
+        <form onSubmit={handleSubmit} className="form">
+          <div className='div-container'>
+            <div className='wrapper'>
+          <p>{inputErrors.username}</p>
+          <label htmlFor="username">User Name</label>
+          <input
+            name="username"
+            id="username"
+            type="text"
+            placeholder="Enter User Name"
+            value={inputValues.username}
+            onChange={handleChange}
+            className="username"
+          />
+          </div>
+          <br></br>
+          <div className='wrapper'>
+          <p>{inputErrors.password}</p>
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Enter Password"
+            value={inputValues.password}
+            onChange={handleChange}
+            className="password"
+          />
+          </div>
+          <br></br>
+          <br></br>
+          <button>LOGIN</button>
+          </div>
+        </form>
       </div>
     </div>
   );

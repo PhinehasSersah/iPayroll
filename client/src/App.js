@@ -10,23 +10,23 @@ import Admin from "./Components/Admin/admin";
 
 export default function App() {
 
-  const [state, setState] = useState("null");
-  axios
-    .get("http://localhost:4000/home")
-    .then((res) => {
-      console.log(res);
-      return setState(res.data);
-    })
-    .catch((err) => console.log(err));
+  // const [state, setState] = useState("null");
+  // axios
+  //   .get("http://localhost:4000/home")
+  //   .then((res) => {
+  //     console.log(res);
+  //     return setState(res.data);
+  //   })
+  //   .catch((err) => console.log(err));
   return (
     <div>
-       <Login />
+       {/* <Login /> */}
       {/* <Employee /> */}
       {/* <p>{state}</p> */}
        {/* <Header />  */}
       
-      {/* <Department />
-      <Rank />  */}
+       <Department /> 
+      {/* <Rank />   */}
       {/* <Admin /> */}
       
       {/* <Footer />  */}
