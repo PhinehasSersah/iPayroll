@@ -24,7 +24,16 @@
 .logo-banner h1 strong {
     color: tomato;
     font-size: 4.5rem;
-}.logo-banner .far {
+}
+form .div-container {
+    display: block;
+    width: 100%;
+}
+form .div-container .wrapper {
+    display: inline-block;
+    width: 100%;
+}
+.logo-banner .far {
     text-align: center;
     font-size: 4.5rem;
     margin-top: 18px;
@@ -42,7 +51,7 @@
     margin-right: 15px;
     color:#E4EFE7 ;
   pointer-events: none;
-
+float: left;
   transition: 300ms ease all;
 }
 .login-page .form .username, .login-page .form .password {
@@ -58,16 +67,17 @@
     font-size: 14px;
     margin-top:10px;
     height: 2rem;
+    float: right;
 
 }
 
 .login-page .form button {
-  background-color: #E4EFE7;
+  background-color: #064420;
   border-radius: 3px;
   border: 2px solid tomato;
   box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
   box-sizing: border-box;
-  color: #064420;
+  color: #E4EFE7;
   cursor: pointer;
   display:block;
   font-weight: 400;
@@ -80,14 +90,16 @@
   touch-action: manipulation;
   white-space: nowrap;
   letter-spacing: 2px;
-  width: 8rem;
-  margin: 0 auto;
+  width: 16rem;
+  height: 2.5em;
+  /* margin: 0 auto; */
+  float: right;
 }
 
 .login-page .form button:hover,
 .login-page .form button:focus {
-  background-color: #064420;
-  color: #E4EFE7;
+  background-color: #E4EFE7;
+  color: #064420
 }
 .login-page .form button:active {
   background-color: tomato;
