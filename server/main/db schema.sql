@@ -12,9 +12,10 @@ CREATE TABLE rates(
     id SERIAL PRIMARY KEY,
     level_id INTEGER REFERENCES levels(id) NOT NULL UNIQUE,
     salary REAL,
-    tax_deductions REAL,
+    loan_deduction REAL,
     income_tax REAL,
-    staff_loan_deductions REAL,
     tier_one REAL,
-    tier_two REAL
+    tier_two REAL,
+    tax_relief REAL,
+    bonus REAL
 );
