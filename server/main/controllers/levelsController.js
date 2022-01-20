@@ -21,7 +21,7 @@ exports.checkBody = (req, res, next) => {
     if (!name) {
       return res.status(400).json({
         status: 'fail',
-        message: 'No Level to add',
+        message: 'No Level Provided',
       });
     }
     next();
@@ -61,6 +61,7 @@ exports.createLevel = async (req, res) => {
     console.error(err.message);
   }
 };
+
 exports.updateLevel = async (req, res) => {
   try {
     const { id } = req.params;

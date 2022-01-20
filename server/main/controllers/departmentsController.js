@@ -23,7 +23,7 @@ exports.checkBody = (req, res, next) => {
     if (!name) {
       return res.status(400).json({
         status: 'fail',
-        message: 'No department to add',
+        message: 'No department provided',
       });
     }
     next();
