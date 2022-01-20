@@ -53,15 +53,25 @@ exports.createRate = async (req, res) => {
   const {
     levelId,
     salary,
-    taxDeductions,
+    loanDeduction,
     incomeTax,
-    staffLoan,
     tierOne,
     tierTwo,
+    taxRelief,
+    bonus,
   } = req.body;
   const newRate = await pool.query(
-    'INSERT INTO rates (level_id, salary, tax_deductions, income_tax,  staff_loan_deductions, tier_one, tier_two ) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-    [levelId, salary, taxDeductions, incomeTax, staffLoan, tierOne, tierTwo]
+    'INSERT INTO rates (level_id, salary, loan_deduction, income_tax, tier_one, tier_two, tax_relief, bonus ) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+    [
+      levelId,
+      salary,
+      loanDeduction,
+      incomeTax,
+      tierOne,
+      tierTwo,
+      taxRelief,
+      bonus,
+    ]
   );
   res.status(201).json(newRate.rows[0]);
   try {
@@ -76,30 +86,33 @@ exports.updateRate = async (req, res) => {
     const {
       levelId,
       salary,
-      taxDeductions,
+      loanDeduction,
       incomeTax,
-      staffLoan,
       tierOne,
       tierTwo,
+      taxRelief,
+      bonus,
     } = req.body;
     const rate = await pool.query(
       `UPDATE rates SET 
       level_id=$1, 
       salary=$2, 
-      tax_deductions=$3,
-      income_tax=$4, 
-      staff_loan_deductions=$5, 
-      tier_one=$6, 
-      tier_two=$7 
-      WHERE id=$8`,
+      loan_deduction=$3,
+      income_tax=$4,  
+      tier_one=$5, 
+      tier_two=$6,
+      tax_relief=$7,
+      bonus=$8 
+      WHERE id=$9`,
       [
         levelId,
         salary,
-        taxDeductions,
+        loanDeduction,
         incomeTax,
-        staffLoan,
         tierOne,
         tierTwo,
+        taxRelief,
+        bonus,
         id,
       ]
     );
