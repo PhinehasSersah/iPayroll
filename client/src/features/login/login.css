@@ -1,6 +1,106 @@
 .login-page {
     height: 70vh;
-    background-color: #161853;
+    width: 60VW;
     margin-top:15vh;
     border-radius: 10px;
+    background:linear-gradient(#FDFAF6, #064420);
 }
+.logo-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.logo-banner img {
+    display: block;
+    height: 2rem;
+    width: 7rem;
+    object-fit: contain;
+}
+.logo-banner h1 {
+    text-align: center;
+    color: #064420;
+}
+.logo-banner h1 strong {
+    color: tomato;
+    font-size: 4.5rem;
+}.logo-banner .far {
+    text-align: center;
+    font-size: 4.5rem;
+    margin-top: 18px;
+    color: #064420
+}
+.login-page .form-div {
+    height:15rem;
+}
+.login-page .form {
+    margin: auto;
+}
+.login-page .form label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 15px;
+    color:#E4EFE7 ;
+  pointer-events: none;
+
+  transition: 300ms ease all;
+}
+.login-page .form .username, .login-page .form .password {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 3px;
+    width: 16rem;
+    font-size: 14px;
+    margin-top:10px;
+    height: 2rem;
+
+}
+
+.login-page .form button {
+  background-color: #E4EFE7;
+  border-radius: 3px;
+  border: 2px solid tomato;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #064420;
+  cursor: pointer;
+  display:block;
+  font-weight: 400;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  width: 8rem;
+  margin: 0 auto;
+}
+
+.login-page .form button:hover,
+.login-page .form button:focus {
+  background-color: #064420;
+  color: #E4EFE7;
+}
+.login-page .form button:active {
+  background-color: tomato;
+  box-shadow: none;
+  color: #E4EFE7;
+}
+::placeholder {
+    color:#064420;
+    font-size: 16px;
+}
+.login-page .form p {
+    color: red;
+    margin:10px 0 0 6rem;
+    font-size: 18px;
+}
+

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import'./login.css'
+import amalitech from './amalitech.png';
 
 const Login = () => {
   const initialValue = {
@@ -42,14 +43,14 @@ const Login = () => {
   return (
     <div className="login-page container">
       {/* <p>{JSON.stringify(inputValues)}</p> */}
-     <div className='row'> 
-     <img src="" alt="company-logo"></img>
+     <div className='row logo-banner' > 
+     <img src={amalitech} alt='company logo'/>
       <h1>Welcome to <strong>i</strong>Payroll</h1>
-      
+      <i className="far fa-user"></i>
       </div>
       <br></br>
-      <div className='row'>
-      <form onSubmit={handleSubmit}>
+      <div className='row form-div'>
+      <form onSubmit={handleSubmit} className='form'>
         <p>{inputErrors.username}</p>
         <label htmlFor="username">User Name</label>
         <input
@@ -59,6 +60,7 @@ const Login = () => {
           placeholder="Enter User Name"
           value={inputValues.username}
           onChange={handleChange}
+          className='username'
         />
         <br></br>
         <p>{inputErrors.password}</p>
@@ -70,6 +72,7 @@ const Login = () => {
           placeholder="Enter Password"
           value={inputValues.password}
           onChange={handleChange}
+          className='password'
         />
         <br></br>
         <br></br>

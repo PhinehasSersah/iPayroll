@@ -20,6 +20,7 @@ export default function App() {
     .catch((err) => console.log(err));
   return (
     <div>
+       <Login />
       {/* <Employee /> */}
       {/* <p>{state}</p> */}
        {/* <Header />  */}
@@ -27,8 +28,9 @@ export default function App() {
       {/* <Department />
       <Rank />  */}
       {/* <Admin /> */}
-       <Login />
+      
       {/* <Footer />  */}
+      
     </div>
   );
 }
