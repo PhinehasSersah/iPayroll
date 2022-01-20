@@ -25,7 +25,7 @@ export default function Rank() {
       <h3>Create New Rank</h3>
       <hr></hr>
       <form onSubmit={handleSubmit}>
-      <label htmlFor="department">Select Department</label>
+      {/* <label htmlFor="department">Select Department</label>
       <select 
       id="department"
        name="department" 
@@ -38,7 +38,7 @@ export default function Rank() {
         <option value="Service Center">Service Center</option>
         <option value="Training Center">Training Center</option>
         <option value="Operations Department">Operations Department</option>
-      </select>
+      </select> */}
       <label htmlFor='rank'>Add Rank</label>
       <input
       id='rank'
