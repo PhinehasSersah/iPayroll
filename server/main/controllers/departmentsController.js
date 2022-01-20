@@ -1,25 +1,35 @@
 const pool = require('../db');
 
 exports.checkID = async (req, res, next, val) => {
-  const id = await pool.query('SELECT id FROM departments WHERE ID=$1', [val]);
-  if (id.rowCount < 1) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid department',
-    });
+  try {
+    const id = await pool.query('SELECT id FROM departments WHERE ID=$1', [
+      val,
+    ]);
+    if (id.rowCount < 1) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Invalid department',
+      });
+    }
+    next();
+  } catch (err) {
+    console.error(err.message);
   }
-  next();
 };
 
 exports.checkBody = (req, res, next) => {
-  const { name } = req.body;
-  if (!name) {
-    return res.status(400).json({
-      status: 'fail',
-      message: 'No department to add',
-    });
+  try {
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'No department to add',
+      });
+    }
+    next();
+  } catch (err) {
+    console.error(err.message);
   }
-  next();
 };
 
 exports.getAllDepartments = async (req, res) => {
@@ -38,7 +48,7 @@ exports.getDepartment = async (req, res) => {
       'SELECT * FROM departments WHERE id=$1',
       [id]
     );
-    res.json(department.rows);
+    res.status(200).json(department.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
@@ -59,14 +69,13 @@ exports.createDepartment = async (req, res) => {
 
 exports.updateDepartment = async (req, res) => {
   try {
-    console.log('putting....');
     const { id } = req.params;
     const { name } = req.body;
     const department = await pool.query(
       'UPDATE departments SET name=$1 WHERE id=$2',
       [name, id]
     );
-    res.json({ message: 'Successfully updated department' });
+    res.status(200).json({ message: 'Successfully updated department' });
   } catch (err) {
     console.error(err.message);
   }
