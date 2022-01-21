@@ -8,6 +8,7 @@ const cors = require('cors');
 const deptsRouter = require('./routes/departmentsRoutes');
 const levelsRouter = require('./routes/levelsRoutes');
 const ratesRouter = require('./routes/ratesRoutes');
+const employeesRouter = require('./routes/employeesRoutes');
 const hoursRouter = require('./routes/hoursRoutes');
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/ipayroll/api/v1/departments', deptsRouter);
 app.use('/ipayroll/api/v1/levels', levelsRouter);
 app.use('/ipayroll/api/v1/rates', ratesRouter);
+app.use('/ipayroll/api/v1/employees', employeesRouter);
 app.use('/ipayroll/api/v1/hours', hoursRouter);
 
 module.exports = app;
