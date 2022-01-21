@@ -12,6 +12,10 @@ router
 router
   .route('/:id')
   .get(hoursController.getEmployeeHours)
+  .put(hoursController.updateHours);
+
+router
+  .route('/:id/:date')
   .put(hoursController.updateHours)
   .delete(hoursController.deleteHours);
 
