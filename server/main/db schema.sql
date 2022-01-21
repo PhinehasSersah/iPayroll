@@ -20,22 +20,28 @@ CREATE TABLE rates(
     bonus REAL
 );
 
-CREATE TABLE employees(
+CREATE TABLE sex(
     id SERIAL PRIMARY KEY,
-    firstname VARCHAR(50),
-    lastname VARCHAR(50),
-    date_of_birth DATE,
-    department_id INTEGER REFERENCES departments(id),
-    email VARCHAR(50),
-    level_id INTEGER REFERENCES levels(id),
-    phone_number VARCHAR(50),
-    start_work_date DATE
+    gender VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE hours(
+CREATE TABLE employees(
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    sex_id INTEGER REFERENCES sex(id) NOT NULL,
+    department_id INTEGER REFERENCES departments(id) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    level_id INTEGER REFERENCES levels(id) NOT NULL,
+    phone_number VARCHAR(50) NOT NULL,
+    start_work_date DATE NOT NULL
+);
+
+CREATE TABLE work_hours(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id) NOT NULL,
-    work_date DATE,
+    work_date DATE NOT NULL,
     working_hours REAL NOT NULL,
     CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
 );
