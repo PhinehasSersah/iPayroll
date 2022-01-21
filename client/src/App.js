@@ -4,6 +4,7 @@ import Employee from "./Components/Employee-Info/Employee";
 import Department from "./features/department/department";
 import Login from "./features/login/login";
 import Admin from "./Components/Admin/admin";
+import Rank from "./features/rank/rank";
 
 export default function App() {
 
@@ -18,8 +19,10 @@ export default function App() {
   return (
     <div>
        {/* <Login /> */}
-      {/* <Employee /> */} 
+      {/* <Employee />  */}
       <Admin />
+      {/* <Rank /> */}
+      {/* <Department/> */}
     </div>
   );
 }

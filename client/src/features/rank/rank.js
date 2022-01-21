@@ -1,9 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import './rank.css';
 
 export default function Rank() {
-
   const initialValue = {
-   name: '',
+    name: '',
   };
   const [inputValues, setInputValues] = useState(initialValue);
   const [rank, setRank] = useState([]);
@@ -30,54 +30,63 @@ export default function Rank() {
     }
     setInputValues({ ...initialValue, [name]: '' });
   };
-    // fetch rank data
-    useEffect(() => {
-      fetch('http://localhost:4000/ipayroll/api/v1/levels')
-        .then(
-          response => {
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error('Request failed');
-          },
-          networkError => console.log(networkError.message)
-        )
-        .then(jsonResponse => {
-          setRank(jsonResponse);
-        });
-    }, []);
-    //delete rank data
-    const deleteRank = id => {
-      fetch('http://localhost:4000/ipayroll/api/v1/levels/' + id, {
-        method: 'DELETE',
+  // fetch rank data
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/levels')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setRank(jsonResponse);
       });
-      window.location = '/';
-    };
+  }, []);
+  //delete rank data
+  const deleteRank = id => {
+    fetch('http://localhost:4000/ipayroll/api/v1/levels/' + id, {
+      method: 'DELETE',
+    });
+    window.location = '/';
+  };
 
   return (
-    <div>
-      <h3>Create New Rank</h3>
-      <hr></hr>
-      <form onSubmit={handleSubmit}>
-      <label htmlFor='rank'>Add Rank</label>
-      <input
-      id='rank'
-      name='name'
-       type="text"
-       placeholder=" Set Rank Level"
-       value={inputValues.rank}
-       onChange={handleChange}
-       />
-       <button>Create</button>
-       </form><div>
+    <div className="rank-section">
+      <h4>Create New Rank</h4>
+      <div className="rank-div">
+        <form className="rank-form" onSubmit={handleSubmit}>
+          <label className="rank" htmlFor="rank">
+            Create New Rank
+          </label>
+          <input
+            id="rank"
+            name="name"
+            type="text"
+            placeholder="Create new rank"
+            value={inputValues.rank}
+            onChange={handleChange}
+            className="set-rank"
+          />
+          <button className="rank-btn">Create</button>
+        </form>
+      </div>
+      <div className="levels">
         {rank.map((section, index) => {
           return (
-            <div key={section.id}>
-              <li>{section.name}</li>
+            <div className="rendered-levels" key={section.id}>
+              <div className="left">
+                {' '}
+                <li>{section.name}</li>
+              </div>
               <button
                 onClick={() => {
                   deleteRank(section.id);
                 }}
+                className="rendered-btn"
               >
                 Delete
               </button>
@@ -85,7 +94,6 @@ export default function Rank() {
           );
         })}
       </div>
-
     </div>
   );
 }
