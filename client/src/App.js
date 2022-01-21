@@ -25,9 +25,9 @@ export default function App() {
       {/* <p>{state}</p> */}
        {/* <Header />  */}
       
-       <Department /> 
-      {/* <Rank />   */}
-      {/* <Admin /> */}
+       {/* <Department />  */}
+      <Rank />  
+      <Admin />
       
       {/* <Footer />  */}
       

@@ -1,33 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Admin = () => {
   const initialValue = {
-    rank: '',
+    levelId: '',
     salary: '',
+    loanDeduction: '',
     incomeTax: '',
-    staffloan: '',
-    loanDeductionRate: '',
-    tier1: '',
-    tier2: '',
+    tierOne: '',
+    tierTwo:'',
     taxRelief: '',
+    bonus: ''
   };
   const [inputValues, setInputValues] = useState(initialValue);
-
+  const [levelData, setLevelData] = useState([]);
   const handleChange = event => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
   const handleSubmit = async event => {
     event.preventDefault();
+    const { name } = event.target;
     try {
+      await fetch('http://localhost:4000/ipayroll/api/v1/rates', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputValues),
+      });
+      window.location = '/';
     } catch (err) {
       console.error(err.message);
     }
+    setInputValues({ ...initialValue, [name]: '' });
+    
   };
 
+
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/levels')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setLevelData(jsonResponse);
+      });
+  }, []);
+
+console.log(levelData)
   return (
     <section>
-      {/* <p>{JSON.stringify(inputValues)}</p> */}
+      <p>{JSON.stringify(inputValues)}</p>
       <div className="admin-banner">
         <h1>Administrative Data Management</h1>
         <hr></hr>
@@ -39,19 +68,21 @@ const Admin = () => {
           <div>
             <h4>Salary Management</h4>
           </div>
-          <label htmlFor="rank">Select Rank</label>
+          <label htmlFor="levelId">Select Rank</label>
           <select
-            id="rank"
-            name="rank"
-            value={inputValues.rank}
+            id="levelId"
+            name="levelId"
+            value={inputValues.levelId}
             onChange={handleChange}
           >
             <option disabled hidden>
-              Set Rank
+              Set Level
             </option>
-            <option value="Level 1">Level 1</option>
-            <option value="Level 2">Level 2</option>
-            <option value="Level 3">Level 3</option>
+            {levelData.map((element, index) => {
+              return (
+                <option key={index}>{element.id}</option>
+              )
+            })}
           </select>
           <label htmlFor="salary">Set Basic Salary</label>
           <input
@@ -79,53 +110,48 @@ const Admin = () => {
               value={inputValues.incomeTax}
               onChange={handleChange}
             />
-            <label htmlFor="staffloan">Set Staffloan Value</label>
+             <label htmlFor="loanDeduction">Loan Deduction Rate</label>
             <input
               type="number"
-              id="staffloan"
-              name="staffloan"
-              placeholder="Set loan amount"
+              id="loanDeduction"
+              name="loanDeduction"
+              placeholder="Set rate in percentage"
               min="0"
-              value={inputValues.staffloan}
+              max="100"
+              value={inputValues.loanDeduction}
+              onChange={handleChange}
+            />
+
+
+            
+          </div>
+          <div>
+           
+            <label htmlFor="tierOne">Set SSNIT Tier 1 Rate</label>
+            <input
+              type="number"
+              id="tierOne"
+              name="tierOne"
+              placeholder="Set rate in percentage"
+              min="0"
+              max="100"
+              value={inputValues.tierOne}
+              onChange={handleChange}
+            />
+            <label htmlFor="tierTwo">Set SSNIT Tier 2 Rate</label>
+            <input
+              type="number"
+              id="tierTwo"
+              name="tierTwo"
+              placeholder="Set rate in percentage"
+              min="0"
+              max="100"
+              value={inputValues.tierTwo}
               onChange={handleChange}
             />
           </div>
           <div>
-            <label htmlFor="loanDeductionRate">Loan Deduction Rate</label>
-            <input
-              type="number"
-              id="loanDeductionRate"
-              name="loanDeductionRate"
-              placeholder="Set rate in %"
-              min="0"
-              max="100"
-              value={inputValues.loanDeductionRate}
-              onChange={handleChange}
-            />
-            <label htmlFor="tier1">Set SSNIT Tier 1 Rate</label>
-            <input
-              type="number"
-              id="tier1"
-              name="tier1"
-              placeholder="Set rate in %"
-              min="0"
-              max="100"
-              value={inputValues.tier1}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="tier2">Set SSNIT Tier 2 Rate</label>
-            <input
-              type="number"
-              id="tier2"
-              name="tier2"
-              placeholder="Set rate in %"
-              min="0"
-              max="100"
-              value={inputValues.tier2}
-              onChange={handleChange}
-            />
+            
             <label htmlFor="taxRelief">Tax Relief Rate</label>
             <input
               type="number"
@@ -135,6 +161,16 @@ const Admin = () => {
               min="0"
               max="100"
               value={inputValues.taxRelief}
+              onChange={handleChange}
+            />
+            <label htmlFor="bonus">Set Bonus Rate</label>
+            <input
+              type="number"
+              id="bonus"
+              name="bonus"
+              placeholder="Set bonus rate"
+              min="0"
+              value={inputValues.bonus}
               onChange={handleChange}
             />
           </div>

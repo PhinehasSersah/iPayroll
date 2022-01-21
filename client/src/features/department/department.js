@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Department = () => {
   const initialValue = {
@@ -9,7 +9,7 @@ const Department = () => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setInputValues({[name] :value});
+    setInputValues({ [name]: value });
   };
   const handleSubmit = async event => {
     const { name } = event.target;
@@ -22,18 +22,37 @@ const Department = () => {
         },
         body: JSON.stringify(inputValues),
       });
+      window.location = '/';
     } catch (err) {
       console.error(err.message);
     }
-    setInputValues({...initialValue, [name]:''})
+    setInputValues({ ...initialValue, [name]: '' });
   };
 
-  const getDepartment = () => {
-    
-  }
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/departments')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setDepartment(jsonResponse);
+      });
+  }, []);
+
+  const deleteDepartment = id => {
+    fetch('http://localhost:4000/ipayroll/api/v1/departments/' + id, {
+      method: 'DELETE',
+    });
+    window.location = '/';
+  };
   return (
     <div>
-      {/* <p>{JSON.stringify(inputValues)}</p> */}
       <h3>Create New Department</h3>
       <hr></hr>
       <form onSubmit={handleSubmit}>
@@ -48,6 +67,22 @@ const Department = () => {
         />
         <button>Create</button>
       </form>
+      <div>
+        {department.map((section, index) => {
+          return (
+            <div key={section.id}>
+              <li>{section.name}</li>
+              <button
+                onClick={() => {
+                  deleteDepartment(section.id);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
