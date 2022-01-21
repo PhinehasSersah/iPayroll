@@ -1,11 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Header from "./Components/Header/header";
 import Employee from "./Components/Employee-Info/Employee";
 import Department from "./features/department/department";
-import Rank from "./features/rank/rank";
 import Login from "./features/login/login";
-import Footer from "./Components/Footer/footer";
 import Admin from "./Components/Admin/admin";
 
 export default function App() {
@@ -21,16 +18,8 @@ export default function App() {
   return (
     <div>
        {/* <Login /> */}
-      {/* <Employee /> */}
-      {/* <p>{state}</p> */}
-       {/* <Header />  */}
-      
-       {/* <Department />  */}
-      <Rank />  
+      {/* <Employee /> */} 
       <Admin />
-      
-      {/* <Footer />  */}
-      
     </div>
   );
 }

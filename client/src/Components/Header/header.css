@@ -1,0 +1,59 @@
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  background-color: #faf1e6;
+  box-shadow: 0px 15px 10px -15px #064420;
+}
+header img {
+  display: block;
+  height: 3rem;
+  width: 8rem;
+  object-fit: contain;
+}
+header p {
+  text-align: center;
+}
+header button {
+  position: relative;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 5em;
+  background-color: #064420;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+}
+
+header button:focus {
+  box-shadow: none;
+  outline: none;
+}
+header button:hover {
+  background-color: #faf1e6;
+  color: #064420;
+}
+
+header button:active {
+  background-color: #faf1e6;
+}
+header p {
+  text-align: center;
+  color: #064420;
+  font-size: 2rem;
+  margin-left: 20px;
+  align-self: center;
+}
+header p strong {
+  color: tomato;
+  font-size: 3.5rem;
+}

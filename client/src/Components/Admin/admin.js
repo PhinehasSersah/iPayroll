@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Footer from '../Footer/footer';
+import Header from '../Header/header';
+import './admin.css'
 
 const Admin = () => {
   const initialValue = {
@@ -53,37 +56,45 @@ const Admin = () => {
       });
   }, []);
 
-console.log(levelData)
+console.log(inputValues)
   return (
-    <section>
-      <p>{JSON.stringify(inputValues)}</p>
+    <>
+          {/* <p>{JSON.stringify(inputValues)}</p> */}
+     <Header />
+    <section className='administration'>
+
       <div className="admin-banner">
-        <h1>Administrative Data Management</h1>
+        <h1>Administrative Data Management Dashboard</h1>
         <hr></hr>
       </div>
 
       <div className="data-table">
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
           <br></br>
-          <div>
+          <div className='management'>
             <h4>Salary Management</h4>
           </div>
+          <div className='select-salary'>
+            <div className='column'>
           <label htmlFor="levelId">Select Rank</label>
           <select
             id="levelId"
             name="levelId"
             value={inputValues.levelId}
             onChange={handleChange}
+            className='input'
           >
             <option disabled hidden>
               Set Level
             </option>
             {levelData.map((element, index) => {
               return (
-                <option key={index}>{element.id}</option>
+                <option value={element.id} key={index}>{element.name}</option>
               )
             })}
           </select>
+          </div>
+          <div className='column'>
           <label htmlFor="salary">Set Basic Salary</label>
           <input
             type="number"
@@ -93,12 +104,17 @@ console.log(levelData)
             min="0"
             value={inputValues.salary}
             onChange={handleChange}
+            className='input'
           />
+          </div>
+          </div>
           <div>
             <br></br>
-            <div>
+            <div className='management'>
               <h4>Rate Management</h4>
             </div>
+            <div className='select-salary'>
+            <div className='column'>
             <label htmlFor="incomeTax">Set Income Tax Rate</label>
             <input
               type="number"
@@ -109,7 +125,10 @@ console.log(levelData)
               max="100"
               value={inputValues.incomeTax}
               onChange={handleChange}
+              className='input'
             />
+            </div>
+            <div className='column'>
              <label htmlFor="loanDeduction">Loan Deduction Rate</label>
             <input
               type="number"
@@ -120,13 +139,15 @@ console.log(levelData)
               max="100"
               value={inputValues.loanDeduction}
               onChange={handleChange}
+              className='input'
             />
-
-
-            
+            </div>
+            </div>
           </div>
-          <div>
-           
+
+
+          <div className='select-salary'>
+            <div className='column'>
             <label htmlFor="tierOne">Set SSNIT Tier 1 Rate</label>
             <input
               type="number"
@@ -137,7 +158,10 @@ console.log(levelData)
               max="100"
               value={inputValues.tierOne}
               onChange={handleChange}
+              className='input'
             />
+            </div>
+            <div className='column'>
             <label htmlFor="tierTwo">Set SSNIT Tier 2 Rate</label>
             <input
               type="number"
@@ -148,21 +172,27 @@ console.log(levelData)
               max="100"
               value={inputValues.tierTwo}
               onChange={handleChange}
+              className='input'
             />
           </div>
-          <div>
-            
+          </div>
+
+          <div className='select-salary'>
+            <div className='column'>
             <label htmlFor="taxRelief">Tax Relief Rate</label>
             <input
               type="number"
               id="taxRelief"
               name="taxRelief"
-              placeholder="Set rate in %"
+              placeholder="Set rate in percentage"
               min="0"
               max="100"
               value={inputValues.taxRelief}
               onChange={handleChange}
+              className='input'
             />
+            </div>
+            <div className='column'>
             <label htmlFor="bonus">Set Bonus Rate</label>
             <input
               type="number"
@@ -172,12 +202,18 @@ console.log(levelData)
               min="0"
               value={inputValues.bonus}
               onChange={handleChange}
+              className='input'
             />
           </div>
+          </div>
+          <div className='btn'>
           <button>Submit</button>
+          </div>
         </form>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

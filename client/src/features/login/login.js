@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
-import amalitech from './amalitech.png';
+import amalitech from '../../amalitech.png';
 
 const Login = () => {
   const initialValue = {
