@@ -1,4 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import Footer from '../Footer/footer';
+import Header from '../Header/header';
+import './employee.css';
 
 const Employee = () => {
   const initialValue = {
@@ -9,7 +12,7 @@ const Employee = () => {
     joinDate: '',
     phoneNumber: '',
     department: '',
-    rank: '',
+    level: '',
   };
   const [inputValues, setInputValues] = useState(initialValue);
   const [inputErrors, setInputErrors] = useState({});
@@ -33,11 +36,12 @@ const Employee = () => {
     const errors = {};
     const emailRegex =
       /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const phoneNumberRegex = /^\+?\(?(([2][3][3])|[0])?\)?[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}?$/
+    const phoneNumberRegex =
+      /^\+?\(?(([2][3][3])|[0])?\)?[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}?$/;
     const birthdateSplit = values.birthDate.split('-');
     const year = birthdateSplit[0];
     let date = new Date();
-    let thisYear = date.getFullYear()-10;
+    let thisYear = date.getFullYear() - 10;
     let dateFormat = date.toISOString().split('T')[0];
     // console.log(dateFormat);
     if (!values.firstName) {
@@ -60,10 +64,10 @@ const Employee = () => {
       errors.birthDate = 'Date of birth is required';
     }
     //joinDate
-     if (!values.joinDate) {
+    if (!values.joinDate) {
       errors.joinDate = 'Start date is required';
-    } else if(values.joinDate<dateFormat) {
-      errors.joinDate = 'Join date cannot be less than today'
+    } else if (values.joinDate < dateFormat) {
+      errors.joinDate = 'Join date cannot be less than today';
     }
     //phoneNumber
     if (!values.phoneNumber) {
@@ -76,127 +80,175 @@ const Employee = () => {
       errors.department = 'Employee department is required';
     }
     //rank
-    if (!values.rank) {
-      errors.rank = 'Employee rank is required';
+    if (!values.level) {
+      errors.level = 'Employee level is required';
     }
     return errors;
   };
   return (
-    
-    <section>
-      <div className="banner-section">
-        <h1 className="employee-banner">Employee Information Data</h1>
-        <hr></hr>
-      </div>
+    <div>
+      <Header />
+      <section className="employee">
+        <div className="banner-section">
+          <h1 className="employee-banner">Employee Information Data</h1>
+          <hr className="employeehr"></hr>
+        </div>
 
-      <div className="employee-information">
-        <h3>Add Employee</h3>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="first-info-section">
-            <p>{inputErrors.firstName}</p>
-            <label htmlFor="firstName">FirstName</label>
-            <input
-              name="firstName"
-              id="firstName"
-              type="text"
-              placeholder="Employee FirstName"
-              value={inputValues.firstName}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.lastName}</p>
-            <label htmlFor="lastName">LastName</label>
-            <input
-              name="lastName"
-              id="lastName"
-              type="text"
-              placeholder="Employee Surname"
-              value={inputValues.lastName}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="employee-information">
+          <form className="form" onSubmit={handleSubmit}>
+            <h4>Add New Employee</h4>
+            <div className="employee-data">
+              <div className="info-section">
+                <div className="column">
+                  <label className="emp-label" htmlFor="firstName">
+                    FirstName
+                  </label>
+                  <p>{inputErrors.firstName}</p>
+                  <input
+                    name="firstName"
+                    id="firstName"
+                    type="text"
+                    placeholder="Employee FirstName"
+                    value={inputValues.firstName}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="lastName">LastName</label>
+                  <p>{inputErrors.lastName}</p>
+                  <input
+                    name="lastName"
+                    id="lastName"
+                    type="text"
+                    placeholder="Employee Surname"
+                    value={inputValues.lastName}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+              </div>
 
-          <div className="second-info-section">
-            <p>{inputErrors.email}</p>
-            <label htmlFor="email">E-mail</label>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              placeholder="Email Address"
-              value={inputValues.email}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.birthDate}</p>
-            <label htmlFor="birthDate">Date of Birth</label>
-            <input
-              name="birthDate"
-              id="birthDate"
-              type="date"
-              placeholder="Birth Date"
-              value={inputValues.birthDate}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="third-info-section">
-            <p>{inputErrors.joinDate}</p>
-            <label htmlFor="joinDate">Joining Date</label>
-            <input
-              name="joinDate"
-              id="joinDate"
-              type="date"
-              placeholder="Joining Date"
-              value={inputValues.joindate}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.phoneNumber}</p>
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              name="phoneNumber"
-              id="phoneNumber"
-              type="tel"
-              value={inputValues.phoneNumber}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="department">
-            <p>{inputErrors.department}</p>
-            <label htmlFor="department">Add Department</label>
-            <select
-              id="department"
-              name="department"
-              value={inputValues.department}
-              onChange={handleChange}
-            >
-              <option value="" hidden>
-                Select Department
-              </option>
-              <option value="Service Center">Service Center</option>
-              <option value="Training Center">Training Center</option>
-              <option value="Operations Department">
-                Operations Department
-              </option>
-            </select>
-            <p>{inputErrors.rank}</p>
-            <label htmlFor="rank">Rank</label>
-            <select
-              id="rank"
-              name="rank"
-              // defaultValue="Set Rank"
-              value={inputValues.rank}
-              onChange={handleChange}
-            >
-              <option value="" hidden>
-                Set Rank
-              </option>
-              <option value="Level 1">Level 1</option>
-              <option value="Level 2">Level 2</option>
-              <option value="Level 3">Level 3</option>
-            </select>
-          </div>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </section>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="email">E-mail</label>
+                  <p>{inputErrors.email}</p>
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    placeholder="Email Address"
+                    value={inputValues.email}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="birthDate">Date of Birth</label>
+                  <p>{inputErrors.birthDate}</p>
+                  <input
+                    name="birthDate"
+                    id="birthDate"
+                    type="date"
+                    placeholder="Birth Date"
+                    value={inputValues.birthDate}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="sex">Male</label>
+                  <p>{inputErrors.sex}</p>
+                  <input
+                    name="birthDate"
+                    id="birthDate"
+                    type="radio"
+                    // placeholder="Birth Date"
+                    value={inputValues.male}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+              </div>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="joinDate">Joining Date</label>
+                  <p>{inputErrors.joinDate}</p>
+                  <input
+                    name="joinDate"
+                    id="joinDate"
+                    type="date"
+                    placeholder="Joining Date"
+                    value={inputValues.joinDate}
+                    onChange={handleChange}
+                    className="inputs"
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <p>{inputErrors.phoneNumber}</p>
+                  <input
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    type="tel"
+                    value={inputValues.phoneNumber}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Enter Mobile Number"
+                  />
+                </div>
+              </div>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="department">Add Department</label>
+                  <p>{inputErrors.department}</p>
+                  <select
+                    id="department"
+                    name="department"
+                    value={inputValues.department}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Select employee department"
+                  >
+                    <option value="" hidden>
+                      Select Department
+                    </option>
+                    <option value="Service Center">Service Center</option>
+                    <option value="Training Center">Training Center</option>
+                    <option value="Operations Department">
+                      Operations Department
+                    </option>
+                  </select>
+                </div>
+                <div className="column">
+                  <label htmlFor="rank">Level</label>
+                  <p>{inputErrors.level}</p>
+                  <select
+                    id="rank"
+                    name="rank"
+                    value={inputValues.level}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Select employee level"
+                  >
+                    <option value="" hidden>
+                      Set Level
+                    </option>
+                    <option value="Level 1">Level 1</option>
+                    <option value="Level 2">Level 2</option>
+                    <option value="Level 3">Level 3</option>
+                  </select>
+                </div>
+              </div>
+              <div className="btn">
+                <button>Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 };
 

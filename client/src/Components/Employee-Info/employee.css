@@ -1,0 +1,80 @@
+.employee {
+    background-color:#E4EFE7;
+    width: 100%;
+    height: 100%;
+}
+.employee .banner-section {
+    width:100%;
+    display: block;
+    margin-top: 7em;
+}
+.employee .employee-banner {
+    text-align: center;
+    color: tomato;
+    }
+
+    form .employee-data {
+        width: 80%;
+        margin: auto;
+        background-color:#E4EFE7;
+        border-top-left-radius: 4rem;
+        border-bottom-right-radius:4rem;
+    }
+        
+.employeehr {
+    border: 0;
+    height: 1.3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.employee-information {
+    margin-bottom: 8vh;
+   
+}
+.employee-information h4 {
+    text-align: center;
+    color:#Faf1e6;
+    text-align: center;
+    margin-top: 10px;
+}
+.employee-information form {
+    width: 45%;
+    height: 70%;
+    margin: auto;
+    background-color:#064420;
+    box-shadow: tomato 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    margin-top: 5%;
+    border-radius: 16px;
+}
+form .info-section {
+    width: 100%;
+    margin:auto;
+
+}
+.employee-information form .column {
+    width:80%;
+    margin-top: 4%;
+}
+form label {
+    color:#064420;
+    letter-spacing: 1px;
+}
+form .info-section p {
+    color: tomato;
+    margin-bottom: 3px;
+    line-height: 8px;
+}
+form .column .inputs {
+    height: 2em;
+    width: 100%;
+    padding: 6px;
+    border-radius: 7px;
+    margin-top: 0px;
+    border-color: tomato;
+}
+::placeholder  {
+    color: tomato;
+}
+form .btn {
+    width: 100%;
+    margin-left: auto;
+}

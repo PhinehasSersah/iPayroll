@@ -56,17 +56,17 @@ export default function Rank() {
 
   return (
     <div className="rank-section">
-      <h4>Create New Rank</h4>
+      <h4>Create New Level</h4>
       <div className="rank-div">
         <form className="rank-form" onSubmit={handleSubmit}>
           <label className="rank" htmlFor="rank">
-            Create New Rank
+            Create New Level
           </label>
           <input
             id="rank"
             name="name"
             type="text"
-            placeholder="Create new rank"
+            placeholder="Create new level"
             value={inputValues.rank}
             onChange={handleChange}
             className="set-rank"

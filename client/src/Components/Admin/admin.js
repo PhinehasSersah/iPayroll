@@ -75,6 +75,7 @@ const Admin = () => {
       });
   }, []);
 
+  console.log(levelData)
 
   return (
     <>
@@ -92,11 +93,11 @@ const Admin = () => {
             <form className="form" onSubmit={handleSubmit}>
               <br></br>
               <div className="management">
-                <h4>Salary Management</h4>
+                <h4>Set Salary</h4>
               </div>
               <div className="select-salary">
                 <div className="column">
-                  <label htmlFor="levelId">Select Rank</label>
+                  <label htmlFor="levelId">Select Level</label>
                   <select
                     id="levelId"
                     name="levelId"
@@ -131,7 +132,7 @@ const Admin = () => {
               <div>
                 <br></br>
                 <div className="management">
-                  <h4>Rate Management</h4>
+                  <h4>Set Rates</h4>
                 </div>
                 <div className="select-salary">
                   <div className="column">
@@ -240,7 +241,7 @@ const Admin = () => {
 
               <div className="outer">
                 <div className="rows">
-                  <p className="label">Rank</p>
+                  <p className="label">Level</p>
                   <div className="input">
                     <p>{}</p>
                   </div>

@@ -19,8 +19,8 @@ export default function App() {
   return (
     <div>
        {/* <Login /> */}
-      {/* <Employee />  */}
-      <Admin />
+      <Employee /> 
+      {/* <Admin /> */}
       {/* <Rank /> */}
       {/* <Department/> */}
     </div>
