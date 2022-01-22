@@ -1,3 +1,10 @@
+-- CREATE TABLE ipr_users(
+--     id SERIAL PRIMARY KEY,
+--     username VARCHAR(50),
+--     email VARCHAR(50),
+--     upassword PASSWORD,
+--     department VARCHAR(50)
+-- );
 CREATE TABLE departments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
@@ -45,3 +52,22 @@ CREATE TABLE work_hours(
     working_hours REAL NOT NULL,
     CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
 );
+
+CREATE TABLE remunerations(
+    id SERIAL PRIMARY KEY,
+    employee_id INTEGER REFERENCES employees(id),
+    month_year VARCHAR(10),
+    tax_relief REAL,
+    income_tax REAL,
+    loan_deduction REAL,
+    gra REAL,
+    tier_one REAL,
+    tier_two REAL,
+    CONSTRAINT ONE_REMUNERATION_PER_MONTH UNIQUE(employee_id, month_year)
+);
+
+-- CREATE TABLE loans(
+--     id SERIAL PRIMARY KEY,
+--     employee_id INTEGER REFERENCES employees(id),
+--     amount REAL
+-- );
