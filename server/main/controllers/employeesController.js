@@ -65,11 +65,21 @@ exports.getEmployee = async (req, res) => {
 };
 
 exports.createEmployee = async (req, res) => {
-  const { fname, lname, dob, sex, dept, email, level, phoneNum, startDate } =
-    req.body;
+  const {
+    fname,
+    lname,
+    dob,
+    sex,
+    dept,
+    email,
+    level,
+    phoneNum,
+    startDate,
+    snnitNum,
+  } = req.body;
   const newEmployee = await pool.query(
-    'INSERT INTO employees (firstname, lastname, date_of_birth, sex_id, department_id, email, level_id, phone_number, start_work_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
-    [fname, lname, dob, sex, dept, email, level, phoneNum, startDate]
+    'INSERT INTO employees (firstname, lastname, date_of_birth, sex_id, department_id, email, level_id, phone_number, start_work_date, snnit_number) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+    [fname, lname, dob, sex, dept, email, level, phoneNum, startDate, snnitNum]
   );
   res.status(201).json(newEmployee.rows[0]);
   try {
@@ -81,11 +91,33 @@ exports.createEmployee = async (req, res) => {
 exports.updateEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const { fname, lname, dob, sex, dept, email, level, phoneNum, startDate } =
-      req.body;
+    const {
+      fname,
+      lname,
+      dob,
+      sex,
+      dept,
+      email,
+      level,
+      phoneNum,
+      startDate,
+      snnitNum,
+    } = req.body;
     const employee = await pool.query(
-      'UPDATE employees SET firstname=$1, lastname=$2, date_of_birth=$3, sex_id=$4, department_id=$5, email=$6, level_id=$7, phone_number=$8, start_work_date=$9 WHERE  id=$10',
-      [fname, lname, dob, sex, dept, email, level, phoneNum, startDate, id]
+      'UPDATE employees SET firstname=$1, lastname=$2, date_of_birth=$3, sex_id=$4, department_id=$5, email=$6, level_id=$7, phone_number=$8, start_work_date=$9, snnit_number=$10 WHERE  id=$11',
+      [
+        fname,
+        lname,
+        dob,
+        sex,
+        dept,
+        email,
+        level,
+        phoneNum,
+        startDate,
+        snnitNum,
+        id,
+      ]
     );
     res.status(200).json({ message: 'Successfully updated Employee' });
   } catch (err) {

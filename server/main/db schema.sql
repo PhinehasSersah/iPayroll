@@ -42,7 +42,8 @@ CREATE TABLE employees(
     email VARCHAR(50) NOT NULL,
     level_id INTEGER REFERENCES levels(id) NOT NULL,
     phone_number VARCHAR(50) NOT NULL,
-    start_work_date DATE NOT NULL
+    start_work_date DATE NOT NULL,
+    snnit_num VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE work_hours(

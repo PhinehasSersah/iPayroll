@@ -2,11 +2,14 @@ const pool = require('../db');
 
 exports.checkID = async (req, res, next, val) => {
   try {
-    const id = await pool.query('SELECT id FROM work_hours WHERE ID=$1', [val]);
+    const id = await pool.query(
+      'SELECT * FROM work_hours WHERE employee_id=$1',
+      [val]
+    );
     if (id.rowCount < 1) {
       return res.status(404).json({
         status: 'fail',
-        message: 'Invalid Employee',
+        message: 'Invalid Employee ID',
       });
     }
     next();
