@@ -59,7 +59,7 @@ const Employee = () => {
         setLevels(jsonResponse);
       });
   }, []);
-  console.log(levels);
+  // console.log(levels);
 
  // handle submit function
   const handleSubmit = async event => {
@@ -83,11 +83,10 @@ const Employee = () => {
   return (
     <div>
       <Header />
-    <p>{JSON.stringify(inputValues)}</p>
       <section className="employee">
         <div className="banner-section">
           <h1 className="employee-banner">Employee Information Data</h1>
-          <p>{JSON.stringify(inputValues)}</p>
+         
           <hr className="employeehr"></hr>
         </div>
 
