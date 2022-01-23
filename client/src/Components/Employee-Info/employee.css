@@ -29,18 +29,19 @@
 .employee-information {
     display: flex;
     margin-bottom: 8vh;
+    justify-content: space-between;
 }
 .employee-information h4 {
     text-align: center;
-    color:#Faf1e6;
+    color:tomato;
     text-align: center;
     margin-top: 10px;
+    font-weight: bold;
 }
-.employee-information form {
+.employee-information .form {
     width: 45%;
     height: 70%;
     margin: auto;
-    background-color:#064420;
     box-shadow: tomato 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     margin-top: 5%;
     border-radius: 16px;
@@ -73,6 +74,7 @@ form .sex {
     height: 15px; 
     background-clip: content-box;
     border: 2px solid tomato;
+    margin:15px;
 }
 form .info-section p, form .sex-error {
     color: tomato;

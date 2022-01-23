@@ -15,21 +15,56 @@ const Employee = () => {
     dept: '',
     level: '',
     sex: '',
-    ssnitNum:''
+    snnitNum:''
   };
   const [inputValues, setInputValues] = useState(initialValue);
-  const [inputErrors, setInputErrors] = useState({});
-  
-  // const [submit, setSubmit] = useState(false);
+  const [department, setDepartment] = useState([]);
+  const [levels, setLevels] = useState([]);
 
+  // handleChange function
   const handleChange = event => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
+  // fetching department
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/departments')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setDepartment(jsonResponse);
+      });
+  }, []);
+
+  //fetching levels
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/levels')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setLevels(jsonResponse);
+      });
+  }, []);
+  console.log(levels);
+
+ // handle submit function
   const handleSubmit = async event => {
     event.preventDefault();
     const { name } = event.target;
-    // setInputErrors(validateInput(inputValues));
     try {
       await fetch('http://localhost:4000/ipayroll/api/v1/employees', {
         method: 'POST',
@@ -39,75 +74,12 @@ const Employee = () => {
         body: JSON.stringify(inputValues),
       });
       window.location = '/';
-      
-      // setSubmit(true);
     } catch (err) {
       console.error(err.message);
     }
     setInputValues({ ...initialValue, [name]: '' });
   };
 
-  const validateInput = values => {
-    const errors = {};
-    const emailRegex =
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const phoneNumberRegex =
-      /^\+?\(?(([2][3][3])|[0])?\)?[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}?$/;
-    const birthdateSplit = values.birthDate.split('-');
-    const year = birthdateSplit[0];
-    let date = new Date();
-    let thisYear = date.getFullYear() - 10;
-    let dateFormat = date.toISOString().split('T')[0];
-    if (!values.fname) {
-      errors.fname = 'Firstname is required';
-    }
-    //lastname
-    if (!values.lname) {
-      errors.lname = 'Lastname is required';
-    }
-    //email
-    if (!values.email) {
-      errors.email = 'Email is required';
-    } else if (!emailRegex.test(values.email)) {
-      errors.email = 'Invalid email format';
-    }
-    //birthdate
-    if (year >= thisYear) {
-      errors.dob = 'Birth year must be 10 less years';
-    } else if (!values.dob) {
-      errors.dob = 'Date of birth is required';
-    }
-    //joinDate
-    if (!values.startDate) {
-      errors.startDate = 'Start date is required';
-    } else if (values.startDate < dateFormat) {
-      errors.startDate = 'Join date cannot be less than today';
-    }
-    //phoneNumber
-    if (!values.phoneNum) {
-      errors.phoneNum = 'Phone number is required';
-    } else if (!phoneNumberRegex.test(values.phoneNum)) {
-      errors.phoneNum = 'Invalid phone number';
-    }
-    //department
-    if (!values.dept) {
-      errors.dept = 'Employee department is required';
-    }
-    //level
-    if (!values.level) {
-      errors.level = 'Employee level is required';
-    }
-    // sex
-    if (!values.sex) {
-      errors.sex = 'Sex is required';
-    }
-    // ssnit
-    if (!values.ssnitNum) {
-      errors.ssnitNum= 'SSNIT number is required';
-    }
-    return errors;
-  };
-  console.log(inputValues)
   return (
     <div>
       <Header />
@@ -126,9 +98,8 @@ const Employee = () => {
               <div className="info-section">
                 <div className="column">
                   <label className="emp-label" htmlFor="firstName">
-                    FirstName
+                    First Name
                   </label>
-                  <p>{inputErrors.fname}</p>
                   <input
                     name="fname"
                     id="firstName"
@@ -137,11 +108,11 @@ const Employee = () => {
                     value={inputValues.fname}
                     onChange={handleChange}
                     className="inputs"
+                    required
                   />
                 </div>
                 <div className="column">
-                  <label htmlFor="lastNlnameame"></label>
-                  <p>{inputErrors.lname}</p>
+                  <label htmlFor="lastNlnameame">Last Name</label>
                   <input
                     name="lname"
                     id="lastName"
@@ -150,6 +121,7 @@ const Employee = () => {
                     value={inputValues.lname}
                     onChange={handleChange}
                     className="inputs"
+                    required
                   />
                 </div>
               </div>
@@ -157,7 +129,6 @@ const Employee = () => {
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="email">E-mail</label>
-                  <p>{inputErrors.email}</p>
                   <input
                     name="email"
                     id="email"
@@ -166,11 +137,11 @@ const Employee = () => {
                     value={inputValues.email}
                     onChange={handleChange}
                     className="inputs"
+                    required
                   />
                 </div>
                 <div className="column">
                   <label htmlFor="birthDate">Date of Birth</label>
-                  <p>{inputErrors.dob}</p>
                   <input
                     name="dob"
                     id="birthDate"
@@ -179,12 +150,12 @@ const Employee = () => {
                     value={inputValues.dob}
                     onChange={handleChange}
                     className="inputs"
+                    required
                   />
                 </div>
               </div>
               <div className='column'>
               <label >Sex</label>
-              <p className='sex-error'>{inputErrors.sex}</p>
               </div>
               <div className='info-section sex-section'>
               <div className="column">
@@ -196,6 +167,7 @@ const Employee = () => {
                     value='1'
                     onChange={handleChange}
                     className="sex"
+                    required
                   />
                 </div>
                 <div className="column">
@@ -207,13 +179,26 @@ const Employee = () => {
                     value='2'
                     onChange={handleChange}
                     className="sex"
+                    required
+                  />
+                </div>
+
+                <div className="column">
+                  <label className='sex-group' htmlFor="others">Other</label>
+                  <input
+                    name="sex"
+                    id="others"
+                    type="radio"
+                    value='3'
+                    onChange={handleChange}
+                    className="sex"
+                    required
                   />
                 </div>
               </div>
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="joinDate">Joining Date</label>
-                  <p>{inputErrors.startDate}</p>
                   <input
                     name="startDate"
                     id="joinDate"
@@ -222,11 +207,11 @@ const Employee = () => {
                     value={inputValues.startDate}
                     onChange={handleChange}
                     className="inputs"
+                    required
                   />
                 </div>
                 <div className="column">
                   <label htmlFor="phoneNumber">Phone Number</label>
-                  <p>{inputErrors.phoneNum}</p>
                   <input
                     name="phoneNum"
                     id="phoneNumber"
@@ -235,13 +220,13 @@ const Employee = () => {
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Enter Mobile Number"
+                    required
                   />
                 </div>
               </div>
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="department">Add Department</label>
-                  <p>{inputErrors.dept}</p>
                   <select
                     id="department"
                     name="dept"
@@ -249,20 +234,20 @@ const Employee = () => {
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Select employee department"
+                    required
                   >
                     <option value="" hidden>
                       Select Department
                     </option>
-                    <option value="Service Center">Service Center</option>
-                    <option value="Training Center">Training Center</option>
-                    <option value="Operations Department">
-                      Operations Department
-                    </option>
+                    {department.map((element, index)=> {
+                      return(
+                        <option value={element.id} key={index}>{element.name}</option>
+                      )
+                    })}
                   </select>
                 </div>
                 <div className="column">
                   <label htmlFor="level">Level</label>
-                  <p>{inputErrors.level}</p>
                   <select
                     id="level"
                     name="level"
@@ -270,28 +255,32 @@ const Employee = () => {
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Select employee level"
+                    required
                   >
                     <option value="" hidden>
                       Set Level
                     </option>
-                    <option value="1">Level 1</option>
-                    <option value="2">Level 2</option>
-                    <option value="3">Level 3</option>
+                    {levels.map((element, index)=> {
+                      return(
+                        <option value={element.id} key={index}>{element.name}</option>
+                      )
+                    })}
                   </select>
+
                 </div>
               </div>
               <div className='info-section'>
               <div className="column">
-                  <label htmlFor="ssnit">SSNIT Number</label>
-                  <p>{inputErrors.ssnitNum}</p>
+                  <label htmlFor="snnit">SSNIT Number</label>
                   <input
-                    name="ssnitNum"
-                    id="ssnit"
+                    name="snnitNum"
+                    id="snnit"
                     type="tel"
-                    value={inputValues.ssnitNum}
+                    value={inputValues.snnitNum}
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Enter Mobile Number"
+                    required
                   />
                 </div>
               </div>

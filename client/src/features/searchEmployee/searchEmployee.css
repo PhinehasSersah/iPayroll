@@ -4,6 +4,14 @@
     height: 70vh;
     border-radius: 15px;
 }
+.information .search-form{
+    width:80%;
+    margin-top: 14%;
+}
+
+.information .search-employee .search{
+color:tomato;
+}
 .information .column {
     display: flex;
     flex-direction: column; 
@@ -20,6 +28,15 @@
     margin-top: 10%;
     font: 18px;
 }
+.search-form .column .input {
+    border-color: tomato;
+}
+.search-form .search-btn {
+    width: 13rem;
+    margin:auto;
+    margin-left: 40%;
+}
+
 .information .input, .information .detail-info{
     height: 2em;
     padding: 6px;
