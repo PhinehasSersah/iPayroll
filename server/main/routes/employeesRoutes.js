@@ -11,8 +11,12 @@ router
 
 router
   .route('/:id')
-  .get(employeesController.getEmployee)
+  .get(employeesController.getEmployeeById)
   .put(employeesController.updateEmployee)
   .delete(employeesController.deleteEmployee);
+
+router
+  .route('/search/:fullName')
+  .get(employeesController.getEmployeeByFullName);
 
 module.exports = router;
