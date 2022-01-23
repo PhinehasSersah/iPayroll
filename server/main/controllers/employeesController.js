@@ -52,12 +52,31 @@ exports.getAllEmployees = async (req, res) => {
   }
 };
 
-exports.getEmployee = async (req, res) => {
+exports.getEmployeeById = async (req, res) => {
   try {
     const { id } = req.params;
     const employee = await pool.query('SELECT * FROM employees WHERE id=$1', [
       id,
     ]);
+    res.status(200).json(employee.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+exports.getEmployeeByFullName = async (req, res) => {
+  try {
+    const { fullName } = req.params;
+    const employee = await pool.query(
+      "SELECT * FROM employees WHERE LOWER(CONCAT(firstname, ' ' ,lastname))=$1 OR LOWER(CONCAT(lastname, ' ' ,firstname))=$1",
+      [fullName.toLowerCase()]
+    );
+    if (employee.rowCount < 0) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'No employee found',
+      });
+    }
     res.status(200).json(employee.rows[0]);
   } catch (err) {
     console.error(err.message);
