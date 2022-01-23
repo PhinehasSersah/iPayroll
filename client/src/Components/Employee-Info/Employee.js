@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/footer';
 import Header from '../Header/header';
+import SearchEmployee from '../../features/searchEmployee/searchEmployee';
 import './employee.css';
 
 const Employee = () => {
   const initialValue = {
-    firstName: '',
-    lastName: '',
+    fname: '',
+    lname: '',
     email: '',
-    birthDate: '',
-    joinDate: '',
-    phoneNumber: '',
-    department: '',
+    dob: '',
+    startDate: '',
+    phoneNum: '',
+    dept: '',
     level: '',
+    sex: '',
+    ssnitNum:''
   };
   const [inputValues, setInputValues] = useState(initialValue);
   const [inputErrors, setInputErrors] = useState({});
+  
   // const [submit, setSubmit] = useState(false);
 
   const handleChange = event => {
@@ -24,12 +28,23 @@ const Employee = () => {
   };
   const handleSubmit = async event => {
     event.preventDefault();
+    const { name } = event.target;
+    // setInputErrors(validateInput(inputValues));
     try {
-      setInputErrors(validateInput(inputValues));
+      await fetch('http://localhost:4000/ipayroll/api/v1/employees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputValues),
+      });
+      window.location = '/';
+      
       // setSubmit(true);
     } catch (err) {
       console.error(err.message);
     }
+    setInputValues({ ...initialValue, [name]: '' });
   };
 
   const validateInput = values => {
@@ -43,13 +58,12 @@ const Employee = () => {
     let date = new Date();
     let thisYear = date.getFullYear() - 10;
     let dateFormat = date.toISOString().split('T')[0];
-    // console.log(dateFormat);
-    if (!values.firstName) {
-      errors.firstName = 'Firstname is required';
+    if (!values.fname) {
+      errors.fname = 'Firstname is required';
     }
     //lastname
-    if (!values.lastName) {
-      errors.lastName = 'Lastname is required';
+    if (!values.lname) {
+      errors.lname = 'Lastname is required';
     }
     //email
     if (!values.email) {
@@ -59,38 +73,49 @@ const Employee = () => {
     }
     //birthdate
     if (year >= thisYear) {
-      errors.birthDate = 'Birth year must be 10 less years';
-    } else if (!values.birthDate) {
-      errors.birthDate = 'Date of birth is required';
+      errors.dob = 'Birth year must be 10 less years';
+    } else if (!values.dob) {
+      errors.dob = 'Date of birth is required';
     }
     //joinDate
-    if (!values.joinDate) {
-      errors.joinDate = 'Start date is required';
-    } else if (values.joinDate < dateFormat) {
-      errors.joinDate = 'Join date cannot be less than today';
+    if (!values.startDate) {
+      errors.startDate = 'Start date is required';
+    } else if (values.startDate < dateFormat) {
+      errors.startDate = 'Join date cannot be less than today';
     }
     //phoneNumber
-    if (!values.phoneNumber) {
-      errors.phoneNumber = 'Phone number is required';
-    } else if (!phoneNumberRegex.test(values.phoneNumber)) {
-      errors.phoneNumber = 'Invalid phone number';
+    if (!values.phoneNum) {
+      errors.phoneNum = 'Phone number is required';
+    } else if (!phoneNumberRegex.test(values.phoneNum)) {
+      errors.phoneNum = 'Invalid phone number';
     }
     //department
-    if (!values.department) {
-      errors.department = 'Employee department is required';
+    if (!values.dept) {
+      errors.dept = 'Employee department is required';
     }
-    //rank
+    //level
     if (!values.level) {
       errors.level = 'Employee level is required';
     }
+    // sex
+    if (!values.sex) {
+      errors.sex = 'Sex is required';
+    }
+    // ssnit
+    if (!values.ssnitNum) {
+      errors.ssnitNum= 'SSNIT number is required';
+    }
     return errors;
   };
+  console.log(inputValues)
   return (
     <div>
       <Header />
+    <p>{JSON.stringify(inputValues)}</p>
       <section className="employee">
         <div className="banner-section">
           <h1 className="employee-banner">Employee Information Data</h1>
+          <p>{JSON.stringify(inputValues)}</p>
           <hr className="employeehr"></hr>
         </div>
 
@@ -103,26 +128,26 @@ const Employee = () => {
                   <label className="emp-label" htmlFor="firstName">
                     FirstName
                   </label>
-                  <p>{inputErrors.firstName}</p>
+                  <p>{inputErrors.fname}</p>
                   <input
-                    name="firstName"
+                    name="fname"
                     id="firstName"
                     type="text"
                     placeholder="Employee FirstName"
-                    value={inputValues.firstName}
+                    value={inputValues.fname}
                     onChange={handleChange}
                     className="inputs"
                   />
                 </div>
                 <div className="column">
-                  <label htmlFor="lastName">LastName</label>
-                  <p>{inputErrors.lastName}</p>
+                  <label htmlFor="lastNlnameame"></label>
+                  <p>{inputErrors.lname}</p>
                   <input
-                    name="lastName"
+                    name="lname"
                     id="lastName"
                     type="text"
                     placeholder="Employee Surname"
-                    value={inputValues.lastName}
+                    value={inputValues.lname}
                     onChange={handleChange}
                     className="inputs"
                   />
@@ -145,53 +170,68 @@ const Employee = () => {
                 </div>
                 <div className="column">
                   <label htmlFor="birthDate">Date of Birth</label>
-                  <p>{inputErrors.birthDate}</p>
+                  <p>{inputErrors.dob}</p>
                   <input
-                    name="birthDate"
+                    name="dob"
                     id="birthDate"
                     type="date"
                     placeholder="Birth Date"
-                    value={inputValues.birthDate}
+                    value={inputValues.dob}
                     onChange={handleChange}
                     className="inputs"
                   />
                 </div>
-                <div className="column">
-                  <label htmlFor="sex">Male</label>
-                  <p>{inputErrors.sex}</p>
+              </div>
+              <div className='column'>
+              <label >Sex</label>
+              <p className='sex-error'>{inputErrors.sex}</p>
+              </div>
+              <div className='info-section sex-section'>
+              <div className="column">
+                  <label className='sex-group' htmlFor="male">Male</label>
                   <input
-                    name="birthDate"
-                    id="birthDate"
+                    name="sex"
+                    id="male"
                     type="radio"
-                    // placeholder="Birth Date"
-                    value={inputValues.male}
+                    value='1'
                     onChange={handleChange}
-                    className="inputs"
+                    className="sex"
+                  />
+                </div>
+                <div className="column">
+                  <label className='sex-group' htmlFor="female">Female</label>
+                  <input
+                    name="sex"
+                    id="female"
+                    type="radio"
+                    value='2'
+                    onChange={handleChange}
+                    className="sex"
                   />
                 </div>
               </div>
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="joinDate">Joining Date</label>
-                  <p>{inputErrors.joinDate}</p>
+                  <p>{inputErrors.startDate}</p>
                   <input
-                    name="joinDate"
+                    name="startDate"
                     id="joinDate"
                     type="date"
                     placeholder="Joining Date"
-                    value={inputValues.joinDate}
+                    value={inputValues.startDate}
                     onChange={handleChange}
                     className="inputs"
                   />
                 </div>
                 <div className="column">
                   <label htmlFor="phoneNumber">Phone Number</label>
-                  <p>{inputErrors.phoneNumber}</p>
+                  <p>{inputErrors.phoneNum}</p>
                   <input
-                    name="phoneNumber"
+                    name="phoneNum"
                     id="phoneNumber"
                     type="tel"
-                    value={inputValues.phoneNumber}
+                    value={inputValues.phoneNum}
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Enter Mobile Number"
@@ -201,11 +241,11 @@ const Employee = () => {
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="department">Add Department</label>
-                  <p>{inputErrors.department}</p>
+                  <p>{inputErrors.dept}</p>
                   <select
                     id="department"
-                    name="department"
-                    value={inputValues.department}
+                    name="dept"
+                    value={inputValues.dept}
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Select employee department"
@@ -221,11 +261,11 @@ const Employee = () => {
                   </select>
                 </div>
                 <div className="column">
-                  <label htmlFor="rank">Level</label>
+                  <label htmlFor="level">Level</label>
                   <p>{inputErrors.level}</p>
                   <select
-                    id="rank"
-                    name="rank"
+                    id="level"
+                    name="level"
                     value={inputValues.level}
                     onChange={handleChange}
                     className="inputs"
@@ -234,10 +274,25 @@ const Employee = () => {
                     <option value="" hidden>
                       Set Level
                     </option>
-                    <option value="Level 1">Level 1</option>
-                    <option value="Level 2">Level 2</option>
-                    <option value="Level 3">Level 3</option>
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
                   </select>
+                </div>
+              </div>
+              <div className='info-section'>
+              <div className="column">
+                  <label htmlFor="ssnit">SSNIT Number</label>
+                  <p>{inputErrors.ssnitNum}</p>
+                  <input
+                    name="ssnitNum"
+                    id="ssnit"
+                    type="tel"
+                    value={inputValues.ssnitNum}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Enter Mobile Number"
+                  />
                 </div>
               </div>
               <div className="btn">
@@ -245,6 +300,7 @@ const Employee = () => {
               </div>
             </div>
           </form>
+          <SearchEmployee />
         </div>
       </section>
       <Footer />

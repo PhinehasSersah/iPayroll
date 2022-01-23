@@ -1,0 +1,29 @@
+
+.information {
+    width: 35%;
+    height: 70vh;
+    border-radius: 15px;
+}
+.information .column {
+    display: flex;
+    flex-direction: column; 
+    width: 40%;
+    margin-left: 6%;
+    margin-top: 10px
+}
+.information .column {
+    width: 60%;
+    margin: auto;
+    margin-top: 4%;
+}
+.information .column label {
+    margin-top: 10%;
+    font: 18px;
+}
+.information .input, .information .detail-info{
+    height: 2em;
+    padding: 6px;
+    border-radius: 7px;
+    margin-top: 0px;
+    border-color: #064420;
+}

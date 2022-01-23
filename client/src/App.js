@@ -5,7 +5,7 @@ import Department from "./features/department/department";
 import Login from "./features/login/login";
 import Admin from "./Components/Admin/admin";
 import Rank from "./features/rank/rank";
-
+import SearchEmployee from "./features/searchEmployee/searchEmployee";
 export default function App() {
 
   // const [state, setState] = useState("null");
@@ -23,6 +23,7 @@ export default function App() {
       {/* <Admin /> */}
       {/* <Rank /> */}
       {/* <Department/> */}
+      {/* <SearchEmployee /> */}
     </div>
   );
 }
