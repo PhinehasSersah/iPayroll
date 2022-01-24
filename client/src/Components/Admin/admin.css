@@ -18,7 +18,7 @@ color: #064420;
 }
 
     
-hr.adminhr{
+.adminhr{
     border: 0;
     height: 1.3px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
@@ -113,7 +113,7 @@ form button:hover {
     margin-top: 25px;
 }
 .rate-data .input {
-height: 2em;
+height: 3.5em;
 padding: 6px;
 border-radius: 7px;
 margin-top: 0px;

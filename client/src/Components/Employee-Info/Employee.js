@@ -59,7 +59,7 @@ const Employee = () => {
         setLevels(jsonResponse);
       });
   }, []);
-  // console.log(levels);
+
 
  // handle submit function
   const handleSubmit = async event => {
@@ -85,7 +85,7 @@ const Employee = () => {
       <Header />
       <section className="employee">
         <div className="banner-section">
-          <h1 className="employee-banner">Employee Information Data</h1>
+          <h1 className="employee-banner">Employee Data Dashboard</h1>
          
           <hr className="employeehr"></hr>
         </div>
