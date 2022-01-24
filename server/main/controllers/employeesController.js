@@ -72,7 +72,7 @@ exports.getEmployeeByFullName = async (req, res) => {
       [fullName.toLowerCase()]
     );
     if (employee.rowCount < 0) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: 'fail',
         message: 'No employee found',
       });

@@ -32,6 +32,21 @@ CREATE TABLE sex(
     gender VARCHAR(20) NOT NULL
 );
 
+INSERT INTO
+    sex
+VALUES
+    ('Male');
+
+INSERT INTO
+    sex
+VALUES
+    ('Female');
+
+INSERT INTO
+    sex
+VALUES
+    ('Other');
+
 CREATE TABLE employees(
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(50) NOT NULL,
@@ -61,14 +76,15 @@ CREATE TABLE remunerations(
     tax_relief REAL,
     income_tax REAL,
     loan_deduction REAL,
-    gra REAL,
+    bonus REAL,
     tier_one REAL,
     tier_two REAL,
     CONSTRAINT ONE_REMUNERATION_PER_MONTH UNIQUE(employee_id, month_year)
 );
 
--- CREATE TABLE loans(
---     id SERIAL PRIMARY KEY,
---     employee_id INTEGER REFERENCES employees(id),
---     amount REAL
--- );
+CREATE TABLE loans(
+    id SERIAL PRIMARY KEY,
+    employee_id INTEGER REFERENCES employees(id) NOT NULL,
+    initial_amount REAL NOT NULL,
+    amount_left REAL NOT NULL
+);

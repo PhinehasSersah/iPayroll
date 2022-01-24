@@ -25,7 +25,7 @@ exports.checkBody = (req, res, next) => {
       taxRelief,
       incomeTax,
       loanDeduction,
-      gra,
+      bonus,
       tierOne,
       tierTwo,
     } = req.body;
@@ -36,7 +36,7 @@ exports.checkBody = (req, res, next) => {
         taxRelief &&
         incomeTax &&
         loanDeduction &&
-        gra &&
+        bonus &&
         tierOne &&
         tierTwo
       )
@@ -72,19 +72,19 @@ exports.createEmpMonthRemueration = async (req, res) => {
     taxRelief,
     incomeTax,
     loanDeduction,
-    gra,
+    bonus,
     tierOne,
     tierTwo,
   } = req.body;
   const newRemuneration = await pool.query(
-    'INSERT INTO remunerations (employee_id, month_year, tax_relief, income_tax, loan_deduction, gra, tier_one, tier_two ) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+    'INSERT INTO remunerations (employee_id, month_year, tax_relief, income_tax, loan_deduction, bonus, tier_one, tier_two ) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
     [
       employeeId,
       monthYear,
       taxRelief,
       incomeTax,
       loanDeduction,
-      gra,
+      bonus,
       tierOne,
       tierTwo,
     ]

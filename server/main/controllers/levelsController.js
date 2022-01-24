@@ -2,7 +2,7 @@ const pool = require('../db');
 
 exports.checkID = async (req, res, next, val) => {
   try {
-    const id = await pool.query('SELECT id FROM levels WHERE ID=$1', [val]);
+    const id = await pool.query('SELECT id FROM levels WHERE id=$1', [val]);
     if (id.rowCount < 1) {
       return res.status(404).json({
         status: 'fail',
