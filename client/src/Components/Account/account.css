@@ -1,0 +1,64 @@
+.account-section .account-dashboard {
+  width: 100%;
+  height: 100vh;
+}
+.account-section .account-dashboard .account-section {
+  width: 100%;
+  display: block;
+  margin-top: 7em;
+  height: 15vh;
+}
+.account-section .account-banner {
+  text-align: center;
+  color: #064420;
+}
+.account-section .accounthr {
+  border: 0;
+  height: 1.3px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+.account-dashboard .display {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 70vh;
+}
+.display .calculation-section,
+.display .payslip-section {
+  height: 90%;
+  width: 40%;
+  background-color: #faf1e6;
+  margin: auto;
+  border: 2px solid #064420;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.account-dashboard .payslip-btn {
+  width: 20em;
+  height: 4em;
+  /* background-color: violet; */
+  margin: auto;
+  margin-top: 1rem;
+}
+.account-dashboard .pay-button {
+  width: 80%;
+  height: 70%;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
+  background-color: tomato;
+  color: #faf1e6;
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: 1px;
+}
+.account-dashboard .pay-button :hover {
+    background-color:#e4efe7; 
+}
