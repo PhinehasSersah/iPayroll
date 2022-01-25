@@ -2,9 +2,10 @@ const pool = require('../db');
 
 exports.checkID = async (req, res, next, val) => {
   try {
-    const id = await pool.query('SELECT id FROM remunerations WHERE ID=$1', [
-      val,
-    ]);
+    const id = await pool.query(
+      'SELECT id FROM remunerations WHERE employee_id=$1',
+      [val]
+    );
     if (id.rowCount < 1) {
       return res.status(404).json({
         status: 'fail',
@@ -46,6 +47,7 @@ exports.checkBody = (req, res, next) => {
         message: 'Please provide all details',
       });
     }
+
     next();
   } catch (err) {
     console.error(err.message);
@@ -56,7 +58,7 @@ exports.getEmpMonthRemueration = async (req, res) => {
   try {
     const { id, monthYear } = req.params;
     const remuneration = await pool.query(
-      'SELECT * FROM remunerations WHERE employee_id=$1 and month_year=$2',
+      "SELECT remunerations.month_year, remunerations.tax_relief, remunerations.income_tax, remunerations.bonus, remunerations.loan_deduction, remunerations.tier_one, remunerations.tier_two, concat(employees.firstname, ' ',employees.lastname) AS full_name, employees.snnit_number, departments.name AS department, levels.name AS level FROM remunerations INNER JOIN employees ON remunerations.employee_id = employees.id INNER JOIN departments ON employees.department_id = departments.id INNER JOIN levels ON employees.level_id = levels.id WHERE employee_id=$1 and month_year=$2",
       [id, monthYear]
     );
     res.status(200).json(remuneration.rows);

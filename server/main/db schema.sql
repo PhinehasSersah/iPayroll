@@ -58,7 +58,8 @@ CREATE TABLE employees(
     level_id INTEGER REFERENCES levels(id) NOT NULL,
     phone_number VARCHAR(50) NOT NULL,
     start_work_date DATE NOT NULL,
-    snnit_num VARCHAR(20) NOT NULL
+    snnit_num VARCHAR(20),
+    on_loan BOOLEAN NOT NULL
 );
 
 CREATE TABLE work_hours(

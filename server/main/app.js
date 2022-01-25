@@ -12,6 +12,7 @@ const employeesRouter = require('./routes/employeesRoutes');
 const hoursRouter = require('./routes/hoursRoutes');
 const remunerationsRouter = require('./routes/remunerationsRoutes');
 const loansRouter = require('./routes/loansRoutes');
+const payslipsRouter = require('./routes/payslipsRoutes');
 const app = express();
 
 app.use(cors());
@@ -30,5 +31,6 @@ app.use('/ipayroll/api/v1/employees', employeesRouter);
 app.use('/ipayroll/api/v1/hours', hoursRouter);
 app.use('/ipayroll/api/v1/remunerations', remunerationsRouter);
 app.use('/ipayroll/api/v1/loans', loansRouter);
+app.use('/ipayroll/api/v1/payslips', payslipsRouter);
 
 module.exports = app;
