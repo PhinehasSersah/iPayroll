@@ -19,4 +19,8 @@ router
   .route('/search/:fullName')
   .get(employeesController.getEmployeeByFullName);
 
+router
+  .route('/updateLoanStatus/:id')
+  .put(employeesController.updateEmpLoanStatus);
+
 module.exports = router;
