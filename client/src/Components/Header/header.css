@@ -14,9 +14,6 @@ header img {
   width: 8rem;
   object-fit: contain;
 }
-header p {
-  text-align: center;
-}
 header button {
   position: relative;
   align-self: center;

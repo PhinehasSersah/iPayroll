@@ -8,6 +8,7 @@ import Rank from './features/rank/rank';
 import SearchEmployee from './features/searchEmployee/searchEmployee';
 import Account from './Components/Account/account';
 import Salary from './features/salary/salary';
+import Payslip from './features/payslip/payslip';
 
 export default function App() {
   // const [state, setState] = useState("null");
@@ -27,7 +28,8 @@ export default function App() {
       {/* <Account /> */}
       {/* <Department/> */}
       {/* <SearchEmployee /> */}
-      <Salary/>
+      {/* <Salary/> */}
+      <Payslip />
     </div>
   );
 }

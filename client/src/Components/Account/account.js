@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
+import Salary from '../../features/salary/salary';
 import './account.css';
 
 const Account = () => {
@@ -13,7 +14,7 @@ const Account = () => {
           <hr className="accounthr"></hr>
         </div>
         <div className="display">
-          <div className="calculation-section"></div>
+          <div className="calculation-section"><Salary /></div>
           <div className="payslip-section"></div>
         </div>
         <div className='payslip-btn'>
