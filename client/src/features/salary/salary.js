@@ -69,7 +69,7 @@ const Salary = () => {
     }
   };
   // sendObject();
-  // console.log(salaryMonth);
+  console.log(salaryMonth);
 
   //handleChange
   const handleChange = event => {

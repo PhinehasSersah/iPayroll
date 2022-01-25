@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/footer';
 import Header from '../Header/header';
 import SearchEmployee from '../../features/searchEmployee/searchEmployee';
+// import moment from 'moment';
 import './employee.css';
+
+
 
 const Employee = () => {
   const initialValue = {
@@ -79,6 +82,11 @@ const Employee = () => {
     }
     setInputValues({ ...initialValue, [name]: '' });
   };
+
+  //format date
+  // var localTime = moment().format('YYYY-MM-DD');
+  // let empjoinDate = inputValues.startDate
+  // console.log(empjoinDate)
 
   return (
     <div>
