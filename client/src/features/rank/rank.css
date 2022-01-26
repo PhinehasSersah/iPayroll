@@ -3,7 +3,6 @@
   width: 42.5vw;
   background-color:#e4efe7;
   border-radius: 10px;
-  margin-left: 6.2%;
   margin-bottom: 4em;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
@@ -17,9 +16,6 @@
   margin-bottom: 15px;
   margin-top: 5px;
 }
-/* .rank-section .rank-form {
-    margin-top: 0px;
-} */
 .rank-section .rank {
   font-size: 18px;
   color: #064420;
@@ -92,3 +88,15 @@
     position:absolute;
     left:0;
 }
+@media (max-width:520px) {
+  .rank-section {
+    height: 55vh;
+    width: 90vw;
+  }
+  .rank-form .rank-btn {
+    margin-right: 1px;
+    width: 5rem;
+    letter-spacing: .2px;
+  }
+}
+

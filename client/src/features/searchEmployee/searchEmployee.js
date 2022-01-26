@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import moment from 'moment';
 import './searchEmployee.css';
 
 const SearchEmployee = () => {
@@ -35,6 +36,7 @@ const SearchEmployee = () => {
     });
     window.location = '/';
   }
+  console.log(employeeData)
   return (
     <div className="information">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -99,7 +101,7 @@ const SearchEmployee = () => {
           <div className="label">
             <p>Start Date :</p>
             <div className="detail-info">
-              <p>{employeeData.start_work_date}</p>
+              <p>{moment(employeeData.start_work_date).format('YYYY-MM-DD')}</p>
             </div>
           </div>
           <div className='search-delete'>

@@ -28,7 +28,6 @@ const PayslipLogics = () => {
         setPaySlipData(jsonResponse);
       });
   };
-  console.log(paySlipData)
   return (
     <section>
       <Payslip

@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/footer';
 import Header from '../Header/header';
 import SearchEmployee from '../../features/searchEmployee/searchEmployee';
-// import moment from 'moment';
 import './employee.css';
-
-
 
 const Employee = () => {
   const initialValue = {
@@ -18,7 +15,7 @@ const Employee = () => {
     dept: '',
     level: '',
     sex: '',
-    snnitNum:''
+    snnitNum: '',
   };
   const [inputValues, setInputValues] = useState(initialValue);
   const [department, setDepartment] = useState([]);
@@ -63,8 +60,7 @@ const Employee = () => {
       });
   }, []);
 
-
- // handle submit function
+  // handle submit function
   const handleSubmit = async event => {
     event.preventDefault();
     const { name } = event.target;
@@ -82,19 +78,13 @@ const Employee = () => {
     }
     setInputValues({ ...initialValue, [name]: '' });
   };
-
-  //format date
-  // var localTime = moment().format('YYYY-MM-DD');
-  // let empjoinDate = inputValues.startDate
-  // console.log(empjoinDate)
-
   return (
     <div>
       <Header />
       <section className="employee">
         <div className="banner-section">
           <h1 className="employee-banner">Employee Data Dashboard</h1>
-         
+
           <hr className="employeehr"></hr>
         </div>
 
@@ -161,48 +151,7 @@ const Employee = () => {
                   />
                 </div>
               </div>
-              <div className='column'>
-              <label >Sex</label>
-              </div>
-              <div className='info-section sex-section'>
-              <div className="column">
-                  <label className='sex-group' htmlFor="male">Male</label>
-                  <input
-                    name="sex"
-                    id="male"
-                    type="radio"
-                    value='1'
-                    onChange={handleChange}
-                    className="sex"
-                    required
-                  />
-                </div>
-                <div className="column">
-                  <label className='sex-group' htmlFor="female">Female</label>
-                  <input
-                    name="sex"
-                    id="female"
-                    type="radio"
-                    value='2'
-                    onChange={handleChange}
-                    className="sex"
-                    required
-                  />
-                </div>
 
-                <div className="column">
-                  <label className='sex-group' htmlFor="others">Other</label>
-                  <input
-                    name="sex"
-                    id="others"
-                    type="radio"
-                    value='3'
-                    onChange={handleChange}
-                    className="sex"
-                    required
-                  />
-                </div>
-              </div>
               <div className="info-section">
                 <div className="column">
                   <label htmlFor="joinDate">Joining Date</label>
@@ -246,10 +195,12 @@ const Employee = () => {
                     <option value="" hidden>
                       Select Department
                     </option>
-                    {department.map((element, index)=> {
-                      return(
-                        <option value={element.id} key={index}>{element.name}</option>
-                      )
+                    {department.map((element, index) => {
+                      return (
+                        <option value={element.id} key={index}>
+                          {element.name}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -267,17 +218,18 @@ const Employee = () => {
                     <option value="" hidden>
                       Set Level
                     </option>
-                    {levels.map((element, index)=> {
-                      return(
-                        <option value={element.id} key={index}>{element.name}</option>
-                      )
+                    {levels.map((element, index) => {
+                      return (
+                        <option value={element.id} key={index}>
+                          {element.name}
+                        </option>
+                      );
                     })}
                   </select>
-
                 </div>
               </div>
-              <div className='info-section'>
-              <div className="column">
+              <div className="info-section">
+                <div className="column">
                   <label htmlFor="snnit">SSNIT Number</label>
                   <input
                     name="snnitNum"
@@ -287,6 +239,54 @@ const Employee = () => {
                     onChange={handleChange}
                     className="inputs"
                     placeholder="Enter Mobile Number"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="column">
+                <label>Sex</label>
+              </div>
+              <div className="info-section sex-section">
+                <div className="column">
+                  <label className="sex-group" htmlFor="male">
+                    Male
+                  </label>
+                  <input
+                    name="sex"
+                    id="male"
+                    type="radio"
+                    value="1"
+                    onChange={handleChange}
+                    className="sex"
+                    required
+                  />
+                </div>
+                <div className="column">
+                  <label className="sex-group" htmlFor="female">
+                    Female
+                  </label>
+                  <input
+                    name="sex"
+                    id="female"
+                    type="radio"
+                    value="2"
+                    onChange={handleChange}
+                    className="sex"
+                    required
+                  />
+                </div>
+
+                <div className="column">
+                  <label className="sex-group" htmlFor="others">
+                    Other
+                  </label>
+                  <input
+                    name="sex"
+                    id="others"
+                    type="radio"
+                    value="3"
+                    onChange={handleChange}
+                    className="sex"
                     required
                   />
                 </div>

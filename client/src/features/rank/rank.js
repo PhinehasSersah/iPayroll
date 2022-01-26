@@ -60,7 +60,7 @@ export default function Rank() {
       <div className="rank-div">
         <form className="rank-form" onSubmit={handleSubmit}>
           <label className="rank" htmlFor="rank">
-            Create New Level
+            Level Name
           </label>
           <input
             id="rank"

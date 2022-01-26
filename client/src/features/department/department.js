@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './department.css'
+import './department.css';
 
 const Department = () => {
   const initialValue = {
@@ -53,35 +53,37 @@ const Department = () => {
     window.location = '/';
   };
   return (
-    <div className='department-section'>
+    <div className="department-section">
       <h4>Create New Department</h4>
-      <div className='department-div'>
-      <form className='department-form' onSubmit={handleSubmit}>
-        <label className='department' htmlFor="name">Create Department</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Enter Department Name"
-          onChange={handleChange}
-          value={inputValues.name}
-          className='set-department'
-        />
-        <button className='department-btn'>Create</button>
-      </form>
+      <div className="department-div">
+        <form className="department-form" onSubmit={handleSubmit}>
+          <label className="department" htmlFor="name">
+            Department
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Enter Department"
+            onChange={handleChange}
+            value={inputValues.name}
+            className="set-department"
+          />
+          <button className="department-btn">Create</button>
+        </form>
       </div>
-      <div className='levels'>
+      <div className="levels">
         {department.map((section, index) => {
           return (
-            <div className='rendered-levels' key={section.id}>
-              <div className='left'>
-              <li>{section.name}</li>
+            <div className="rendered-levels" key={section.id}>
+              <div className="left">
+                <li>{section.name}</li>
               </div>
               <button
                 onClick={() => {
                   deleteDepartment(section.id);
                 }}
-                className='rendered-btn'
+                className="rendered-btn"
               >
                 Delete
               </button>

@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <div className="footer-content">
-        <h5>
+        <h4>
           <strong>i</strong> Payroll Management System
-        </h5>
+        </h4>
         <p>AmaliTech Training Center
         TTU Main Campus
         Takoradi
