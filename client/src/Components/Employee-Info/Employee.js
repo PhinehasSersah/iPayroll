@@ -1,202 +1,306 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import Footer from '../Footer/footer';
+import Header from '../Header/header';
+import SearchEmployee from '../../features/searchEmployee/searchEmployee';
+// import moment from 'moment';
+import './employee.css';
+
+
 
 const Employee = () => {
   const initialValue = {
-    firstName: '',
-    lastName: '',
+    fname: '',
+    lname: '',
     email: '',
-    birthDate: '',
-    joinDate: '',
-    phoneNumber: '',
-    department: '',
-    rank: '',
+    dob: '',
+    startDate: '',
+    phoneNum: '',
+    dept: '',
+    level: '',
+    sex: '',
+    snnitNum:''
   };
   const [inputValues, setInputValues] = useState(initialValue);
-  const [inputErrors, setInputErrors] = useState({});
-  // const [submit, setSubmit] = useState(false);
+  const [department, setDepartment] = useState([]);
+  const [levels, setLevels] = useState([]);
 
+  // handleChange function
   const handleChange = event => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
+  // fetching department
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/departments')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setDepartment(jsonResponse);
+      });
+  }, []);
+
+  //fetching levels
+  useEffect(() => {
+    fetch('http://localhost:4000/ipayroll/api/v1/levels')
+      .then(
+        response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Request failed');
+        },
+        networkError => console.log(networkError.message)
+      )
+      .then(jsonResponse => {
+        setLevels(jsonResponse);
+      });
+  }, []);
+
+
+ // handle submit function
   const handleSubmit = async event => {
     event.preventDefault();
+    const { name } = event.target;
     try {
-      setInputErrors(validateInput(inputValues));
-      // setSubmit(true);
+      await fetch('http://localhost:4000/ipayroll/api/v1/employees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inputValues),
+      });
+      window.location = '/';
     } catch (err) {
       console.error(err.message);
     }
+    setInputValues({ ...initialValue, [name]: '' });
   };
 
-  const validateInput = values => {
-    const errors = {};
-    const emailRegex =
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const phoneNumberRegex = /^\+?\(?(([2][3][3])|[0])?\)?[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}?$/
-    const birthdateSplit = values.birthDate.split('-');
-    const year = birthdateSplit[0];
-    let date = new Date();
-    let thisYear = date.getFullYear()-10;
-    let dateFormat = date.toISOString().split('T')[0];
-    // console.log(dateFormat);
-    if (!values.firstName) {
-      errors.firstName = 'Firstname is required';
-    }
-    //lastname
-    if (!values.lastName) {
-      errors.lastName = 'Lastname is required';
-    }
-    //email
-    if (!values.email) {
-      errors.email = 'Email is required';
-    } else if (!emailRegex.test(values.email)) {
-      errors.email = 'Invalid email format';
-    }
-    //birthdate
-    if (year >= thisYear) {
-      errors.birthDate = 'Birth year must be 10 less years';
-    } else if (!values.birthDate) {
-      errors.birthDate = 'Date of birth is required';
-    }
-    //joinDate
-     if (!values.joinDate) {
-      errors.joinDate = 'Start date is required';
-    } else if(values.joinDate<dateFormat) {
-      errors.joinDate = 'Join date cannot be less than today'
-    }
-    //phoneNumber
-    if (!values.phoneNumber) {
-      errors.phoneNumber = 'Phone number is required';
-    } else if (!phoneNumberRegex.test(values.phoneNumber)) {
-      errors.phoneNumber = 'Invalid phone number';
-    }
-    //department
-    if (!values.department) {
-      errors.department = 'Employee department is required';
-    }
-    //rank
-    if (!values.rank) {
-      errors.rank = 'Employee rank is required';
-    }
-    return errors;
-  };
+  //format date
+  // var localTime = moment().format('YYYY-MM-DD');
+  // let empjoinDate = inputValues.startDate
+  // console.log(empjoinDate)
+
   return (
-    
-    <section>
-      <div className="banner-section">
-        <h1 className="employee-banner">Employee Information Data</h1>
-        <hr></hr>
-      </div>
+    <div>
+      <Header />
+      <section className="employee">
+        <div className="banner-section">
+          <h1 className="employee-banner">Employee Data Dashboard</h1>
+         
+          <hr className="employeehr"></hr>
+        </div>
 
-      <div className="employee-information">
-        <h3>Add Employee</h3>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="first-info-section">
-            <p>{inputErrors.firstName}</p>
-            <label htmlFor="firstName">FirstName</label>
-            <input
-              name="firstName"
-              id="firstName"
-              type="text"
-              placeholder="Employee FirstName"
-              value={inputValues.firstName}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.lastName}</p>
-            <label htmlFor="lastName">LastName</label>
-            <input
-              name="lastName"
-              id="lastName"
-              type="text"
-              placeholder="Employee Surname"
-              value={inputValues.lastName}
-              onChange={handleChange}
-            />
-          </div>
+        <div className="employee-information">
+          <form className="form" onSubmit={handleSubmit}>
+            <h4>Add New Employee</h4>
+            <div className="employee-data">
+              <div className="info-section">
+                <div className="column">
+                  <label className="emp-label" htmlFor="firstName">
+                    First Name
+                  </label>
+                  <input
+                    name="fname"
+                    id="firstName"
+                    type="text"
+                    placeholder="Employee FirstName"
+                    value={inputValues.fname}
+                    onChange={handleChange}
+                    className="inputs"
+                    required
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="lastNlnameame">Last Name</label>
+                  <input
+                    name="lname"
+                    id="lastName"
+                    type="text"
+                    placeholder="Employee Surname"
+                    value={inputValues.lname}
+                    onChange={handleChange}
+                    className="inputs"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div className="second-info-section">
-            <p>{inputErrors.email}</p>
-            <label htmlFor="email">E-mail</label>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              placeholder="Email Address"
-              value={inputValues.email}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.birthDate}</p>
-            <label htmlFor="birthDate">Date of Birth</label>
-            <input
-              name="birthDate"
-              id="birthDate"
-              type="date"
-              placeholder="Birth Date"
-              value={inputValues.birthDate}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="third-info-section">
-            <p>{inputErrors.joinDate}</p>
-            <label htmlFor="joinDate">Joining Date</label>
-            <input
-              name="joinDate"
-              id="joinDate"
-              type="date"
-              placeholder="Joining Date"
-              value={inputValues.joindate}
-              onChange={handleChange}
-            />
-            <p>{inputErrors.phoneNumber}</p>
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              name="phoneNumber"
-              id="phoneNumber"
-              type="tel"
-              value={inputValues.phoneNumber}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="department">
-            <p>{inputErrors.department}</p>
-            <label htmlFor="department">Add Department</label>
-            <select
-              id="department"
-              name="department"
-              value={inputValues.department}
-              onChange={handleChange}
-            >
-              <option value="" hidden>
-                Select Department
-              </option>
-              <option value="Service Center">Service Center</option>
-              <option value="Training Center">Training Center</option>
-              <option value="Operations Department">
-                Operations Department
-              </option>
-            </select>
-            <p>{inputErrors.rank}</p>
-            <label htmlFor="rank">Rank</label>
-            <select
-              id="rank"
-              name="rank"
-              // defaultValue="Set Rank"
-              value={inputValues.rank}
-              onChange={handleChange}
-            >
-              <option value="" hidden>
-                Set Rank
-              </option>
-              <option value="Level 1">Level 1</option>
-              <option value="Level 2">Level 2</option>
-              <option value="Level 3">Level 3</option>
-            </select>
-          </div>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </section>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="email">E-mail</label>
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    placeholder="Email Address"
+                    value={inputValues.email}
+                    onChange={handleChange}
+                    className="inputs"
+                    required
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="birthDate">Date of Birth</label>
+                  <input
+                    name="dob"
+                    id="birthDate"
+                    type="date"
+                    placeholder="Birth Date"
+                    value={inputValues.dob}
+                    onChange={handleChange}
+                    className="inputs"
+                    required
+                  />
+                </div>
+              </div>
+              <div className='column'>
+              <label >Sex</label>
+              </div>
+              <div className='info-section sex-section'>
+              <div className="column">
+                  <label className='sex-group' htmlFor="male">Male</label>
+                  <input
+                    name="sex"
+                    id="male"
+                    type="radio"
+                    value='1'
+                    onChange={handleChange}
+                    className="sex"
+                    required
+                  />
+                </div>
+                <div className="column">
+                  <label className='sex-group' htmlFor="female">Female</label>
+                  <input
+                    name="sex"
+                    id="female"
+                    type="radio"
+                    value='2'
+                    onChange={handleChange}
+                    className="sex"
+                    required
+                  />
+                </div>
+
+                <div className="column">
+                  <label className='sex-group' htmlFor="others">Other</label>
+                  <input
+                    name="sex"
+                    id="others"
+                    type="radio"
+                    value='3'
+                    onChange={handleChange}
+                    className="sex"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="joinDate">Joining Date</label>
+                  <input
+                    name="startDate"
+                    id="joinDate"
+                    type="date"
+                    placeholder="Joining Date"
+                    value={inputValues.startDate}
+                    onChange={handleChange}
+                    className="inputs"
+                    required
+                  />
+                </div>
+                <div className="column">
+                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <input
+                    name="phoneNum"
+                    id="phoneNumber"
+                    type="tel"
+                    value={inputValues.phoneNum}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Enter Mobile Number"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="info-section">
+                <div className="column">
+                  <label htmlFor="department">Add Department</label>
+                  <select
+                    id="department"
+                    name="dept"
+                    value={inputValues.dept}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Select employee department"
+                    required
+                  >
+                    <option value="" hidden>
+                      Select Department
+                    </option>
+                    {department.map((element, index)=> {
+                      return(
+                        <option value={element.id} key={index}>{element.name}</option>
+                      )
+                    })}
+                  </select>
+                </div>
+                <div className="column">
+                  <label htmlFor="level">Level</label>
+                  <select
+                    id="level"
+                    name="level"
+                    value={inputValues.level}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Select employee level"
+                    required
+                  >
+                    <option value="" hidden>
+                      Set Level
+                    </option>
+                    {levels.map((element, index)=> {
+                      return(
+                        <option value={element.id} key={index}>{element.name}</option>
+                      )
+                    })}
+                  </select>
+
+                </div>
+              </div>
+              <div className='info-section'>
+              <div className="column">
+                  <label htmlFor="snnit">SSNIT Number</label>
+                  <input
+                    name="snnitNum"
+                    id="snnit"
+                    type="tel"
+                    value={inputValues.snnitNum}
+                    onChange={handleChange}
+                    className="inputs"
+                    placeholder="Enter Mobile Number"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="btn">
+                <button>Submit</button>
+              </div>
+            </div>
+          </form>
+          <SearchEmployee />
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 };
 

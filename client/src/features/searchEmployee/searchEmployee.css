@@ -1,0 +1,85 @@
+
+.information {
+    width: 35%;
+    height: 70vh;
+    border-radius: 15px;
+}
+.information .search-form{
+    width:80%;
+    margin-top: 14%;
+}
+
+.information .search-employee .search{
+color:tomato;
+}
+.information .column {
+    display: flex;
+    flex-direction: column; 
+    width: 40%;
+    margin-left: 6%;
+    margin-top: 10px
+}
+.information .column {
+    width: 60%;
+    margin: auto;
+    margin-top: 4%;
+}
+.information .column label {
+    margin-top: 10%;
+    font: 18px;
+}
+.search-form .column .input {
+    border-color: tomato;
+}
+.search-form .search-btn {
+    width: 13rem;
+    margin:auto;
+    margin-left: 40%;
+}
+
+.information .input, .information .detail-info{
+    height: 2em;
+    padding: 6px;
+    border-radius: 7px;
+    margin-top: 0px;
+    border-color: #064420;
+}
+.information .employee-info {
+    margin-top: 3rem;
+    width: 80%;
+    background-color:#fdfaf6;
+    height: inherit;
+    box-shadow: #064420 0px 1px 0px, #064420 0px 8px 24px, #064420 0px 16px 48px;
+    border-radius: 10px;
+}
+.information .label {
+    display: flex;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+.information .detail-info {
+    position: absolute;
+    width: 13%;
+    margin:auto;
+    right: 11em;
+}
+.employee-info .fetch-data {
+    margin-bottom: 5px;
+}
+.employee-info .search-delete {
+    width: 50%;
+    margin: auto;
+    margin-top: 2em;
+}
+.employee-info .search-delete button {
+    width: 100%;
+    background-color: tomato;
+    color: #fdfaf6;
+    height: 2em;
+    border: 1px solid tomato;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.employee-info .search-delete button:hover {
+    background-color: #064420;
+}

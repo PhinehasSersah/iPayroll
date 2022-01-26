@@ -1,5 +1,11 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 html {
-  background-color: #FDFAF6;
+  background-color:#E4EFE7;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -9,6 +15,7 @@ body {
   font-family: Forum, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    font-weight:bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

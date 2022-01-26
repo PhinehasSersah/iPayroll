@@ -1,0 +1,36 @@
+
+.month {
+    width: 30vw;
+    height: 40vh;
+    margin: auto;
+}
+.month h5 {
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 15px;
+}
+.month .select-month {
+    width: 70%;
+    margin: auto;
+    margin-top: 2em;
+}
+.month .select {
+    height: 2em;
+    padding: 6px;
+    border-radius: 7px;
+    margin-top: 0px;
+    border-color: #064420;
+    margin-left: 10px;
+}
+.month .calculate-salary {
+    width: 70%;
+    margin: auto;
+    margin-top: 5em;
+}
+.calculate-salary button {
+    height: 2em;
+    width: 80%;
+    display: block;
+    margin: auto;
+}
