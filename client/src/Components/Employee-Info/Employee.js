@@ -1,82 +1,90 @@
-import React, { useState, useEffect } from 'react';
-import Footer from '../Footer/footer';
-import Header from '../Header/header';
-import SearchEmployee from '../../features/searchEmployee/searchEmployee';
-import './employee.css';
+import React, { useState, useEffect } from "react";
+import Footer from "../Footer/footer";
+import Header from "../Header/header";
+import SearchEmployee from "../../features/searchEmployee/searchEmployee";
+import "./employee.css";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Link,
+} from "react-router-dom";
 
 const Employee = () => {
   const initialValue = {
-    fname: '',
-    lname: '',
-    email: '',
-    dob: '',
-    startDate: '',
-    phoneNum: '',
-    dept: '',
-    level: '',
-    sex: '',
-    snnitNum: '',
+    fname: "",
+    lname: "",
+    email: "",
+    dob: "",
+    startDate: "",
+    phoneNum: "",
+    dept: "",
+    level: "",
+    sex: "",
+    snnitNum: "",
   };
   const [inputValues, setInputValues] = useState(initialValue);
   const [department, setDepartment] = useState([]);
   const [levels, setLevels] = useState([]);
 
   // handleChange function
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   };
   // fetching department
   useEffect(() => {
-    fetch('http://localhost:4000/ipayroll/api/v1/departments')
+    fetch("http://localhost:4000/ipayroll/api/v1/departments")
       .then(
-        response => {
+        (response) => {
           if (response.ok) {
             return response.json();
           }
-          throw new Error('Request failed');
+          throw new Error("Request failed");
         },
-        networkError => console.log(networkError.message)
+        (networkError) => console.log(networkError.message)
       )
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         setDepartment(jsonResponse);
       });
   }, []);
 
   //fetching levels
   useEffect(() => {
-    fetch('http://localhost:4000/ipayroll/api/v1/levels')
+    fetch("http://localhost:4000/ipayroll/api/v1/levels")
       .then(
-        response => {
+        (response) => {
           if (response.ok) {
             return response.json();
           }
-          throw new Error('Request failed');
+          throw new Error("Request failed");
         },
-        networkError => console.log(networkError.message)
+        (networkError) => console.log(networkError.message)
       )
-      .then(jsonResponse => {
+      .then((jsonResponse) => {
         setLevels(jsonResponse);
       });
   }, []);
 
   // handle submit function
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const { name } = event.target;
     try {
-      await fetch('http://localhost:4000/ipayroll/api/v1/employees', {
-        method: 'POST',
+      await fetch("http://localhost:4000/ipayroll/api/v1/employees", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(inputValues),
       });
-      window.location = '/';
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
-    setInputValues({ ...initialValue, [name]: '' });
+    setInputValues({ ...initialValue, [name]: "" });
   };
   return (
     <div>
@@ -84,7 +92,12 @@ const Employee = () => {
       <section className="employee">
         <div className="banner-section">
           <h1 className="employee-banner">Employee Data Dashboard</h1>
-
+          <Link to="/dashboard/accounts">
+            <button>Accounts Dashboard</button>
+          </Link>
+          <Link to="/dashboard/admin">
+            <button>Administrator Dashboard</button>
+          </Link>
           <hr className="employeehr"></hr>
         </div>
 

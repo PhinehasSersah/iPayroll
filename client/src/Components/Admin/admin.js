@@ -1,10 +1,17 @@
-import React from 'react';
-import Footer from '../Footer/footer';
-import Header from '../Header/header';
-import Department from '../../features/department/department';
-import Rank from '../../features/rank/rank';
-import { Link } from 'react-router-dom';
-import './admin.css';
+import React from "react";
+import Footer from "../Footer/footer";
+import Header from "../Header/header";
+import Department from "../../features/department/department";
+import Rank from "../../features/rank/rank";
+import { Link } from "react-router-dom";
+import "./admin.css";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 const Admin = ({
   inputValues,
@@ -21,6 +28,12 @@ const Admin = ({
         <div className="admin-banner">
           <h1> Administrative Data Management Dashboard</h1>
           {/* <p>{JSON.stringify(inputValues)}</p> */}
+          <Link to="/dashboard/hr">
+            <button>Employees Dashboard</button>
+          </Link>
+          <Link to="/dashboard/accounts">
+            <button>Accounts Dashboard</button>
+          </Link>
           <hr className="adminhr"></hr>
         </div>
 
@@ -205,7 +218,7 @@ const Admin = ({
                 <div className="rows">
                   <p className="label"> Basic Salary</p>
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>GHC {selectedRateData && selectedRateData.salary}</p>
                   </div>
                 </div>
@@ -216,7 +229,7 @@ const Admin = ({
                   <p className="label">Income Tax Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>{selectedRateData && selectedRateData.income_tax}%</p>
                   </div>
                 </div>
@@ -224,7 +237,7 @@ const Admin = ({
                   <p className="label">Loan Deduction Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>
                       {selectedRateData && selectedRateData.loan_deduction}%
                     </p>
@@ -237,7 +250,7 @@ const Admin = ({
                   <p className="label">SSNIT Tier 1 Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>{selectedRateData && selectedRateData.tier_one}%</p>
                   </div>
                 </div>
@@ -245,7 +258,7 @@ const Admin = ({
                   <p className="label">SSNIT Tier 2 Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>{selectedRateData && selectedRateData.tier_two}%</p>
                   </div>
                 </div>
@@ -256,7 +269,7 @@ const Admin = ({
                   <p className="label">Tax Relief Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>{selectedRateData && selectedRateData.tax_relief}%</p>
                   </div>
                 </div>
@@ -264,7 +277,7 @@ const Admin = ({
                   <p className="label">Bonus Rate</p>
 
                   <div className="input">
-                    {' '}
+                    {" "}
                     <p>{selectedRateData && selectedRateData.bonus}%</p>
                   </div>
                 </div>
@@ -274,15 +287,15 @@ const Admin = ({
         </div>
       </section>
       <div className="wrapper">
-        <div className='sub'>
-        <Department />
+        <div className="sub">
+          <Department />
         </div>
-        <div className='sub'>
-        <Rank />
+        <div className="sub">
+          <Rank />
         </div>
       </div>
-      <div className='footer-div'>
-      <Footer />
+      <div className="footer-div">
+        <Footer />
       </div>
     </>
   );
