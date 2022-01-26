@@ -1,10 +1,3 @@
--- CREATE TABLE ipr_users(
---     id SERIAL PRIMARY KEY,
---     username VARCHAR(50),
---     email VARCHAR(50),
---     upassword PASSWORD,
---     department VARCHAR(50)
--- );
 CREATE TABLE departments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
@@ -88,4 +81,14 @@ CREATE TABLE loans(
     employee_id INTEGER REFERENCES employees(id) NOT NULL,
     initial_amount REAL NOT NULL,
     amount_left REAL NOT NULL
+);
+
+CREATE extension IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE ipr_users(
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    username VARCHAR(50),
+    email VARCHAR(50),
+    upassword VARCHAR(255),
+    office VARCHAR(50)
 );
