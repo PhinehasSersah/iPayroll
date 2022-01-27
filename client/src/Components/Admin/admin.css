@@ -9,8 +9,46 @@
 }
 .administration .admin-banner {
   width: 100%;
-  /* display: block; */
   margin-top: 7em;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5em;
+}
+.administration .admin-banner .routing {
+  position: absolute;
+  margin-bottom: 4em;
+  width: 22%;
+  right: 2em
+}
+.administration .admin-banner .routing p{
+  text-align: center;
+  margin-right: 20%;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.routing .rout-button {
+  position: relative;
+  align-self: center;
+  background-color: tomato;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 8em;
+  margin:auto;
+  margin-left: 15px;
+}
+.routing .rout-button:hover {
+cursor: pointer;
+background-color: #064420;
+color: #faf1e6;
 }
 .administration .admin-banner h1 {
   text-align: center;
@@ -47,6 +85,12 @@
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
+@media (max-width:1440px ) {
+  .administration .admin-banner .routing .rout-button {
+    width: 7em;
+    font-weight: 650;
+  }
+}
 @media (max-width:1120px ) {
     .administration .data-table, .administration .rate-data {
         height: 65vw; 
@@ -63,6 +107,16 @@
     border-top-left-radius: 4rem;
     border-bottom-left-radius: 4rem;
     margin: auto;
+  }
+  .administration .admin-banner {
+    flex-direction: column;
+  }
+  .administration .admin-banner .routing {
+    position: relative;
+    margin:auto;
+  }
+  .administration .admin-banner .routing p{
+    display: none;
   }
   .administration .rate-data {
     width: 80vw;
@@ -102,6 +156,12 @@ form .column,
     .administration .rate-data {
       width: 96vw;
       height: 95vw;
+    }
+    .administration .admin-banner .routing {
+      margin:auto;
+    }
+    .administration .admin-banner {
+      flex-direction: column;
     }
     form .column {
         width: 60%;
@@ -182,6 +242,21 @@ form button:hover {
 @media (max-width: 520px) {
   .administration .data-table .select-salary {
       flex-direction: column;
+  }
+  .administration .admin-banner .routing {
+    margin:auto;
+    width: auto;
+  }
+  .administration .admin-banner {
+    flex-direction: column;
+  }
+  .administration .admin-banner .routing p {
+    display:none;
+  }
+  .routing .rout-button  {
+    height: 2.6em;
+    width: 9em;
+    font-weight: 550;
   }
   .administration .data-table .column {
       width: 70vw;

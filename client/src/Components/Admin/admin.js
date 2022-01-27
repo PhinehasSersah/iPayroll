@@ -6,12 +6,6 @@ import Rank from "../../features/rank/rank";
 import { Link } from "react-router-dom";
 import "./admin.css";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
 
 const Admin = ({
   inputValues,
@@ -27,13 +21,15 @@ const Admin = ({
       <section className="administration">
         <div className="admin-banner">
           <h1> Administrative Data Management Dashboard</h1>
-          {/* <p>{JSON.stringify(inputValues)}</p> */}
+          <div className='routing'>
+            <p>Navigate to</p>
           <Link to="/dashboard/hr">
-            <button>Employees Dashboard</button>
+            <button className="rout-button">Employees Dashboard</button>
           </Link>
           <Link to="/dashboard/accounts">
-            <button>Accounts Dashboard</button>
+            <button className="rout-button">Accounts Dashboard</button>
           </Link>
+          </div>
           <hr className="adminhr"></hr>
         </div>
 

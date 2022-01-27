@@ -40,7 +40,7 @@ const AdminLogic = () => {
         },
         body: JSON.stringify(inputValues),
       });
-      window.location = '/';
+      window.location = '/dashboard/admin';
     } catch (err) {
       console.error(err.message);
     }

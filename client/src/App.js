@@ -19,43 +19,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+// require('react-dom');
+// window.React2 = require('react');
+// console.log(window.React1 === window.React2);
 
-export default function App() {
-  {
-    /* <Login /> */
-  }
-  {
-    /* <Employee /> */
-  }
-  {
-    /* <AdminLogic /> */
-  }
-  {
-    /* <Rank /> */
-  }
-  {
-    /* <Account /> */
-  }
-  {
-    /* <Department/> */
-  }
-  {
-    /* <SearchEmployee /> */
-  }
-  {
-    /* <Salary/> */
-  }
-  {
-    /* <Payslip /> */
-  }
-  {
-    /* <PayslipLogics /> */
-  }
-  {
-    /* <Footer /> */
-  }
+const App =()=> {
   return (
-    <Router>
+    // <>
+    // <SearchEmployee/>
+     <Router>
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/payslip" element={<Payslip />} />
@@ -63,6 +35,9 @@ export default function App() {
         <Route exact path="/dashboard/hr" element={<Employee />} />
         <Route exact path="/dashboard/accounts" element={<Account />} />
       </Routes>
-    </Router>
+    </Router> 
+    // </>
   );
 }
+
+export default App

@@ -24,7 +24,7 @@ export default function Rank() {
         },
         body: JSON.stringify(inputValues),
       });
-      window.location = '/';
+      window.location = '/dashboard/admin';
     } catch (err) {
       console.error(err.message);
     }
@@ -51,7 +51,7 @@ export default function Rank() {
     fetch('http://localhost:4000/ipayroll/api/v1/levels/' + id, {
       method: 'DELETE',
     });
-    window.location = '/';
+    window.location = '/dashboard/admin';
   };
 
   return (

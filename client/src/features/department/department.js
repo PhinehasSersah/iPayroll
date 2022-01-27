@@ -13,20 +13,17 @@ const Department = () => {
     setInputValues({ [name]: value });
   };
   const handleSubmit = async event => {
-    const { name } = event.target;
     event.preventDefault();
-    try {
-      await fetch('http://localhost:4000/ipayroll/api/v1/departments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(inputValues),
-      });
-      window.location = '/';
-    } catch (err) {
-      console.error(err.message);
-    }
+    const { name } = event.target;
+    fetch('http://localhost:4000/ipayroll/api/v1/departments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(inputValues),
+    });
+    window.location = '/dashboard/admin';
+
     setInputValues({ ...initialValue, [name]: '' });
   };
 
@@ -50,7 +47,7 @@ const Department = () => {
     fetch('http://localhost:4000/ipayroll/api/v1/departments/' + id, {
       method: 'DELETE',
     });
-    window.location = '/';
+    window.location = '/dashboard/admin';
   };
   return (
     <div className="department-section">
@@ -80,6 +77,7 @@ const Department = () => {
                 <li>{section.name}</li>
               </div>
               <button
+                type="button"
                 onClick={() => {
                   deleteDepartment(section.id);
                 }}
