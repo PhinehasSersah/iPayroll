@@ -1,3 +1,5 @@
+CREATE TABLE ipayroll;
+
 CREATE TABLE departments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
@@ -26,17 +28,17 @@ CREATE TABLE sex(
 );
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Male');
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Female');
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Other');
 
