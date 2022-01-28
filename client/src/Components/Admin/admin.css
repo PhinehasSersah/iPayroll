@@ -55,8 +55,8 @@ color: #faf1e6;
   color: #064420;
 }
 
-.adminhr {
-  border: 0;
+.admin-banner .adminhr {
+  border: 1px;
   height: 1.3px;
   background-image: linear-gradient(
     to right,

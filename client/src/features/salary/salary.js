@@ -80,7 +80,7 @@ const Salary = () => {
   return (
     <div>
       <div className="month">
-        <h5>Generate Employees Monthly Salary</h5>
+        <h5>Calculate Monthly Salary</h5>
         <form className='select-month'>
           <label htmlFor="month">Select Month</label>
           <input

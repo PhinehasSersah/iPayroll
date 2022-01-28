@@ -30,7 +30,7 @@ const Admin = ({
             <button className="rout-button">Accounts Dashboard</button>
           </Link>
           </div>
-          <hr className="adminhr"></hr>
+          <hr className='adminhr'></hr>
         </div>
 
         <div className="admin-data">

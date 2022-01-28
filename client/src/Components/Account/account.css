@@ -1,16 +1,83 @@
-.account-section .account-dashboard {
+
+
+.main-account {
   width: 100%;
-  height: 100vh;
+  height: 200vh;
+  overflow-x: hidden;
 }
-.account-section .account-dashboard .account-section {
+.main-account .account-dashboard {
+  height: 180vh;
+}
+.account-dashboard .account-section {
   width: 100%;
   display: block;
   margin-top: 7em;
-  height: 15vh;
+  height: 10vw;
 }
 .account-section .account-banner {
   text-align: center;
   color: #064420;
+}
+.account-section .routing {
+  position: absolute;
+  margin-bottom: 8em;
+  width: 25%;
+  top:7em;
+  right: 3em;
+}
+.account-section .routing p{
+  text-align: center;
+  margin-right: 20%;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.routing .rout-button {
+  position: relative;
+  align-self: center;
+  background-color: tomato;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 8em;
+  margin:auto;
+  margin-left: 15px;
+}
+@media (max-width:1024px) {
+  /* .account-section .routing {
+    width:30%;
+    right:1em;
+  }
+  .routing .rout-button  {
+    width: 7.6em;
+  }
+  .display .calculation-section,
+  .display .payslip-section {
+    margin-top: 3em;
+  } */
+
+}
+/* @media (max-width: 1022px) {
+.routing p {
+  display: none;
+}
+.account-dashboard .display {
+  margin-top:6em ;
+}
+} */
+
+.routing .rout-button:hover {
+cursor: pointer;
+background-color: #064420;
+color: #faf1e6;
 }
 .account-section .accounthr {
   border: 0;
@@ -21,6 +88,7 @@
     rgba(0, 0, 0, 0.75),
     rgba(0, 0, 0, 0)
   );
+  margin-top: 5em;
 }
 .account-dashboard .display {
   display: flex;
@@ -39,13 +107,37 @@
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-
+/* @media (max-width: 786px) {
+  .account-section {
+    /* height: 250vh; */
+    /* background-color: deeppink;
+  }
+  .account-section .account-dashboard   {
+    margin-bottom: 37em;
+  }
+  .account-dashboard .display {
+    flex-direction: column;
+    margin-top: 12em;
+    background-color: darkseagreen;
+    height: 150vh;
+    margin-bottom: 5em;
+  } */
+  /* .account-section .routing {
+    right: .5em;
+  }
+  .display .calculation-section,
+.display .payslip-section {
+  background-color: darkorchid;
+  width: 90%;
+  margin-top: 8em;
+  height: 70vh
+}
+}  */
 .account-dashboard .payslip-btn {
   width: 20em;
   height: 4em;
-  /* background-color: violet; */
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 5rem;
 }
 .account-dashboard .pay-button {
   width: 80%;

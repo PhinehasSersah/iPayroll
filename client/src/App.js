@@ -12,7 +12,7 @@ import Payslip from "./features/payslip/payslip";
 import PayslipLogics from "./features/payslip/payslipLogics";
 import AdminLogic from "./Components/Admin/adminLogics";
 import Footer from "./Components/Footer/footer";
-
+import Loans from "./features/loans/loans";
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,6 +27,7 @@ const App =()=> {
   return (
     // <>
     // <SearchEmployee/>
+    // <Loans />
      <Router>
       <Routes>
         <Route exact path="/login" element={<Login />} />
@@ -36,7 +37,6 @@ const App =()=> {
         <Route exact path="/dashboard/accounts" element={<Account />} />
       </Routes>
     </Router> 
-    // </>
   );
 }
 

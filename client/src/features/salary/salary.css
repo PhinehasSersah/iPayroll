@@ -9,6 +9,7 @@
     margin: auto;
     margin-top: 2rem;
     padding: 15px;
+    text-align: center;
 }
 .month .select-month {
     width: 70%;
