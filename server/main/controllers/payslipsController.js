@@ -1,4 +1,18 @@
+const pdf = require('html-pdf');
+const nodemailer = require('nodemailer');
+
 const pool = require('../db');
+const pdfTemplate = require('../template/payslip');
+
+const createPDF = (html, options, path) =>
+  new Promise((resolve, reject) => {
+    pdf.create(html, options).toFile(path, (err, res) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(res);
+    });
+  });
 
 exports.getAllSlipInfo = async (req, res) => {
   try {
@@ -8,6 +22,59 @@ exports.getAllSlipInfo = async (req, res) => {
       [monthYear]
     );
     res.status(200).json(payslipInto.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+exports.createPDF = async (req, res, next) => {
+  try {
+    const employee = req.body;
+    await createPDF(
+      pdfTemplate(employee),
+      {
+        format: 'A4',
+        orientation: 'landscape',
+      },
+      `../main/payslips/${employee.employeeId}-${employee.monthYear}payslip.pdf`
+    );
+    next();
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+exports.sendPDDF = async (req, res) => {
+  try {
+    const employee = req.body;
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: `${process.env.authUser}`,
+        pass: `${process.env.authPass}`,
+      },
+    });
+
+    const mailOptions = {
+      from: 'ipayrollv1@gmail.com',
+      to: 'bontiidaniel97@gmail.com',
+      subject: 'Monthly Payslip',
+      text: `Hello ${employee.name}. Your monthly payslip is ready`,
+      attachments: [
+        {
+          path: `../main/payslips/${employee.employeeId}-${employee.monthYear}payslip.pdf`,
+        },
+      ],
+    };
+
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.error(err.message);
+        res.json('Failed to send mail');
+      } else {
+        res.json('Email sent: ' + info.response);
+      }
+    });
   } catch (err) {
     console.error(err.message);
   }
