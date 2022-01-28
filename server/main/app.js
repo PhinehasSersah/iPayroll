@@ -14,12 +14,12 @@ const loginRouter = require('./routes/loginRoutes');
 
 const app = express();
 
-app.use(cors());
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(express.json());
 
+app.use(express.json());
+app.use(cors());
 app.use('/ipayroll/api/v1/departments', deptsRouter);
 app.use('/ipayroll/api/v1/levels', levelsRouter);
 app.use('/ipayroll/api/v1/rates', ratesRouter);
