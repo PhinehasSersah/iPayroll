@@ -1,4 +1,4 @@
-var validator = require('validator');
+const validator = require('validator');
 
 const pool = require('../db');
 
@@ -28,7 +28,7 @@ exports.checkBody = async (req, res, next) => {
       'SELECT name FROM departments WHERE name=$1 OR Lower(name)=$1',
       [name]
     );
-    
+
     if (isExistent.rowCount > 0) {
       return res.status(403).json('Department already exists');
     }

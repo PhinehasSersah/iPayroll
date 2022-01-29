@@ -14,6 +14,17 @@ This system provides the following functionality
 - Generate employee payslips
 - Email payslips to employees
 
+## User groups
+
+- Administrator
+- Human Resources Department (HR)
+- Accounts Department
+
+### Administrator
+The administrator
+
+For each employee. Their
+
 ## Stack
 
 PERN STACK
@@ -33,9 +44,11 @@ PERN STACK
 - nodemailer
 - cors
 - dotenv
+- validator
+- pg
 - express framework
 
-## Running the project locally
+## Running The Project Locally
 
 Refer to db schema.sql in the project directory for the database schema. You will need to create all the tables as seen in the schema.
 Run `npm install` command in both server and client directors to get missing pacakges. In different terminals, run` npm start` from the client directory and `node server.js` in the server directory. Thats it.

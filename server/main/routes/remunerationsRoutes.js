@@ -11,8 +11,8 @@ router
     remunerationsController.createEmpMonthRemueration
   );
 
-router
-  .route('/:id/:monthYear')
-  .get(remunerationsController.getEmpMonthRemueration);
+// router
+//   .route('/:id/:monthYear')
+//   .get(remunerationsController.getEmpMonthRemueration);
 
 module.exports = router;
