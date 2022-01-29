@@ -23,9 +23,9 @@ exports.checkBody = (req, res, next) => {
     const {
       employeeId,
       monthYear,
+      salary,
       taxRelief,
       incomeTax,
-      loanDeduction,
       bonus,
       tierOne,
       tierTwo,
@@ -34,10 +34,20 @@ exports.checkBody = (req, res, next) => {
       totalTiers,
       netSalary,
     } = req.body;
+
+    let { loanDeduction } = req.body;
+    if (loanDeduction === 0) {
+      loanDeduction = loanDeduction.toString();
+    }
+    // if (validator.isNumeric(loanDeduction)) {
+    //   loanDeduction = loanDeduction.toString();
+    // }
+    // console.log(loanDeduction);
     if (
       !(
         employeeId &&
         monthYear &&
+        salary &&
         taxRelief &&
         incomeTax &&
         bonus &&
@@ -57,6 +67,7 @@ exports.checkBody = (req, res, next) => {
 
     next();
   } catch (err) {
+    console.log('problem here');
     console.error(err.message);
     res.status(500).json('Internal Server error');
   }
@@ -77,9 +88,11 @@ exports.checkBody = (req, res, next) => {
 // };
 
 exports.createEmpMonthRemueration = async (req, res) => {
+  console.log(req.body);
   const {
     employeeId,
     monthYear,
+    salary,
     taxRelief,
     incomeTax,
     loanDeduction,
@@ -103,10 +116,11 @@ exports.createEmpMonthRemueration = async (req, res) => {
   }
 
   const newRemuneration = await pool.query(
-    'INSERT INTO remunerations (employee_id, month_year, tax_relief, income_tax, loan_deduction, bonus, tier_one, tier_two, total_earnings, total_deductions, total_tiers, net_salary ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *',
+    'INSERT INTO remunerations (employee_id, month_year, salary,tax_relief, income_tax, loan_deduction, bonus, tier_one, tier_two, total_earnings, total_deductions, total_tiers, net_salary ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *',
     [
       employeeId,
       monthYear,
+      salary,
       taxRelief,
       incomeTax,
       loanDeduction,

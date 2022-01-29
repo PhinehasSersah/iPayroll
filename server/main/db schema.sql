@@ -69,6 +69,7 @@ CREATE TABLE remunerations(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id),
     month_year VARCHAR(10) NOT NULL,
+    salary REAL NOT NULL,
     tax_relief REAL NOT NULL,
     income_tax REAL NOT NULL,
     loan_deduction REAL NOT NULL,
