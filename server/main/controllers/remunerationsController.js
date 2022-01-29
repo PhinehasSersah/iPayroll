@@ -38,17 +38,17 @@ exports.checkBody = (req, res, next) => {
       !(
         employeeId &&
         monthYear &&
-        salary &&
-        loanDeduction &&
-        taxRelief &&
-        incomeTax &&
-        bonus &&
-        tierOne &&
-        tierTwo &&
-        totalEarnings &&
-        totalDeductions &&
-        totalTiers &&
-        netSalary
+        (salary || salary === 0) &&
+        (loanDeduction || loanDeduction === 0) &&
+        (taxRelief || taxRelief === 0) &&
+        (incomeTax || incomeTax === 0) &&
+        (bonus || bonus === 0) &&
+        (tierOne || tierOne === 0) &&
+        (tierTwo || tierTwo === 0) &&
+        (totalEarnings || totalEarnings === 0) &&
+        (totalDeductions || totalDeductions === 0) &&
+        (totalTiers || totalTiers === 0) &&
+        (netSalary || netSalary === 0)
       )
     ) {
       return res.status(403).json('Please provide all remuneration details');
@@ -56,7 +56,6 @@ exports.checkBody = (req, res, next) => {
 
     next();
   } catch (err) {
-    console.log('problem here');
     console.error(err.message);
     res.status(500).json('Internal Server error');
   }
