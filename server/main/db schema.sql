@@ -81,6 +81,7 @@ CREATE TABLE remunerations(
 CREATE TABLE loans(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id) NOT NULL,
+    month_year VARCHAR(10) NOT NULL,
     initial_amount REAL NOT NULL,
     amount_left REAL NOT NULL
 );
