@@ -1,5 +1,3 @@
-const validator = require('validator');
-
 const pool = require('../db');
 
 exports.checkID = async (req, res, next, val) => {
@@ -24,6 +22,7 @@ exports.checkBody = (req, res, next) => {
       employeeId,
       monthYear,
       salary,
+      loanDeduction,
       taxRelief,
       incomeTax,
       bonus,
@@ -35,19 +34,12 @@ exports.checkBody = (req, res, next) => {
       netSalary,
     } = req.body;
 
-    let { loanDeduction } = req.body;
-    if (loanDeduction === 0) {
-      loanDeduction = loanDeduction.toString();
-    }
-    // if (validator.isNumeric(loanDeduction)) {
-    //   loanDeduction = loanDeduction.toString();
-    // }
-    // console.log(loanDeduction);
     if (
       !(
         employeeId &&
         monthYear &&
         salary &&
+        loanDeduction &&
         taxRelief &&
         incomeTax &&
         bonus &&
@@ -59,9 +51,6 @@ exports.checkBody = (req, res, next) => {
         netSalary
       )
     ) {
-      return res.status(403).json('Please provide all remuneration details');
-    }
-    if (validator.isEmpty(loanDeduction)) {
       return res.status(403).json('Please provide all remuneration details');
     }
 
@@ -88,7 +77,6 @@ exports.checkBody = (req, res, next) => {
 // };
 
 exports.createEmpMonthRemueration = async (req, res) => {
-  console.log(req.body);
   const {
     employeeId,
     monthYear,
