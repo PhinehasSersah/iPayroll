@@ -6,6 +6,7 @@ const Loans = () => {
     employeeId: '',
     initialAmount: '',
     amountLeft: '',
+    monthYear: ''
   };
 
   const [employeeData, setEmployeeData] = useState();
@@ -76,14 +77,12 @@ const Loans = () => {
     }
     setSelectData({ ...loanData, [name]: '' });
   };
-
   return (
     <LoansDisplay
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       selectData={selectData}
       employeeData={employeeData}
-    
     />
   );
 };

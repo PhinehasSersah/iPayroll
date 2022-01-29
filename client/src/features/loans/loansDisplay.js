@@ -5,12 +5,14 @@ export const LoansDisplay = ({
   handleChange,
   selectData,
   employeeData,
-  handleSubmit
+  handleSubmit,
 }) => {
   return (
     <div className="loans-section">
       <form className="loan-form" onSubmit={handleSubmit}>
-          <div className='title'><h5>Employee Loans Data</h5></div>
+        <div className="title">
+          <h5>Employee Loans Data</h5>
+        </div>
         <div className="select-name">
           <label htmlFor="employee">Select Employee</label>
           <select
@@ -40,7 +42,7 @@ export const LoansDisplay = ({
           <input
             name="initialAmount"
             id="initialAmount"
-            type="text"
+            type="number"
             value={selectData.amount}
             onChange={handleChange}
             className="inputs"
@@ -48,6 +50,19 @@ export const LoansDisplay = ({
             required
             step="0.1"
           />
+        </div>
+        <div className="select-name">
+        <label htmlFor="monthYear">Select Month</label>
+          <input
+            id="monthYear"
+            name="monthYear"
+            type="month"
+            placeholder="select month"
+            required
+            value={selectData.monthYear}
+            onChange={handleChange}
+            className="inputs"
+          ></input>
         </div>
         <div className="loan-btn">
           <button>Submit</button>
