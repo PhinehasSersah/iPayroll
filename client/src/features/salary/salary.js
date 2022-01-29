@@ -82,14 +82,14 @@ const Salary = () => {
           });
         });
 
-       
       // window.location = './';
     } catch (err) {
       console.error(err.message);
     }
   };
   console.log(ratesData);
-  sendObject();
+  // sendObject();
+
   //handleChange
   const handleChange = event => {
     const { value } = event.target;
