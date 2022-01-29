@@ -1,35 +1,13 @@
 import React from 'react';
 import amalitech from '../../amalitech.png';
+import Footer from '../../Components/Footer/footer';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import './payslip.css';
 
-const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
+const Payslip = ({ paySlipData }) => {
   return (
-    <section>
-      <div>
-        <div className="title">
-          <h4>Generate Employee Payslip</h4>
-        </div>
-        <div className="generate-form">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="select-month">Select Payslip Month</label>
-            <input
-              id="select-month"
-              name="select-month"
-              type="month"
-              placeholder="select salary month"
-              required
-              value={paySlipMonth}
-              onChange={handleChange}
-              className="select"
-            />
-            <div className="generate-btn">
-              <button>Generate</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
+    <section id='top'>
       {paySlipData &&
         paySlipData.map((element, index) => {
           return (
@@ -198,6 +176,7 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
             </div>
           );
         })}
+        <Footer />
     </section>
   );
 };

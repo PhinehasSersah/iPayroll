@@ -5,7 +5,7 @@
 .administration {
   background-color: #e4efe7;
   width: 100%;
-  height: 100%;
+  height: 140vh;
 }
 .administration .admin-banner {
   width: 100%;
@@ -55,8 +55,8 @@ color: #faf1e6;
   color: #064420;
 }
 
-.adminhr {
-  border: 0;
+.admin-banner .adminhr {
+  border: 1px;
   height: 1.3px;
   background-image: linear-gradient(
     to right,
@@ -64,6 +64,11 @@ color: #faf1e6;
     rgba(0, 0, 0, 0.75),
     rgba(0, 0, 0, 0)
   );
+}
+.admin-data {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 11em;
 }
 .administration .data-table {
   width: 40vw;

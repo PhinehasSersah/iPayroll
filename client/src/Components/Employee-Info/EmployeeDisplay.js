@@ -176,7 +176,7 @@ const EmployeeDisplay = ({
                   <input
                     name="snnitNum"
                     id="snnit"
-                    type="tel"
+                    type="number"
                     value={inputValues.snnitNum}
                     onChange={handleChange}
                     className="inputs"

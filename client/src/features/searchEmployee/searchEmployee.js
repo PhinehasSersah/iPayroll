@@ -34,8 +34,9 @@ const SearchEmployee = () => {
     fetch('http://localhost:4000/ipayroll/api/v1/employees/' + id, {
       method: 'DELETE',
     });
-    window.location = '/';
+    window.location = '/dashboard/hr';
   };
+
   return (
     <div className="information">
       <form className="search-form" onSubmit={handleSubmit}>

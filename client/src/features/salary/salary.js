@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './salary.css';
 
 const Salary = () => {
-
   const [salaryMonth, setSalaryMonth] = useState('');
   const [employees, setEmployees] = useState([]);
   const [ratesData, setRatesData] = useState([]);
@@ -48,13 +47,16 @@ const Salary = () => {
             monthYear: salaryMonth,
             taxRelief: (lData.tax_relief * lData.salary) / 100,
             incomeTax: (lData.income_tax * lData.salary) / 100,
-            loanDeduction: (lData.loan_deduction * lData.salary) / 100,
+            loanDeduction:
+              element.on_loan === true
+                ? (lData.loan_deduction * lData.salary) / 100
+                : '0',
             salary: lData.salary,
             tierOne: (lData.tier_one * lData.salary) / 100,
             tierTwo: (lData.tier_two * lData.salary) / 100,
             bonus: (lData.bonus * lData.salary) / 100,
           };
-          console.log(toSend);
+
           fetch('http://localhost:4000/ipayroll/api/v1/remunerations', {
             method: 'POST',
             headers: {
@@ -68,8 +70,6 @@ const Salary = () => {
       console.error(err.message);
     }
   };
-  // sendObject();
-  console.log(salaryMonth);
 
   //handleChange
   const handleChange = event => {
@@ -80,8 +80,8 @@ const Salary = () => {
   return (
     <div>
       <div className="month">
-        <h5>Generate Employees Monthly Salary</h5>
-        <form className='select-month'>
+        <h5>Calculate Monthly Salary</h5>
+        <form className="select-month">
           <label htmlFor="month">Select Month</label>
           <input
             id="month"
@@ -91,7 +91,7 @@ const Salary = () => {
             required
             value={salaryMonth}
             onChange={handleChange}
-            className='select'
+            className="select"
           ></input>
 
           <div className="calculate-salary">
