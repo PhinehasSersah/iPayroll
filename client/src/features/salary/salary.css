@@ -35,3 +35,44 @@
     display: block;
     margin: auto;
 }
+@media (max-width: 1024px) {
+    .calculate-salary button {
+        height: 2.5em;
+    }
+}
+@media (max-width:780px) {
+    .calculate-salary button {
+        width: 100%;
+        margin-left: 2.5em;
+    }
+    .month .select {
+        width: 30vw;
+        margin-right: 2em;
+    }
+    .month .select-month  {
+        display: flex;
+        flex-direction: column;
+        margin-right: 6em;
+    }
+}
+@media (max-width: 480px) {
+    .month  {
+        width:80%
+    }
+    .calculate-salary button {
+        width: 7em;
+        margin: auto;
+    }
+    .month .select-month  {
+        width: 80%;
+        margin:auto;
+        
+    }
+    .month .select {
+        width: 100%;
+        margin: auto;
+    }
+    .select-month label {
+        text-align: center;
+    }
+}

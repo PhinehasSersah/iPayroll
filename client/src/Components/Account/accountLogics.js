@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import Payslip from './payslip';
+import Account from './account';
 
-const PayslipLogics = () => {
+
+
+const AccountLogics = () => {
   const [paySlipMonth, setPaySlipMonth] = useState('');
   const [paySlipData, setPaySlipData] = useState([]);
 
   //handle input change
-  const handleChange = event => {
+  const handleMonthChange = event => {
     const { value } = event.target;
     setPaySlipMonth(value);
   };
 
   //handle submit function
-  const handleSubmit = async event => {
+  const handlePaySubmit = async event => {
     event.preventDefault();
     fetch('http://localhost:4000/ipayroll/api/v1/payslips/' + paySlipMonth)
       .then(
@@ -28,16 +30,18 @@ const PayslipLogics = () => {
         setPaySlipData(jsonResponse);
       });
   };
+
   return (
     <section>
-      <Payslip
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        paySlipData={paySlipData}
-        paySlipMonth={paySlipMonth}
+      <Account 
+      handlePaySubmit={handlePaySubmit}
+      handleMonthChange={handleMonthChange}
+      paySlipMonth={paySlipMonth}
+      paySlipData={paySlipData}
+      // togglePayslip={togglePayslip}
       />
     </section>
   );
 };
 
-export default PayslipLogics;
+export default AccountLogics;

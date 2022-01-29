@@ -7,7 +7,7 @@ const Loans = () => {
     initialAmount: '',
     amountLeft: '',
   };
- 
+
   const [employeeData, setEmployeeData] = useState();
   const [selectData, setSelectData] = useState(loanData);
 
@@ -41,21 +41,24 @@ const Loans = () => {
 
   const handleLoanStatus = () => {
     try {
-      fetch('http://localhost:4000/ipayroll/api/v1/employees/updateLoanStatus/' + selectData.employeeId, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({onLoan: true}),
-      });
-        window.location = '/dashboard/accounts';
+      fetch(
+        'http://localhost:4000/ipayroll/api/v1/employees/updateLoanStatus/' +
+          selectData.employeeId,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ onLoan: true }),
+        }
+      );
+      window.location = '/dashboard/accounts';
     } catch (err) {
       console.error(err.message);
     }
-  }
+  };
 
   const handleSubmit = async event => {
-
     event.preventDefault();
     const { name } = event.target;
     try {
@@ -66,26 +69,21 @@ const Loans = () => {
         },
         body: JSON.stringify(selectData),
       });
-        window.location = '/dashboard/accounts';
+      handleLoanStatus();
+      window.location = '/dashboard/accounts';
     } catch (err) {
       console.error(err.message);
     }
     setSelectData({ ...loanData, [name]: '' });
   };
- //wrapper functions
- const combined = () => {
-     handleLoanStatus();
-     handleSubmit();
- }
 
   return (
     <LoansDisplay
       handleChange={handleChange}
-    //   handleSubmit={handleSubmit}
-    //   handleLoanStatus={handleLoanStatus}
+      handleSubmit={handleSubmit}
       selectData={selectData}
       employeeData={employeeData}
-      combined={combined}
+    
     />
   );
 };

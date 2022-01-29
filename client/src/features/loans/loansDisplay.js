@@ -5,11 +5,11 @@ export const LoansDisplay = ({
   handleChange,
   selectData,
   employeeData,
-  combined
+  handleSubmit
 }) => {
   return (
     <div className="loans-section">
-      <form className="loan-form" onSubmit={combined}>
+      <form className="loan-form" onSubmit={handleSubmit}>
           <div className='title'><h5>Employee Loans Data</h5></div>
         <div className="select-name">
           <label htmlFor="employee">Select Employee</label>

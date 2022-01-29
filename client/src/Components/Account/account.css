@@ -25,6 +25,7 @@
   top:7em;
   right: 3em;
 }
+
 .account-section .routing p{
   text-align: center;
   margin-right: 20%;
@@ -51,28 +52,6 @@
   margin:auto;
   margin-left: 15px;
 }
-@media (max-width:1024px) {
-  /* .account-section .routing {
-    width:30%;
-    right:1em;
-  }
-  .routing .rout-button  {
-    width: 7.6em;
-  }
-  .display .calculation-section,
-  .display .payslip-section {
-    margin-top: 3em;
-  } */
-
-}
-/* @media (max-width: 1022px) {
-.routing p {
-  display: none;
-}
-.account-dashboard .display {
-  margin-top:6em ;
-}
-} */
 
 .routing .rout-button:hover {
 cursor: pointer;
@@ -94,7 +73,7 @@ color: #faf1e6;
   display: flex;
   justify-content: space-around;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
 }
 .display .calculation-section,
 .display .payslip-section {
@@ -107,32 +86,7 @@ color: #faf1e6;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-/* @media (max-width: 786px) {
-  .account-section {
-    /* height: 250vh; */
-    /* background-color: deeppink;
-  }
-  .account-section .account-dashboard   {
-    margin-bottom: 37em;
-  }
-  .account-dashboard .display {
-    flex-direction: column;
-    margin-top: 12em;
-    background-color: darkseagreen;
-    height: 150vh;
-    margin-bottom: 5em;
-  } */
-  /* .account-section .routing {
-    right: .5em;
-  }
-  .display .calculation-section,
-.display .payslip-section {
-  background-color: darkorchid;
-  width: 90%;
-  margin-top: 8em;
-  height: 70vh
-}
-}  */
+
 .account-dashboard .payslip-btn {
   width: 20em;
   height: 4em;
@@ -153,4 +107,153 @@ color: #faf1e6;
 }
 .account-dashboard .pay-button :hover {
     background-color:#e4efe7; 
+}
+
+.payslip-view {
+  display: block;
+  height: auto;
+  width: 100%;
+  
+}
+.payslip-close {
+  display: none;
+  height: auto;
+  width: 100%;
+  
+}
+.main-account .payslip-data {
+  display: flex;
+  justify-content:space-evenly;
+  margin-bottom: 10em;
+  height: 20vw;
+}
+.main-account .form-data {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin: auto;
+  height: 14em;
+  margin-top: 3em;
+}
+
+.form-data .title h4{
+ text-align: center;
+ margin-top: 2em;
+}
+.form-data .select {
+  height: 2em;
+  width: 60%;
+  padding: 6px;
+  margin: auto;
+  border-radius: 7px;
+  margin-top: 0px;
+  border-color: #064420;
+}
+.form-data label {
+  font-size: 18px;
+  text-align: center;
+}
+.form-data .generate-btn {
+  margin-top: 2em;
+}
+.form-data .generate-btn button, .main-account .payslip-btn button {
+  width: 7em;
+  height:2em;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
+  background-color: tomato;
+  color: #faf1e6;
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.main-account .payslip-btn {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin: auto;
+  height: 14em;
+  margin-top: 7.5em;
+}
+.main-account .payslip-btn h4 {
+  text-align: center;
+
+}
+
+@media (max-width: 1024px ) {
+  .main-account {
+    width: 100%;
+    height: 120vh;
+  }
+  .account-dashboard .account-section {
+    display: flex;
+    flex-direction: column;
+    height: 10em;
+  }
+  .account-section .routing {
+    position: relative;
+    width: 35%;
+    top:1em;
+    margin: auto;
+    left: 1em;
+  }
+  .account-section .routing p{
+    display: none;
+  }
+  .main-account .payslip-data {
+    margin-bottom: 14em;
+  }
+}
+@media (max-width: 768px) {
+  .account-section .routing  {
+    width: 50% ;
+  }
+  .main-account {
+    width: 100%;
+    height: 200vh;
+  }
+  .account-dashboard .display {
+    flex-direction: column;
+    margin-top: 8em;
+  }
+  .main-account .account-dashboard  {
+    height: auto;
+  }
+  .display .calculation-section,
+.display .payslip-section  {
+  width: 80%;
+  margin-top: 3em;
+  height: 90%;
+}
+.main-account .payslip-data  {
+  margin-top: 3em;
+}
+}
+@media (max-width: 480px) {
+  .main-account {
+    width: 100%;
+    height: 250vh;
+  }
+  .main-account .account-dashboard {
+    height: 90%;
+  }
+  .display .calculation-section,
+  .display .payslip-section  {
+    width: 95%;
+    margin-top: 3em;
+    height: 50vh
+  }
+  .account-dashboard .display  {
+    height: auto;
+  }
+  .main-account .payslip-data {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12em;
+  }
+  .payslip-data .form-data, .payslip-data .payslip-btn {
+    width: 100%;
+  }
 }

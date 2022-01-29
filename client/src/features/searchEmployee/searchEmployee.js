@@ -36,6 +36,7 @@ const SearchEmployee = () => {
     });
     window.location = '/dashboard/hr';
   };
+
   return (
     <div className="information">
       <form className="search-form" onSubmit={handleSubmit}>
