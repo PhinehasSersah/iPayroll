@@ -42,20 +42,36 @@ const Salary = () => {
             ratesData &&
             ratesData.find(rate => rate.level_id === element.level_id);
           // console.log
-          const toSend = {
-            employeeId: element.id,
-            monthYear: salaryMonth,
-            taxRelief: (lData.tax_relief * lData.salary) / 100,
-            incomeTax: (lData.income_tax * lData.salary) / 100,
-            loanDeduction:
-              element.on_loan === true
-                ? (lData.loan_deduction * lData.salary) / 100
-                : '0',
-            salary: lData.salary,
-            tierOne: (lData.tier_one * lData.salary) / 100,
-            tierTwo: (lData.tier_two * lData.salary) / 100,
-            bonus: (lData.bonus * lData.salary) / 100,
-          };
+          const toSend = {};
+          toSend.employeeId = element.id;
+          toSend.monthYear = salaryMonth;
+          toSend.incomeTax = (lData.income_tax * lData.salary) / 100;
+          toSend.taxRelief = (toSend.incomeTax * lData.tax_relief) / 100;
+          toSend.loanDeduction =
+            element.on_loan === true
+              ? (lData.loan_deduction * lData.salary) / 100
+              : 0;
+          toSend.salary = lData.salary;
+          toSend.tierOne = (lData.tier_one * lData.salary) / 100;
+          toSend.tierTwo = (lData.tier_two * lData.salary) / 100;
+          toSend.bonus = (lData.bonus * lData.salary) / 100;
+          toSend.totalEarnings =
+            toSend.salary +
+            toSend.bonus +
+            toSend.taxRelief +
+            (lData.initial_amount === undefined ? 0 : lData.initial_amount);
+
+          toSend.totalDeductions =
+            toSend.tierOne +
+            toSend.loanDeduction +
+            toSend.incomeTax +
+            (element.on_loan === true
+              ? (lData.loan_deduction * lData.salary) / 100
+              : 0);
+          toSend.netSalary = toSend.totalEarnings - toSend.totalDeductions;
+          toSend.totalTiers = toSend.tierOne + toSend.tierTwo;
+
+          console.log(toSend);
 
           fetch('http://localhost:4000/ipayroll/api/v1/remunerations', {
             method: 'POST',
@@ -65,12 +81,15 @@ const Salary = () => {
             body: JSON.stringify(toSend),
           });
         });
+
+       
       // window.location = './';
     } catch (err) {
       console.error(err.message);
     }
   };
-
+  console.log(ratesData);
+  sendObject();
   //handleChange
   const handleChange = event => {
     const { value } = event.target;
