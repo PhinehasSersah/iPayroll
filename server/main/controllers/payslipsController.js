@@ -14,6 +14,42 @@ const createPDF = (html, options, path) =>
     });
   });
 
+exports.sendPDF = async employee => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: `${process.env.authUser}`,
+        pass: `${process.env.authPass}`,
+      },
+    });
+
+    const mailOptions = {
+      from: 'ipayrollv1@gmail.com',
+      to: 'bontiidaniel97@gmail.com',
+      subject: 'Monthly Payslip',
+      text: `Hello ${employee.full_name}. Your monthly payslip is ready`,
+      attachments: [
+        {
+          path: `../main/payslips/${employee.full_name}-${employee.month_year}-payslip.pdf`,
+        },
+      ],
+    };
+
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.error(err.message);
+        // res.json('Failed to send mail');
+      } else {
+        // res.json('Email sent: ' + info.response);
+      }
+    });
+    // res.json('email sent'); //remove later
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 exports.getAllMonthSlipInfo = async (req, res) => {
   try {
     const { monthYear } = req.params;
@@ -28,55 +64,55 @@ exports.getAllMonthSlipInfo = async (req, res) => {
   }
 };
 
-exports.createPDF = async (req, res, next) => {
+exports.sendSlip = async (req, res, next) => {
   try {
-    const employee = req.body;
-    await createPDF(
-      pdfTemplate(employee),
-      {
-        format: 'A4',
-        orientation: 'landscape',
-      },
-      `../main/payslips/${employee.employeeId}-${employee.monthYear}payslip.pdf`
+    const { monthYear } = req.body;
+
+    const employees = await pool.query(
+      "SELECT remunerations.month_year, remunerations.salary, remunerations.tax_relief, remunerations.income_tax, remunerations.loan_deduction, remunerations.bonus, remunerations.tier_one, remunerations.tier_two, remunerations.total_earnings, remunerations.total_deductions, remunerations.total_tiers, remunerations.net_salary, CONCAT(employees.firstname, ' ',employees.lastname) AS full_name, sex.gender AS sex, employees.start_work_date AS start_work_date, employees.email,departments.name AS department, levels.name AS level, employees.id AS employee_id, employees.snnit_num, employees.on_loan,loans.initial_amount, loans.amount_left, rates.salary AS basic_salary FROM remunerations LEFT JOIN employees ON remunerations.employee_id = employees.id LEFT JOIN sex ON employees.sex_id = sex.id LEFT JOIN departments ON employees.department_id = departments.id LEFT JOIN levels ON employees.level_id = levels.id LEFT JOIN loans ON remunerations.employee_id = Loans.employee_id AND remunerations.month_year = loans.month_year LEFT JOIN rates ON employees.level_id = rates.level_id WHERE remunerations.month_year=$1",
+      [monthYear]
     );
-    next();
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json('Internal Server error');
-  }
-};
 
-exports.sendPDDF = async (req, res) => {
-  try {
-    const employee = req.body;
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: `${process.env.authUser}`,
-        pass: `${process.env.authPass}`,
-      },
-    });
-
-    const mailOptions = {
-      from: 'ipayrollv1@gmail.com',
-      to: 'bontiidaniel97@gmail.com',
-      subject: 'Monthly Payslip',
-      text: `Hello ${employee.name}. Your monthly payslip is ready`,
-      attachments: [
+    employees.rows.forEach(async employee => {
+      await createPDF(
+        pdfTemplate(employee),
         {
-          path: `../main/payslips/${employee.employeeId}-${employee.monthYear}payslip.pdf`,
+          format: 'A4',
+          orientation: 'landscape',
         },
-      ],
-    };
+        `../main/payslips/${employee.full_name}-${employee.month_year}-payslip.pdf`
+      );
+      // console.log(pdf);
+      // this.sendPDF(employee);
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: `${process.env.authUser}`,
+          pass: `${process.env.authPass}`,
+        },
+      });
 
-    transporter.sendMail(mailOptions, function (err, info) {
-      if (err) {
-        console.error(err.message);
-        res.json('Failed to send mail');
-      } else {
-        res.json('Email sent: ' + info.response);
-      }
+      const mailOptions = {
+        from: 'ipayrollv1@gmail.com',
+        to: `${employee.email}`,
+        subject: 'Monthly Payslip',
+        text: `Hello ${employee.full_name}. Your monthly payslip is ready`,
+        attachments: [
+          {
+            path: `../main/payslips/${employee.full_name}-${employee.month_year}-payslip.pdf`,
+          },
+        ],
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     });
+    res.status(200).json('Mail sent');
   } catch (err) {
     console.error(err.message);
     res.status(500).json('Internal Server error');
