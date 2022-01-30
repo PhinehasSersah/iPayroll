@@ -73,14 +73,18 @@ exports.createLoan = async (req, res) => {
 
 exports.updateLoan = async (req, res) => {
   try {
-    console.log(req.body);
     const { id } = req.params;
-    const { amountLeft } = req.body;
+    const { deduction } = req.body;
+    const loans = await pool.query('SELECT * FROM loans where employee_id=$1', [
+      id,
+    ]);
+    const latestLoan = loans.rows.find(loan => loan.amount_left != 0);
+    const amountLeft = latestLoan.amount_left - deduction;
     await pool.query('UPDATE loans SET amount_left=$1 WHERE employee_id=$2', [
       amountLeft,
       id,
     ]);
-    res.status(200).json({ message: 'Successfully updated Loan' });
+    res.status(200).json('Successfully updated Loan');
   } catch (err) {
     console.error(err.message);
     res.status(500).json('Internal Server error');

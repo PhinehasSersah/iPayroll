@@ -93,8 +93,8 @@ exports.createEmpMonthRemueration = async (req, res) => {
   } = req.body;
 
   const check = await pool.query(
-    'SELECT month_year FROM remunerations WHERE month_year=$1',
-    [monthYear]
+    'SELECT * FROM remunerations WHERE employee_id=$1 AND month_year=$2 ',
+    [employeeId, monthYear]
   );
   if (check.rowCount > 0) {
     return res
