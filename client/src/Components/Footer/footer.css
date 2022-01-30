@@ -1,26 +1,32 @@
 footer {
     display: flex;
+    /* margin-top: 5%; */
+    bottom: 0;
     flex-direction: column;
     justify-content: center;
     background-color: #064420;
-    height: 10vw;
+    height: 10rem;
+    width: 100%;
     /* margin-top: 18vw; */
 }
 footer .footer-content {
+    width: 80vw;
     margin: auto;
-    width: 25vw;
+    border-radius: 5px;
+   
 }
-footer h5 {
+footer h4 {
     color: #FAF1E6;
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 18px;
 }
-footer h5 strong {
-    font-size: 2.7vw;
+footer h4 strong {
+    font-size: 2.5em;
     color: tomato;
 }
 footer p {
     color: #FAF1E6;
     font-size: 14px;
     text-align: center;
+    font-weight: 500;
 }

@@ -1,36 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import amalitech from '../../amalitech.png';
-import director from '../../director.jpg'
-import moment from 'moment';
-import './payslip.css';
+import React from "react";
+import amalitech from "../../amalitech.png";
+import Footer from "../../Components/Footer/footer";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import "./payslip.css";
 
-const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
+const Payslip = ({ paySlipData }) => {
   return (
-    <section>
-      <div>
-        <div className="title">
-          <h4>Generate Employee Payslip</h4>
-        </div>
-        <div className="generate-form">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="select-month">Select Payslip Month</label>
-            <input
-              id="select-month"
-              name="select-month"
-              type="month"
-              placeholder="select salary month"
-              required
-              value={paySlipMonth}
-              onChange={handleChange}
-              className="select"
-            />
-            <div className="generate-btn">
-              <button>Generate</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
+    <section id="top">
       {paySlipData &&
         paySlipData.map((element, index) => {
           return (
@@ -73,14 +50,15 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
                   <div className="employeeId">
                     <p>Joining Date : </p>
                     <p>
-                      {moment.utc(element.start_work_date).format('YYYY-MM-DD')}
+                      {moment.utc(element.start_work_date).format("YYYY-MM-DD")}
+                      {/* {moment.utc(employeeData.start_work_date).format('YYYY-MM-DD')} */}
                     </p>
                   </div>
                 </div>
                 <div className="third-line">
                   <div className="employeeId">
                     <p>SSNIT Number : </p>
-                    <p>{element.snnit_number}</p>
+                    <p>{element.snnit_num}</p>
                   </div>
                 </div>
                 <hr className="employee-info-underline"></hr>
@@ -120,22 +98,11 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
               <div className="totals">
                 <div className="inner">
                   <p>Total Earnings : </p>
-                  <p>
-                    GHC{' '}
-                    {element.basic_salary +
-                      element.bonus +
-                      element.tax_relief +
-                      element.initial_amount}
-                  </p>
+                  <p>GHC {element.total_earnings}</p>
                 </div>
                 <div className="inner">
                   <p>Total Deductions : </p>
-                  <p>
-                    GHC {' '}
-                    {element.income_tax +
-                      element.tier_one +
-                      element.loan_deduction}
-                  </p>
+                  <p>GHC {element.total_deductions}</p>
                 </div>
               </div>
 
@@ -144,13 +111,7 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
                 <div className="line-1">
                   <div className="gross">
                     <p>Gross Salary :</p>
-                    <p>
-                      GHC{' '}
-                      {element.basic_salary +
-                        element.bonus +
-                        element.tax_relief +
-                        element.initial_amount}
-                    </p>
+                    <p>GHC {element.total_earnings}</p>
                   </div>
                   <div className="gross">
                     <p>Employee SSNIT Contribution :</p>
@@ -160,12 +121,7 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
                 <div className="line-1">
                   <div className="gross">
                     <p>Deductions :</p>
-                    <p>
-                      GHC{' '}
-                      {element.income_tax +
-                        element.tier_one +
-                        element.loan_deduction}
-                    </p>
+                    <p>GHC {element.total_deductions}</p>
                   </div>
                   <div className="gross">
                     <p>Company SSNIT Contribution :</p>
@@ -175,20 +131,11 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
                 <div className="line-1">
                   <div className="gross">
                     <p>Net Salary :</p>
-                    <p>
-                      GHC{' '}
-                      {element.basic_salary +
-                        element.bonus +
-                        element.tax_relief +
-                        element.initial_amount -
-                        (element.income_tax +
-                          element.tier_one +
-                          element.loan_deduction)}
-                    </p>
+                    <p>GHC {element.net_salary}</p>
                   </div>
                   <div className="gross">
                     <p>Total SSNIT Contribution :</p>
-                    <p>GHC {element.tier_one + element.tier_two}</p>
+                    <p>GHC {element.total_tiers}</p>
                   </div>
                 </div>
               </div>
@@ -198,6 +145,7 @@ const Payslip = ({ handleChange, handleSubmit, paySlipMonth, paySlipData }) => {
             </div>
           );
         })}
+      <Footer />
     </section>
   );
 };

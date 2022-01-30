@@ -1,85 +1,146 @@
-
 .information {
-    width: 35%;
-    height: 70vh;
-    border-radius: 15px;
+  width: 90%;
+  height: 70vh;
+  margin: auto;
+  margin-bottom: 5em;
 }
-.information .search-form{
-    width:80%;
-    margin-top: 14%;
+.information .search-form {
+  width: 80%;
+  margin-top: 14%;
 }
 
-.information .search-employee .search{
-color:tomato;
+
+.information .search-employee .search {
+  text-align: center;
+  color: tomato;
 }
 .information .column {
-    display: flex;
-    flex-direction: column; 
-    width: 40%;
-    margin-left: 6%;
-    margin-top: 10px
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  margin-top: 4%;
+  height: 6vw;
 }
-.information .column {
-    width: 60%;
-    margin: auto;
-    margin-top: 4%;
-}
-.information .column label {
-    margin-top: 10%;
-    font: 18px;
+form label {
+  margin-top: 2%;
+  font: 24em;
+  margin-bottom: 12px;
 }
 .search-form .column .input {
-    border-color: tomato;
+  border-color: tomato;
 }
 .search-form .search-btn {
-    width: 13rem;
-    margin:auto;
-    margin-left: 40%;
+  width: 60%;
+
+  margin: auto;
+}
+.search-btn button {
+  width: 50%;
+  background-color: tomato;
+  color: #fdfaf6;
+  display: block;
+  margin: auto;
+  border: 1px solid #064420;
+  border-radius: 5px;
+  font-size: 18px;
 }
 
-.information .input, .information .detail-info{
-    height: 2em;
-    padding: 6px;
-    border-radius: 7px;
-    margin-top: 0px;
-    border-color: #064420;
+.information .input,
+.information .detail-info {
+  height: 2em;
+  padding: 6px;
+  border-radius: 7px;
+  margin-top: 0px;
+  border-color: #064420;
 }
 .information .employee-info {
-    margin-top: 3rem;
-    width: 80%;
-    background-color:#fdfaf6;
-    height: inherit;
-    box-shadow: #064420 0px 1px 0px, #064420 0px 8px 24px, #064420 0px 16px 48px;
-    border-radius: 10px;
+  margin-top: 3rem;
+  width: 80%;
+  background-color: #fdfaf6;
+  height: 38vw;
+  box-shadow: #064420 0px 1px 0px, #064420 0px 8px 24px, #064420 0px 16px 48px;
+  border-radius: 10px;
+  margin-bottom: 3em;
 }
+@media (max-width: 1024px) {
+    .information {
+      width: 50%;
+      height: 100vh;
+    }
+    .information .search-form {
+      width: 100%;
+      margin: auto;
+      height: 30%;
+    }
+    .search-form .search-btn {
+      padding-top: 2em;
+  
+      height: 8vw;
+    }
+    .search-form .search-btn button {
+      height: 2em;
+      margin: auto;
+    }
+    .employee-info {
+      width: 80%;
+      margin: auto;
+    }
+  }
+  @media (max-width: 760px) {
+    .information {
+        width: 90%;
+        height: 120vh;
+        margin-top: 4em;
+      }
+  .information .employee-info {
+      height: 75vh;
+  }
+  }
+  @media (max-width: 480px) {
+    .information .employee-info {
+        height: 70vh;
+        margin-top: 1px;
+    }
+    .information {
+        width: 90%;
+        height: 120vh;
+        margin-top: 4em;
+      }
+      .information .search-form {
+        width: 100%;
+        margin: auto;
+        height: 30%;
+      }
+      .search-form .search-btn {
+        padding-top: 3em;
+        height: 20vw;
+      }
+    }
+
 .information .label {
-    display: flex;
-    margin-left: 2em;
-    margin-top: 2em;
+  display: flex;
+  margin-left: 8%;
+  margin-top: 7%;
 }
-.information .detail-info {
-    position: absolute;
-    width: 13%;
-    margin:auto;
-    right: 11em;
+.employee-info .label p {
+  padding-left: 2%;
 }
-.employee-info .fetch-data {
-    margin-bottom: 5px;
-}
+
 .employee-info .search-delete {
-    width: 50%;
-    margin: auto;
-    margin-top: 2em;
+  width: 30%;
+  margin: auto;
+  margin-top: 2em;
 }
 .employee-info .search-delete button {
-    width: 100%;
-    background-color: tomato;
-    color: #fdfaf6;
-    height: 2em;
-    border: 1px solid tomato;
-    border-radius: 5px;
-    font-size: 18px;
+  width: 100%;
+  background-color: tomato;
+  color: #fdfaf6;
+  height: 2em;
+  border: 1px solid #064420;
+  border-radius: 5px;
+  font-size: 18px;
 }
 .employee-info .search-delete button:hover {
-    background-color: #064420;
+  background-color: #064420;
 }

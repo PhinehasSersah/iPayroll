@@ -1,3 +1,5 @@
+CREATE TABLE ipayroll;
+
 CREATE TABLE departments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
@@ -26,17 +28,17 @@ CREATE TABLE sex(
 );
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Male');
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Female');
 
 INSERT INTO
-    sex
+    sex (gender)
 VALUES
     ('Other');
 
@@ -66,19 +68,25 @@ CREATE TABLE work_hours(
 CREATE TABLE remunerations(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id),
-    month_year VARCHAR(10),
-    tax_relief REAL,
-    income_tax REAL,
-    loan_deduction REAL,
-    bonus REAL,
-    tier_one REAL,
-    tier_two REAL,
+    month_year VARCHAR(10) NOT NULL,
+    salary REAL NOT NULL,
+    tax_relief REAL NOT NULL,
+    income_tax REAL NOT NULL,
+    loan_deduction REAL NOT NULL,
+    bonus REAL NOT NULL,
+    tier_one REAL NOT NULL,
+    tier_two REAL NOT NULL,
+    total_earnings REAL NOT NULL,
+    total_deductions REAL NOT NULL,
+    total_tiers REAL NOT NULL,
+    net_salary REAL NOT NULL,
     CONSTRAINT ONE_REMUNERATION_PER_MONTH UNIQUE(employee_id, month_year)
 );
 
 CREATE TABLE loans(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id) NOT NULL,
+    month_year VARCHAR(10) NOT NULL,
     initial_amount REAL NOT NULL,
     amount_left REAL NOT NULL
 );

@@ -1,77 +1,200 @@
 .admin-data {
-    display: flex;
+  display: flex;
+  justify-content: space-evenly;
 }
-
 .administration {
-    background-color:#E4EFE7;
-    width: 100%;
-    height: 100%;
+  background-color: #e4efe7;
+  width: 100%;
+  height: 140vh;
 }
 .administration .admin-banner {
-    width:100%;
-    display: block;
-    margin-top: 7em;
+  width: 100%;
+  margin-top: 7em;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5em;
+}
+.administration .admin-banner .routing {
+  position: absolute;
+  margin-bottom: 4em;
+  width: 22%;
+  right: 2em
+}
+.administration .admin-banner .routing p{
+  text-align: center;
+  margin-right: 20%;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+.routing .rout-button {
+  position: relative;
+  align-self: center;
+  background-color: tomato;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 8em;
+  margin:auto;
+  margin-left: 15px;
+}
+.routing .rout-button:hover {
+cursor: pointer;
+background-color: #064420;
+color: #faf1e6;
 }
 .administration .admin-banner h1 {
-text-align: center;
-color: #064420;
+  text-align: center;
+  color: #064420;
 }
 
-    
-.adminhr{
-    border: 0;
-    height: 1.3px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-
+.admin-banner .adminhr {
+  border: 1px;
+  height: 1.3px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+.admin-data {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 11em;
 }
 .administration .data-table {
-    width: 50vw;
-    height: 78vh;
-    
+  width: 40vw;
+  height: 50vw;
+  background-color: #faf1e6;
+  border-top-left-radius: 4rem;
+  border-bottom-left-radius: 4rem;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
-.administration .data-table  form  {
-    width: 85%;
-    height: 90%;
-    margin: auto;
-    background-color:#faf1e6;
+.administration .rate-data {
+  width: 40vw;
+  height: 50vw;
+  background-color: #faf1e6;
+  border-top-right-radius: 4rem;
+  border-bottom-right-radius: 4rem;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+@media (max-width:1440px ) {
+  .administration .admin-banner .routing .rout-button {
+    width: 7em;
+    font-weight: 650;
+  }
+}
+@media (max-width:1120px ) {
+    .administration .data-table, .administration .rate-data {
+        height: 65vw; 
+    }
+}
+@media (max-width: 900px) {
+  .administration .admin-data {
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+  .administration .data-table {
+    width: 80vw;
+    height: 85vw; 
     border-top-left-radius: 4rem;
     border-bottom-left-radius: 4rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    margin: auto;
+  }
+  .administration .admin-banner {
+    flex-direction: column;
+  }
+  .administration .admin-banner .routing {
+    position: relative;
+    margin:auto;
+  }
+  .administration .admin-banner .routing p{
+    display: none;
+  }
+  .administration .rate-data {
+    width: 80vw;
+    height: 70vw;
+    border-top-right-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    margin: auto;
+    margin-top: 3em;
+  }
+}
+
+.administration .data-table form {
+  width: 85%;
+  height: 90%;
+  margin: auto;
 }
 form .management h4 {
-text-align: center;
-color: #064420;
-margin-bottom: 15px;
-margin-top: 5px;
+  text-align: center;
+  color: #064420;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
-form .select-salary, .rate-data .outer {
-    display: flex;
+form .select-salary,
+.rate-data .outer {
+  display: flex;
 }
-form .column, .rate-data .rows {
-    display: flex;
-    flex-direction: column; 
-    width: 40%;
-    margin-left: 6%;
-    margin-top: 10px;
+form .column,
+.rate-data .rows {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-left: 6%;
+  margin-top: 10px;
 }
-form .column label, .rate-data .label {
-    font-size: 18px;
-    color: #064420;
-    margin-bottom: 0;
+@media (max-width: 650px) {
+    .administration .data-table,
+    .administration .rate-data {
+      width: 96vw;
+      height: 95vw;
+    }
+    .administration .admin-banner .routing {
+      margin:auto;
+    }
+    .administration .admin-banner {
+      flex-direction: column;
+    }
+    form .column {
+        width: 60%;
+        margin-left: 2%;
+        margin-top: 6px; 
+
+    }
+  }
+ 
+form .column label,
+.rate-data .label {
+  font-size: 18px;
+  color: #064420;
+  margin-bottom: 0;
 }
 form .column .input {
-    height: 2em;
-    padding: 6px;
-    border-radius: 7px;
-    margin-top: 0px;
-    border-color: #064420;
+  height: 2em;
+  padding: 6px;
+  border-radius: 7px;
+  margin-top: 0px;
+  border-color: #064420;
 }
 ::placeholder {
-    color: #064420;
+  color: #064420;
 }
 form .btn {
-    width: 100%;
-    margin-left: auto;
+  width: 100%;
+  margin-left: auto;
 }
 form button {
   position: relative;
@@ -87,39 +210,79 @@ form button {
   line-height: 20px;
   padding: 6px 16px;
   letter-spacing: 1px;
-  margin-top: 40px;;
+  margin-top: 40px;
   text-align: center;
   width: 40%;
 }
 form button:hover {
-    cursor: pointer;
-    background-color:#064420;
-    color: #faf1e6;
+  cursor: pointer;
+  background-color: #064420;
+  color: #faf1e6;
 }
-.admin-data .rate-data {
-    width: 42.5vw;
-    height: 70.45vh;
-    margin: auto;
-    background-color:#faf1e6;
-    border-top-right-radius: 4rem;
-    border-bottom-right-radius: 4rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    margin-bottom: 3.6em;
-}
- .rate-data h4 {
-    text-align: center;
-    color: #064420;
-    margin-bottom: 15px;
-    margin-top: 25px;
+.rate-data h4 {
+  text-align: center;
+  color: #064420;
+  margin-bottom: 15px;
+  margin-top: 25px;
 }
 .rate-data .input {
-height: 3.5em;
-padding: 6px;
-border-radius: 7px;
-margin-top: 0px;
-border: 1px solid #064420;
-background-color: #fdfaf6;
+  height: 3.5em;
+  padding: 6px;
+  border-radius: 7px;
+  margin-top: 0px;
+  border: 1px solid #064420;
+  background-color: #fdfaf6;
 }
 .wrapper {
-    display: flex
+  display: flex;
+  width: 100%;
+  margin-top: 10%;
+  justify-content:space-evenly;
+  
+}
+
+.footer-div {
+  height: 10vw;
+}
+@media (max-width: 520px) {
+  .administration .data-table .select-salary {
+      flex-direction: column;
+  }
+  .administration .admin-banner .routing {
+    margin:auto;
+    width: auto;
+  }
+  .administration .admin-banner {
+    flex-direction: column;
+  }
+  .administration .admin-banner .routing p {
+    display:none;
+  }
+  .routing .rout-button  {
+    height: 2.6em;
+    width: 9em;
+    font-weight: 550;
+  }
+  .administration .data-table .column {
+      width: 70vw;
+      margin: auto;
+      margin-top: 20px;
+  }
+  .administration .data-table {
+      height: 150vh;
+  }
+  .administration .rate-data {
+      height: 80vh;
+  }
+  form .column label {
+      text-align:left;
+  }
+  .wrapper {
+      flex-direction: column;
+  }
+  .wrapper .sub {
+      width: 90%;
+      margin: auto;
+      margin-top: 20px;
+  }
 }

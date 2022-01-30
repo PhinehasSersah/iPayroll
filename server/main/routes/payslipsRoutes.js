@@ -3,6 +3,9 @@ const payslipsController = require('../controllers/payslipsController');
 
 const router = express.Router();
 
-router.route('/:monthYear').get(payslipsController.getAllSlipInfo);
+router.route('/:monthYear').get(payslipsController.getAllMonthSlipInfo);
+router
+  .route('/send-slip/:monthYear')
+  .post(payslipsController.createPDF, payslipsController.sendPDDF);
 
 module.exports = router;
