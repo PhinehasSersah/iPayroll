@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/:monthYear').get(payslipsController.getAllMonthSlipInfo);
 router
-  .route('/send-slip')
+  .route('/send-slip/:monthYear')
   .post(payslipsController.createPDF, payslipsController.sendPDDF);
 
 module.exports = router;
