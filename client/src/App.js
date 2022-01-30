@@ -13,6 +13,7 @@ import AdminLogic from "./Components/Admin/adminLogics";
 import Footer from "./Components/Footer/footer";
 import Loans from "./features/loans/loans";
 import AccountLogics from "./Components/Account/accountLogics";
+import { Email } from "./features/email/email";
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,7 +24,6 @@ import {
 
 const App =()=> {
   return (
-    
      <Router>
       <Routes>
         <Route exact path="/login" element={<Login />} />

@@ -102,6 +102,13 @@ color: #faf1e6;
     }
 }
 @media (max-width: 900px) {
+  .administration {
+    height: 100%;
+  }
+  .admin-data{
+    margin-top: 1em;
+
+  }
   .administration .admin-data {
     flex-direction: column;
     /* justify-content: center; */
@@ -232,6 +239,10 @@ form button:hover {
   margin-top: 0px;
   border: 1px solid #064420;
   background-color: #fdfaf6;
+}
+.rate-data .input p {
+  text-align: center;
+  margin-top: 4%;
 }
 .wrapper {
   display: flex;

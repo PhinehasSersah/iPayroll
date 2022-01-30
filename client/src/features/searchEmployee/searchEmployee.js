@@ -36,7 +36,7 @@ const SearchEmployee = () => {
     });
     window.location = '/dashboard/hr';
   };
-
+// console.log(employeeData)
   return (
     <div className="information">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -92,8 +92,9 @@ const SearchEmployee = () => {
         </div>
         <div className="label">
           <p>Start Date :</p>
-
           <p>{moment(employeeData.start_work_date).format('YYYY-MM-DD')}</p>
+
+          {/* <p>{employeeData.start_work_date}</p> */}
         </div>
         <div className="search-delete">
           <button
