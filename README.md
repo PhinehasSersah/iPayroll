@@ -37,7 +37,7 @@ They are also able to calculate wages for the month and send out payslips to emp
 
 ### Calculations
 
-All rates set by administrator apply to each employee at the end of each month according to their level. All calculations are done as according to the rates set by the administrator and in accordance with the [SSNIT](https://www.ssnit.org.gh/) and [GRA](https://gra.gov.gh/) websites. 
+All rates set by administrator apply to each employee at the end of each month according to their level. All calculations are done as according to the rates set by the administrator and in accordance with the [SSNIT](https://www.ssnit.org.gh/) and [GRA](https://gra.gov.gh/) websites.
 
 ## Stack
 
@@ -71,7 +71,7 @@ Run `npm install` command in both server and client directors to get missing pac
 
 ipayrol/api/v1
 
-| Route                            | Method | Action                                                         |
+| ROUTE                            | VERB   | ACTION                                                         |
 | -------------------------------- | ------ | -------------------------------------------------------------- |
 | /deparments                      | GET    | Returns all departments                                        |
 | /deparments                      | POST   | Creates a new deparment                                        |
@@ -97,7 +97,7 @@ For two programmers who started programming 'seriously' about seven month ago th
 
 ## Challenges
 
-The major challenge was that this was a sprint of just two weeks and so we thought of other cool features which we couldn't implement for the meantime. We will keep working on updating it.
+The major challenge was that this was a sprint of just two weeks and so a few requirements are missing. We thought of other cool features too which we couldn't implement for the meantime. We will keep working on updating it.
 
 Also, we had no idea of how employee tax deductions are done and so it took a lot of search to find out the specifics.
 
