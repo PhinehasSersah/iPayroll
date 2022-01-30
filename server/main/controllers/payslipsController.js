@@ -14,42 +14,6 @@ const createPDF = (html, options, path) =>
     });
   });
 
-exports.sendPDF = async employee => {
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: `${process.env.authUser}`,
-        pass: `${process.env.authPass}`,
-      },
-    });
-
-    const mailOptions = {
-      from: 'ipayrollv1@gmail.com',
-      to: 'bontiidaniel97@gmail.com',
-      subject: 'Monthly Payslip',
-      text: `Hello ${employee.full_name}. Your monthly payslip is ready`,
-      attachments: [
-        {
-          path: `../main/payslips/${employee.full_name}-${employee.month_year}-payslip.pdf`,
-        },
-      ],
-    };
-
-    transporter.sendMail(mailOptions, function (err, info) {
-      if (err) {
-        console.error(err.message);
-        // res.json('Failed to send mail');
-      } else {
-        // res.json('Email sent: ' + info.response);
-      }
-    });
-    // res.json('email sent'); //remove later
-  } catch (err) {
-    console.error(err.message);
-  }
-};
-
 exports.getAllMonthSlipInfo = async (req, res) => {
   try {
     const { monthYear } = req.params;
@@ -82,8 +46,6 @@ exports.sendSlip = async (req, res, next) => {
         },
         `../main/payslips/${employee.full_name}-${employee.month_year}-payslip.pdf`
       );
-      // console.log(pdf);
-      // this.sendPDF(employee);
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -104,11 +66,11 @@ exports.sendSlip = async (req, res, next) => {
         ],
       };
 
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error);
+      transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+          console.error(error.message);
         } else {
-          console.log('Email sent: ' + info.response);
+          res.status(200).json('Email sent');
         }
       });
     });
