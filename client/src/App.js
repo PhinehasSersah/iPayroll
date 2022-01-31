@@ -4,12 +4,7 @@ import Login from './features/login/login';
 import Payslip from './features/payslip/payslip';
 import AdminLogic from './Components/Admin/adminLogics';
 import AccountLogics from './Components/Account/accountLogics';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
