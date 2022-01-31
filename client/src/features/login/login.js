@@ -41,8 +41,8 @@ const Login = () => {
     return errors;
   };
   return (
+    <div className='landing-page'>
     <div className="login-page container">
-      {/* <p>{JSON.stringify(inputValues)}</p> */}
       <div className="row logo-banner">
         <img src={amalitech} alt="company logo" />
         <h1>
@@ -53,7 +53,7 @@ const Login = () => {
       <br></br>
       <div className="row form-div">
         <form onSubmit={handleSubmit} className="form">
-          <div className='div-container'>
+         
             <div className='wrapper'>
           <p>{inputErrors.username}</p>
           <label htmlFor="username">User Name</label>
@@ -67,7 +67,6 @@ const Login = () => {
             className="username"
           />
           </div>
-          <br></br>
           <div className='wrapper'>
           <p>{inputErrors.password}</p>
           <label htmlFor="password">Password</label>
@@ -81,12 +80,28 @@ const Login = () => {
             className="password"
           />
           </div>
-          <br></br>
-          <br></br>
           <button>LOGIN</button>
-          </div>
         </form>
       </div>
+    </div>
+    <div className='curve-container'>
+      <div className='first'></div>
+      <div className='second'></div>
+      <div className='third'></div>
+      <div className='fourth'></div>
+      <div className='fifth'></div>
+      <div className='six'></div>
+      <div className='seven'></div>
+      <div className='eigth'></div>
+      <div className='nine'></div>
+      <div className='ten'></div>
+    </div>
+    <div className='border'>
+      <p><strong>i</strong>Payroll is an automated Payroll Management System with a user-friendly GUI based software which facilitates productivity.
+      It is the go-to application for any small-medium scale organisation.
+      <br></br>
+      This software simplifies the entire management of employees, replacing manual, error-prone and time consuming management. </p>
+    </div>
     </div>
   );
 };
