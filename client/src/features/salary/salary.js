@@ -122,13 +122,9 @@ const Salary = () => {
       console.error(err.message);
     }
   };
-  // console.log(ratesData);
-  // console.log(employees);
-  // console.log(loansData);
-  // sendObject();
-
+ 
   //handleChange
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { value } = event.target;
     setSalaryMonth(value);
   };
@@ -136,7 +132,7 @@ const Salary = () => {
   return (
     <div>
       <div className="month">
-        <h5>Calculate Monthly Salary</h5>
+        <h4>Calculate Monthly Salary</h4>
         <form className="select-month">
           <label htmlFor="month">Select Month</label>
           <input

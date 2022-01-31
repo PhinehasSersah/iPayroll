@@ -31,7 +31,6 @@ const AccountLogics = () => {
     // window.location = "./accounts";
   };
 
-  // useEffect(()=> handlePaySubmit)
 
   return (
     <section>
@@ -40,7 +39,6 @@ const AccountLogics = () => {
         handleMonthChange={handleMonthChange}
         paySlipMonth={paySlipMonth}
         paySlipData={paySlipData}
-        // togglePayslip={togglePayslip}
       />
     </section>
   );

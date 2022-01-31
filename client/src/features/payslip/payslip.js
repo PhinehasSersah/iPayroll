@@ -51,7 +51,6 @@ const Payslip = ({ paySlipData }) => {
                     <p>Joining Date : </p>
                     <p>
                       {moment.utc(element.start_work_date).format("YYYY-MM-DD")}
-                      {/* {moment.utc(employeeData.start_work_date).format('YYYY-MM-DD')} */}
                     </p>
                   </div>
                 </div>

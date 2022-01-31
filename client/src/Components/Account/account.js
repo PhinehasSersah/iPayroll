@@ -5,6 +5,7 @@ import Loans from '../../features/loans/loans';
 import Payslip from '../../features/payslip/payslip';
 import './account.css';
 import { Link } from 'react-router-dom';
+import { Email } from '../../features/email/email';
 
 const Account = ({
   paySlipData,
@@ -17,7 +18,6 @@ const Account = ({
   return (
     <section className="main-account">
       <Header />
-      <div className="account-dashboard">
         <div className="account-section">
           <h1 className="account-banner">Salary Data Dashboard</h1>
           <div className="routing">
@@ -70,10 +70,12 @@ const Account = ({
             </button>
           </div>
         </div>
+        <div className='email'>
+          <Email />
+        </div>
         <div className={viewPayslip ? 'payslip-view' : 'payslip-close'}>
           <Payslip paySlipData={paySlipData} />
         </div>
-      </div>
     </section>
   );
 };

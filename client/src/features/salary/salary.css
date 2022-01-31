@@ -4,7 +4,7 @@
     height: 40vh;
     margin: auto;
 }
-.month h5 {
+.month h4 {
     width: 80%;
     margin: auto;
     margin-top: 2rem;
@@ -12,9 +12,12 @@
     text-align: center;
 }
 .month .select-month {
-    width: 70%;
+    width: 95%;
     margin: auto;
-    margin-top: 2em;
+    margin-top: 2em;  
+}
+.month .select-month label {
+    margin-left: 2%;
 }
 .month .select {
     height: 2em;
@@ -22,10 +25,10 @@
     border-radius: 7px;
     margin-top: 0px;
     border-color: #064420;
-    margin-left: 10px;
+    margin-left: 30%;
 }
 .month .calculate-salary {
-    width: 70%;
+    width: 53%;
     margin: auto;
     margin-top: 5em;
 }

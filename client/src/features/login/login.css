@@ -1,60 +1,188 @@
-.login-page {
-    height: 70vh;
-    width: 60VW;
-    margin-top:15vh;
-    border-radius: 10px;
-    background:linear-gradient(#FDFAF6, #064420);
+.landing-page {
+    /* background-color:blueviolet; */
+    width: 100vw;
+    height: 100vh;
+    background-color: #e4efe7;
+    overflow-x: hidden;
 }
+
+.landing-page .curve-container {
+    width: 70%;
+    height: 90%;
+    margin-left: 4.8em;
+    margin-top: 1em;
+
+}
+
+.curve-container .first {
+    width: 10%;
+    height: 10%;
+    border-top-right-radius: 100%;
+    background-color: #064420;
+}
+
+.curve-container .second {
+    width: 10%;
+    height: 10%;
+    background-color: #E4EFE7;
+    margin-left: 10%;
+    border-bottom-left-radius: 100%;
+}
+
+.curve-container .third {
+    width: 10%;
+    height: 10%;
+    background-color: tomato;
+    margin-left: 20%;
+    opacity: .7;
+    border-top-right-radius: 100%;
+}
+
+.curve-container .fourth {
+    width: 10%;
+    height: 10%;
+    margin-left: 30%;
+    background-color: #e4efe7;
+    border-bottom-left-radius: 100%;
+}
+
+.curve-container .fifth {
+    width: 10%;
+    height: 10%;
+    margin-left: 40%;
+    border-top-right-radius: 100%;
+    background-color: #064420;
+    opacity: .4;
+}
+
+.curve-container .six {
+    width: 10%;
+    height: 10%;
+    margin-left: 40%;
+    border-bottom-right-radius: 100%;
+    background-color: #064420;
+    opacity: .4;
+}
+
+.curve-container .seven {
+    width: 10%;
+    height: 10%;
+    margin-left: 30%;
+    border-top-left-radius: 100%;
+    background-color: #e4efe7;
+}
+
+.curve-container .eigth {
+    width: 10%;
+    height: 10%;
+    margin-left: 20%;
+    border-bottom-right-radius: 100%;
+    background-color: tomato;
+    opacity: .7;
+}
+
+.curve-container .nine {
+    width: 10%;
+    height: 10%;
+    margin-left: 10%;
+    border-top-left-radius: 100%;
+    background-color: #E4EFE7;
+}
+
+.curve-container .ten {
+    width: 10%;
+    height: 10%;
+    border-bottom-right-radius: 100%;
+    background-color: #064420;
+}
+
+.border {
+    width: 40%;
+    height: 66%;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    opacity: 0.6;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.border strong {
+    font-size: 4em;
+}
+
+.border p {
+    font-size: 1.5em;
+    line-height: 2em;
+    padding: 2em;
+    opacity: 1;
+    z-index: 2;
+    color: black;
+}
+
+.login-page {
+    position: absolute;
+    right: 10%;
+    height: 80vh;
+    width: 40VW;
+    margin-top: 10vh;
+    border-radius: 10px;
+    background: linear-gradient(#FDFAF6, #064420);
+}
+
 .logo-banner {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
+
 .logo-banner img {
     display: block;
     height: 2rem;
     width: 7rem;
     object-fit: contain;
 }
+
 .logo-banner h1 {
     text-align: center;
     color: #064420;
 }
+
 .logo-banner h1 strong {
     color: tomato;
     font-size: 4.5rem;
 }
-form .div-container {
-    display: block;
+
+form .wrapper {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
-form .div-container .wrapper {
-    display: inline-block;
-    width: 100%;
-}
+
 .logo-banner .far {
     text-align: center;
     font-size: 4.5rem;
     margin-top: 18px;
     color: #064420
 }
-.login-page .form-div {
-    height:15rem;
-}
+
 .login-page .form {
     margin: auto;
 }
+
 .login-page .form label {
     font-size: 18px;
     font-weight: bold;
     margin-right: 15px;
-    color:#E4EFE7 ;
-  pointer-events: none;
-float: left;
-  transition: 300ms ease all;
+    color: #E4EFE7;
+    pointer-events: none;
+    float: left;
+    transition: 300ms ease all;
 }
-.login-page .form .username, .login-page .form .password {
+
+.login-page .form .username,
+.login-page .form .password {
     border: none;
     -webkit-appearance: none;
     -ms-appearance: none;
@@ -65,54 +193,74 @@ float: left;
     border-radius: 3px;
     width: 16rem;
     font-size: 14px;
-    margin-top:10px;
+    margin-top: 1px;
     height: 2rem;
     float: right;
-
 }
 
 .login-page .form button {
-  background-color: #064420;
-  border-radius: 3px;
-  border: 2px solid tomato;
-  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #E4EFE7;
-  cursor: pointer;
-  display:block;
-  font-weight: 400;
-  outline: none;
-  padding: 8px .8em;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  letter-spacing: 2px;
-  width: 16rem;
-  height: 2.5em;
-  /* margin: 0 auto; */
-  float: right;
+    background-color: #064420;
+    border-radius: 3px;
+    border: 2px solid tomato;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #E4EFE7;
+    cursor: pointer;
+    display: block;
+    font-weight: 400;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    letter-spacing: 2px;
+    width: 16rem;
+    height: 2.5em;
+    float: right;
 }
 
 .login-page .form button:hover,
 .login-page .form button:focus {
-  background-color: #E4EFE7;
-  color: #064420
+    background-color: #E4EFE7;
+    color: #064420
 }
+
 .login-page .form button:active {
-  background-color: tomato;
-  box-shadow: none;
-  color: #E4EFE7;
+    background-color: tomato;
+    box-shadow: none;
+    color: #E4EFE7;
 }
+
 ::placeholder {
-    color:#064420;
-    font-size: 18px;
-}
-.login-page .form p {
-    color: red;
-    margin:10px 0 0 6rem;
+    color: #064420;
     font-size: 18px;
 }
 
+.login-page .form p {
+    position: absolute;
+    color: red;
+    margin-top: 2px;
+    font-size: 18px;
+}
+@media (max-width: 800px) {
+    .border p{
+        font-size: 18px;
+    }
+    .landing-page {
+        display: flex;
+        flex-direction: column;
+    }
+.login-page {
+    position: relative;
+    width: 90%;
+    margin-left: 15%;
+    margin-top: 2em;
+}
+.border {
+    position: relative;
+    width:90%;
+}
+}

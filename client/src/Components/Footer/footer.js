@@ -8,11 +8,11 @@ const Footer = () => {
         <h4>
           <strong>i</strong> Payroll Management System
         </h4>
-        <p>AmaliTech Training Center
-        TTU Main Campus
+        <p>AmaliTech Training Center |
+        TTU Main Campus,
         Takoradi
         </p>
-        <p>copyright &copy;2022 iPayroll, Phinehas & Daniel collaboration </p>
+        <p>Copyright &copy;2022 iPayroll, Phinehas & Daniel Collaboration </p>
       </div>
     </footer>
   );

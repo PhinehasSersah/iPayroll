@@ -1,0 +1,65 @@
+.email-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 30vw;
+    margin: auto;
+    max-height: 14em;
+    margin-top: 3em;
+}
+
+.email-section .select-month {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-section h4 {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.email-section label {
+    font-size: 18px;
+    text-align: center;
+}
+
+.email-section .select {
+    height: 2em;
+    width: 60%;
+    padding: 6px;
+    margin: auto;
+    border-radius: 7px;
+    margin-top: 0px;
+    border-color: #064420;
+}
+
+.email-section .sendEmail {
+    margin-top: 2em;
+}
+
+.email-section .sendEmail button {
+    width: 9em;
+    height: 2em;
+    display: block;
+    margin: auto;
+    border-radius: 6px;
+    background-color: tomato;
+    color: #faf1e6;
+    font-size: 18px;
+    font-weight: 550;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.email-section .sendEmail button:hover {
+    background-color: #064420;
+}
+
+@media (max-width: 780px) {
+    .email-section {
+        max-width: 80%;
+    }
+
+    .email-section .select {
+        width: 70%;
+    }
+}

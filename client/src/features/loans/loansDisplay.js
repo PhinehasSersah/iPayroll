@@ -11,7 +11,7 @@ export const LoansDisplay = ({
     <div className="loans-section">
       <form className="loan-form" onSubmit={handleSubmit}>
         <div className="title">
-          <h5>Employee Loans Data</h5>
+          <h4>Loan Request Section</h4>
         </div>
         <div className="select-name">
           <label htmlFor="employee">Select Employee</label>

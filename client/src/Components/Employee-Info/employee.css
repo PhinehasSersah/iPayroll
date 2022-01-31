@@ -1,6 +1,3 @@
- .employee-dashboard {
-     /* overflow-x: hidden; */
- }
 
 .employee {
     background-color:#E4EFE7;
@@ -13,13 +10,12 @@
     display:  flex;
     margin-top: 7em;
     justify-content: center;
-    /* height: 30vw; */
 }
 .employee .banner-section .routing {
     position:absolute;
   margin-bottom: 4em;
   width: 22%;
-  right: 4em;
+  right: 3.5%;
 
 }
 .employee .banner-section .routing p{
@@ -40,6 +36,7 @@
         background-color:#E4EFE7;
         border-top-left-radius: 4rem;
         border-bottom-right-radius:4rem;
+        border: 3px solid #064420;
     }
         
  .employee .employeehr {
@@ -203,17 +200,19 @@ form .btn {
     }
     .employee .employee-information {
         flex-direction: column;
+       
     }
     .employee .employee-data {
         width: 90%;
         margin-left:10%;
+        border: 0px;
     }
     .employee-information .form  {
         width:80%;
         margin: auto;
     }
     .employee-dashboard {
-        height: 280vh;
+        height: 300vh;
     }
     .employee .search-name {
         width:100%;
