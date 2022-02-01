@@ -2,7 +2,6 @@ import React from "react";
 import amalitech from "../../amalitech.png";
 import Footer from "../../Components/Footer/footer";
 import moment from "moment";
-import { Link } from "react-router-dom";
 import "./payslip.css";
 
 const Payslip = ({ paySlipData }) => {

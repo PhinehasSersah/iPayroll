@@ -21,12 +21,15 @@ const Department = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(inputValues),
-    });
-    window.location = '/dashboard/admin';
+    })
+      .then(res => res.json())
+      .then(jsonRes => console.log(jsonRes));
+    // window.location = '/dashboard/admin';
 
     setInputValues({ ...initialValue, [name]: '' });
   };
 
+  console.log(inputValues);
   useEffect(() => {
     fetch('http://localhost:4000/ipayroll/api/v1/departments')
       .then(
@@ -53,7 +56,7 @@ const Department = () => {
     <div className="department-section">
       <h4>Create New Department</h4>
       <div className="department-div">
-        <form className="department-form" onSubmit={handleSubmit}>
+        <form className="department-form" onSubmit={e => handleSubmit(e)}>
           <label className="department" htmlFor="name">
             Department
           </label>
