@@ -61,3 +61,10 @@ font-size: 18px;
         margin-left: .7em;
         }
 } 
+
+@media (max-width){
+    .loans-section .loan-btn {
+        width: 38%;
+        margin: auto;
+    }
+}

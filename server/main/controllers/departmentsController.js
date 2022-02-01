@@ -33,9 +33,9 @@ exports.checkBody = async (req, res, next) => {
       return res.status(403).json('Department already exists');
     }
 
-    if (!validator.isAlpha(name)) {
-      return res.status(403).json('Department name should not contain numbers');
-    }
+    // if (!validator.isAlpha(name)) {
+    //   return res.status(403).json('Department name should not contain numbers');
+    // }
 
     next();
   } catch (err) {
