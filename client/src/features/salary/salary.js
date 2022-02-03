@@ -62,18 +62,38 @@ const Salary = () => {
           const loanDetail =
             loansData &&
             loansData.filter((data) => data.employee_id === element.id);
-          const owedLoan = loanDetail.find((loan) => loan.amouunt_left !== 0);
-          // console.log(owedLoan);
+          const owedLoan = loanDetail.find((loan) => loan.amount_left !== 0);
+          console.log(owedLoan);
           const toSend = {};
           toSend.employeeId = element.id;
           toSend.monthYear = salaryMonth;
           toSend.incomeTax = (lData.income_tax * lData.salary) / 100;
           toSend.taxRelief = (toSend.incomeTax * lData.tax_relief) / 100;
           toSend.loan = owedLoan === undefined ? 0.0 : owedLoan.initial_amount;
+
           toSend.loanDeduction =
             element.on_loan === true
               ? (lData.loan_deduction * lData.salary) / 100
               : 0.0;
+
+          if (
+            element.on_loan === true &&
+            toSend.loanDeduction > owedLoan.amount_left
+          ) {
+            toSend.loanDeduction = owedLoan.amount_left;
+
+            fetch(
+              "http://localhost:4000/ipayroll/api/v1/employees/updateLoanStatus/" +
+                toSend.employeeId,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ onLoan: false }),
+              }
+            );
+          }
 
           if (toSend.loanDeduction !== 0) {
             fetch("http://localhost:4000/ipayroll/api/v1/loans/" + element.id, {
@@ -95,12 +115,8 @@ const Salary = () => {
           // (lData.initial_amount === undefined ? 0.0 : lData.initial_amount);
 
           toSend.totalDeductions =
-            +toSend.tierOne +
-            +toSend.loanDeduction +
-            +toSend.incomeTax +
-            (element.on_loan === true
-              ? (lData.loan_deduction * lData.salary) / 100
-              : 0.0);
+            toSend.tierOne + +toSend.loanDeduction + +toSend.incomeTax;
+
           toSend.netSalary = +toSend.totalEarnings - +toSend.totalDeductions;
           toSend.totalTiers = +toSend.tierOne + +toSend.tierTwo;
 
@@ -117,14 +133,14 @@ const Salary = () => {
             .then((jsonRes) => jsonRes);
         });
 
-      // window.location = '/dashboard/accounts';
+      window.location = "/dashboard/accounts";
     } catch (err) {
       console.error(err.message);
     }
   };
- 
+
   //handleChange
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { value } = event.target;
     setSalaryMonth(value);
   };

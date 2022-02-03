@@ -1,18 +1,18 @@
-const pool = require('../db');
+const pool = require("../db");
 
 exports.checkID = async (req, res, next, val) => {
   try {
     const id = await pool.query(
-      'SELECT id FROM remunerations WHERE employee_id=$1',
+      "SELECT id FROM remunerations WHERE employee_id=$1",
       [val]
     );
     if (id.rowCount < 1) {
-      return res.status(404).json('Invalid Employee');
+      return res.status(404).json("Invalid Employee");
     }
     next();
   } catch (err) {
     console.error(err.message);
-    res.status(500).json('Internal Server error');
+    res.status(500).json("Internal Server error");
   }
 };
 
@@ -51,13 +51,13 @@ exports.checkBody = (req, res, next) => {
         (netSalary || netSalary === 0)
       )
     ) {
-      return res.status(403).json('Please provide all remuneration details');
+      return res.status(403).json("Please provide all remuneration details");
     }
 
     next();
   } catch (err) {
     console.error(err.message);
-    res.status(500).json('Internal Server error');
+    res.status(500).json("Internal Server error");
   }
 };
 
@@ -80,6 +80,7 @@ exports.createEmpMonthRemueration = async (req, res) => {
     employeeId,
     monthYear,
     salary,
+    loan,
     taxRelief,
     incomeTax,
     loanDeduction,
@@ -93,21 +94,22 @@ exports.createEmpMonthRemueration = async (req, res) => {
   } = req.body;
 
   const check = await pool.query(
-    'SELECT * FROM remunerations WHERE employee_id=$1 AND month_year=$2 ',
+    "SELECT * FROM remunerations WHERE employee_id=$1 AND month_year=$2 ",
     [employeeId, monthYear]
   );
   if (check.rowCount > 0) {
     return res
       .status(403)
-      .json('Remunerations for the month have already been calculated');
+      .json("Remunerations for the month have already been calculated");
   }
 
   const newRemuneration = await pool.query(
-    'INSERT INTO remunerations (employee_id, month_year, salary,tax_relief, income_tax, loan_deduction, bonus, tier_one, tier_two, total_earnings, total_deductions, total_tiers, net_salary ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *',
+    "INSERT INTO remunerations (employee_id, month_year, salary, loan, tax_relief, income_tax, loan_deduction, bonus, tier_one, tier_two, total_earnings, total_deductions, total_tiers, net_salary ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *",
     [
       employeeId,
       monthYear,
       salary,
+      loan,
       taxRelief,
       incomeTax,
       loanDeduction,
@@ -124,6 +126,6 @@ exports.createEmpMonthRemueration = async (req, res) => {
   try {
   } catch (err) {
     console.error(err.message);
-    res.status(500).json('Internal Server error');
+    res.status(500).json("Internal Server error");
   }
 };
