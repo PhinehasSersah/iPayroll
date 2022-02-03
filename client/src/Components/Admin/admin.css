@@ -1,12 +1,13 @@
-.admin-data {
-  display: flex;
-  justify-content: space-evenly;
-}
 .administration {
   background-color: #e4efe7;
   width: 100%;
   height: 140vh;
 }
+.admin-data {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .administration .admin-banner {
   width: 100%;
   margin-top: 7em;
@@ -26,7 +27,7 @@
   letter-spacing: 2px;
   font-size: 20px;
 }
-.routing .rout-button {
+.admin-banner .routing .rout-button {
   position: relative;
   align-self: center;
   background-color: tomato;
@@ -104,10 +105,14 @@ color: #faf1e6;
 @media (max-width: 900px) {
   .administration {
     height: 100%;
+  
   }
   .admin-data{
     margin-top: 1em;
 
+  }
+  .administration .admin-banner .routing {
+    display: flex;
   }
   .administration .admin-data {
     flex-direction: column;
@@ -138,6 +143,10 @@ color: #faf1e6;
     margin: auto;
     margin-top: 3em;
   }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .administration .data-table form {
@@ -166,7 +175,7 @@ form .column,
 @media (max-width: 650px) {
     .administration .data-table,
     .administration .rate-data {
-      width: 96vw;
+      width: 93vw;
       height: 95vw;
     }
     .administration .admin-banner .routing {
@@ -247,7 +256,7 @@ form button:hover {
 .wrapper {
   display: flex;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 12%;
   justify-content:space-evenly;
   
 }
@@ -260,8 +269,8 @@ form button:hover {
       flex-direction: column;
   }
   .administration .admin-banner .routing {
-    margin:auto;
-    width: auto;
+    width: 85%;
+    margin-left: 10%;
   }
   .administration .admin-banner {
     flex-direction: column;
@@ -269,10 +278,10 @@ form button:hover {
   .administration .admin-banner .routing p {
     display:none;
   }
-  .routing .rout-button  {
+  .admin-banner .routing .rout-button  {
     height: 2.6em;
-    width: 9em;
-    font-weight: 550;
+    width: 7em;
+    margin-left: 60%;
   }
   .administration .data-table .column {
       width: 70vw;

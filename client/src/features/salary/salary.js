@@ -169,7 +169,7 @@ const Salary = () => {
                 sendObject(e);
               }}
             >
-              Calculate Salary
+              Calculate
             </button>
           </div>
         </form>

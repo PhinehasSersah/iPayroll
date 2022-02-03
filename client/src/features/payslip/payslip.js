@@ -7,11 +7,11 @@ import "./payslip.css";
 const Payslip = ({ paySlipData }) => {
   return (
     <section id="top">
-      {paySlipData &&
-        paySlipData.map((element, index) => {
-          return (
+       {paySlipData && 
+         paySlipData.map((element, index) => {
+          return ( 
             <div className="payslip" key={index}>
-              {/* amalitech logo and ipayroll */}
+               {/* amalitech logo and ipayroll  */}
               <div className="payslip-header">
                 <img src={amalitech} alt="company logo"></img>
                 <div className="center">
@@ -56,7 +56,7 @@ const Payslip = ({ paySlipData }) => {
                 <div className="third-line">
                   <div className="employeeId">
                     <p>SSNIT Number : </p>
-                    <p>{element.snnit_num}</p>
+                     <p>{element.snnit_num}</p> 
                   </div>
                 </div>
                 <hr className="employee-info-underline"></hr>
@@ -81,11 +81,11 @@ const Payslip = ({ paySlipData }) => {
                   <p>Loan Deduction</p>
                 </div>
                 <div className="table-columns">
-                  <p>{element.basic_salary}</p>
-                  <p>{element.bonus}</p>
-                  <p>{element.tax_relief}</p>
+                   <p>{element.basic_salary}</p>
+                   <p>{element.bonus}</p> 
+                   <p>{element.tax_relief}</p> 
                   <p>{element.initial_amount}</p>
-                </div>
+                </div> 
                 <div className="table-columns deductions">
                   <p>{element.income_tax}</p>
                   <p>{element.tier_one}</p>

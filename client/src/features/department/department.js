@@ -15,7 +15,7 @@ const Department = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     const { name } = event.target;
-    fetch('http://localhost:4000/ipayroll/api/v1/departments', {
+    fetch('/ipayroll/api/v1/departments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,14 +24,13 @@ const Department = () => {
     })
       .then(res => res.json())
       .then(jsonRes => console.log(jsonRes));
-    // window.location = '/dashboard/admin';
+    window.location = '/dashboard/admin';
 
     setInputValues({ ...initialValue, [name]: '' });
   };
 
-  console.log(inputValues);
   useEffect(() => {
-    fetch('http://localhost:4000/ipayroll/api/v1/departments')
+    fetch('/ipayroll/api/v1/departments')
       .then(
         response => {
           if (response.ok) {
@@ -47,7 +46,7 @@ const Department = () => {
   }, []);
 
   const deleteDepartment = id => {
-    fetch('http://localhost:4000/ipayroll/api/v1/departments/' + id, {
+    fetch('/ipayroll/api/v1/departments/' + id, {
       method: 'DELETE',
     });
     window.location = '/dashboard/admin';
@@ -69,7 +68,9 @@ const Department = () => {
             value={inputValues.name}
             className="set-department"
           />
+          {/* <div className='button-wrapper'> */}
           <button className="department-btn">Create</button>
+          {/* </div> */}
         </form>
       </div>
       <div className="levels">

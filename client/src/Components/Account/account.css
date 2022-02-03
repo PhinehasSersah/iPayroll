@@ -2,7 +2,6 @@
 .main-account {
   width: 100%;
   height: 200vh;
-  overflow-x: hidden;
   background-color: #e4efe7;
 }
 
@@ -215,7 +214,7 @@ color: #faf1e6;
     margin-bottom: 14em;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .account-section .routing  {
     width: 50% ;
   }
@@ -250,8 +249,12 @@ color: #faf1e6;
     height: 55vh
   }
   .account-section .routing {
-    width: 74%;
+    width: 78%;
     margin: auto;
+    margin-right: 14%;
+  }
+  .routing .rout-button  {
+    width: 7.6em;
   }
   .main-account .display  {
     height: auto;

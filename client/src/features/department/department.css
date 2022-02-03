@@ -1,101 +1,121 @@
 .department-section {
+  height: 45vh;
+  width: 42.5vw;
+  background-color:#e4efe7;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+.department-div {
+  width: 90%;
+  margin: auto;
+}
+.department-section h4 {
+  text-align: center;
+  color: #064420;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+.department-section .department {
+  font-size: 18px;
+  color: #064420;
+  margin-right: 10px;
+}
+.department-form .set-department {
+  height: 2em;
+  padding: 6px;
+  border-radius: 7px;
+  margin-top: 0px;
+  border-color: #064420;
+  margin-right: 8px;
+}
+::placeholder {
+  color: #064420;
+}
+ .department-btn {
+  position: relative;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 5em;
+  background-color: tomato;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 6px 16px;
+  letter-spacing: 1px;
+  width: 6rem;
+ 
+}
+.levels {
+  width: 100%;
+  margin: auto;
+}
+.rendered-levels {
+  display: flex;
+  justify-content: flex-end;
+  width: 70%;
+  position: relative;
+  margin: auto;
+}
+.rendered-levels li {
+  list-style: none;
+  font-size: 18px;
+  color: #064420;
+  text-align: left;
+}
+.rendered-btn {
+  position: relative;
+  background-color: #064420;
+  border: 1px solid #e4efe7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #faf1e6;
+  cursor: pointer;
+  display:block;
+  font-size: 14px;
+  line-height: 13px;
+  padding: 6px 16px;
+  width: 4rem;
+   float: right;
+   margin-right: 1px;
+}
+.left {
+    position:absolute;
+    left:0;
+}
+@media (max-width: 900px) {
+  .department-section {
     height: 45vh;
-    width: 42.5vw;
-    background-color:#e4efe7;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    border-radius: 10px;
-  }
-  .department-div {
-    width: 90%;
+    width: 88vw;
     margin: auto;
-  }
-  .department-section h4 {
-    text-align: center;
-    color: #064420;
-    margin-bottom: 15px;
-    margin-top: 5px;
-  }
-  .department-section .department {
-    font-size: 18px;
-    color: #064420;
-    margin-right: 10px;
+    margin-bottom: 4em;
   }
   .department-form .set-department {
-    height: 2em;
-    padding: 6px;
-    border-radius: 7px;
-    margin-top: 0px;
-    border-color: #064420;
-    margin-right: 8px;
+    width: 30vw;
   }
-  ::placeholder {
-    color: #064420;
+}
+@media (max-width:520px) {
+  .department-section {
+    height: 55vh;
+    width: 90vw;
   }
-   .department-btn {
-    position: relative;
-    align-self: center;
-    margin-left: auto;
-    margin-right: 5em;
-    background-color: tomato;
-    border: 1px solid #e4efe7;
-    border-radius: 6px;
-    box-sizing: border-box;
-    color: #faf1e6;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 6px 16px;
-    letter-spacing: 1px;
-    width: 6rem;
-   
+  .department-btn {
+    margin-right: 1px;
+    width: 5rem;
+    letter-spacing: .2px;
   }
-  .levels {
-    width: 100%;
-    margin: auto;
+}
+@media (max-width : 461px) {
+  .department-btn {
+    margin-left: 40%;
+    margin-top: 1em;
+    width: 5rem;
+    letter-spacing: .2px;
+    margin-bottom: 1.5em;
   }
-  .rendered-levels {
-    display: flex;
-    justify-content: flex-end;
-    width: 70%;
-    position: relative;
-    margin: auto;
-  }
-  .rendered-levels li {
-    list-style: none;
-    font-size: 18px;
-    color: #064420;
-    text-align: left;
-  }
-  .rendered-btn {
-    position: relative;
-    background-color: #064420;
-    border: 1px solid #e4efe7;
-    border-radius: 6px;
-    box-sizing: border-box;
-    color: #faf1e6;
-    cursor: pointer;
-    display:block;
-    font-size: 14px;
-    line-height: 13px;
-    padding: 6px 16px;
-    width: 4rem;
-     float: right;
-     margin-right: 1px;
-  }
-  .left {
-      position:absolute;
-      left:0;
-  }
-  @media (max-width:520px) {
-    .department-section {
-      height: 55vh;
-      width: 90vw;
-    }
-    .department-btn {
-      margin-right: 1px;
-      width: 5rem;
-      letter-spacing: .2px;
-    }
-  }
-  
+}
