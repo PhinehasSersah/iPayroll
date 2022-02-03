@@ -34,7 +34,7 @@
 }
 .calculate-salary button {
     height: 2em;
-    width: 80%;
+    width: 7em;
     display: block;
     margin: auto;
 }
@@ -69,7 +69,6 @@
     .month .select-month  {
         width: 80%;
         margin:auto;
-        
     }
     .month .select {
         width: 100%;

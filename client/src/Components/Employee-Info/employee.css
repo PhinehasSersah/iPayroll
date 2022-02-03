@@ -1,221 +1,247 @@
-
 .employee {
-    background-color:#E4EFE7;
+    background-color: #e4efe7;
     width: 100%;
     height: 100%;
-}
-
-.employee .banner-section {
-    width:100%;
-    display:  flex;
+  }
+  
+  .employee .banner-section {
+    width: 100%;
+    display: flex;
     margin-top: 7em;
     justify-content: center;
-}
-.employee .banner-section .routing {
-    position:absolute;
-  margin-bottom: 4em;
-  width: 22%;
-  right: 3.5%;
-
-}
-.employee .banner-section .routing p{
+  }
+  .employee .banner-section .routing {
+    position: absolute;
+    margin-bottom: 4em;
+    width: 28%;
+    right: 2em;
+    /* background-color: blue; */
+  }
+  .employee .banner-section .routing .rout-button {
+    position: relative;
+    align-self: center;
+    background-color: tomato;
+    border: 1px solid #e4efe7;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #faf1e6;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 6px 14px;
+    letter-spacing: 1px;
     text-align: center;
-  margin-right: 20%;
-  letter-spacing: 2px;
-  font-size: 20px;
-}
-
-.employee .employee-banner {
+    width: 7.3em;
+    margin: auto;
+    margin-left: 15px;
+  }
+  .employee .banner-section .routing p {
+    text-align: center;
+    margin-right: 20%;
+    letter-spacing: 2px;
+    font-size: 20px;
+  }
+  
+  .employee .employee-banner {
     text-align: center;
     color: tomato;
-    }
-
-    form .employee-data {
-        width: 80%;
-        margin: auto;
-        background-color:#E4EFE7;
-        border-top-left-radius: 4rem;
-        border-bottom-right-radius:4rem;
-        border: 3px solid #064420;
-    }
-        
- .employee .employeehr {
+  }
+  
+  form .employee-data {
+    width: 80%;
+    margin: auto;
+    background-color: #e4efe7;
+    border-top-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    border: 3px solid #064420;
+  }
+  
+  .employee .employeehr {
     border: 0;
     height: 1.3px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0)
+    );
     margin-top: 4rem;
     margin-bottom: rem;
-}
-.employee-information {
+  }
+  .employee-information {
     display: flex;
     margin-bottom: 8vh;
     justify-content: space-between;
-}
-.employee-information h4 {
+  }
+  .employee-information h4 {
     text-align: center;
-    color:tomato;
+    color: tomato;
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
-}
-.employee-information .form {
+  }
+  .employee-information .form {
     width: 45%;
     height: 70%;
     margin: auto;
-    box-shadow: tomato 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: tomato 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     margin-top: 5%;
     border-radius: 16px;
-}
-form .info-section {
+  }
+  form .info-section {
     width: 100%;
-    margin:auto;
-}
-form .sex-section {
+    margin: auto;
+  }
+  form .sex-section {
     display: flex;
     width: 30%;
     margin-left: 15%;
-}
-.employee-information form .column {
-    width:80%;
+  }
+  .employee-information form .column {
+    width: 80%;
     margin-top: 4%;
-}
-form label {
-    color:#064420;
+  }
+  form label {
+    color: #064420;
     letter-spacing: 1px;
-}
- .sex-section .sex-group {
-    color:tomato;
+  }
+  .sex-section .sex-group {
+    color: tomato;
     letter-spacing: 1px;
     font-size: 16px;
-}
-form .sex {
+  }
+  form .sex {
     accent-color: tomato;
     width: 15px;
-    height: 15px; 
+    height: 15px;
     background-clip: content-box;
     border: 2px solid tomato;
-    margin:15px;
-}
-form .info-section p, form .sex-error {
+    margin: 15px;
+  }
+  form .info-section p,
+  form .sex-error {
     color: tomato;
     margin-bottom: 3px;
     line-height: 8px;
-}
-form .column .inputs {
+  }
+  form .column .inputs {
     height: 2em;
     width: 100%;
     padding: 6px;
     border-radius: 7px;
     margin-top: 0px;
     border-color: tomato;
-}
-::placeholder  {
+  }
+  ::placeholder {
     color: tomato;
-}
-form .btn {
-    width: 100%;
+  }
+  form .btn {
+    width: 100;
     margin-left: auto;
-}
-.employee .search-name {
+  }
+  .employee .search-name {
     /* background-color: crimson; */
     width: 30%;
     margin-right: auto;
     margin-top: 2em;
-}
-@media (max-width: 1024px){
+  }
+  @media (max-width: 1024px) {
     .employee .employee-information {
-        flex-direction: column;
+      flex-direction: column;
     }
     .employee .employee-data {
-        width: 90%;
-        margin-left:10%;
+      width: 90%;
+      margin-left: 10%;
     }
   
-    .employee-information .form  {
-        width:80%;
-        margin: auto;
+    .employee-information .form {
+      width: 80%;
+      margin: auto;
     }
     .employee-dashboard {
-        height: 290vh;
+      height: 290vh;
     }
     .employee .banner-section {
-        flex-direction:column;
+      flex-direction: column;
     }
     .employee .banner-section .routing {
-        position: relative;
-        margin: auto;
-        width: auto;
+      position: relative;
+      margin: auto;
+      width: auto;
     }
     .employee .banner-section .routing p {
-        display: none;
+      display: none;
     }
     .employee .search-name {
-        width:100%;
+      width: 100%;
     }
-
-}
-@media (max-width:800px) {
+  }
+  @media (max-width: 800px) {
     .employee .employee-information {
-        flex-direction: column;
+      flex-direction: column;
     }
     .employee .employee-data {
-        width: 90%;
-        margin-left:10%;
+      width: 90%;
+      margin-left: 10%;
     }
-    .employee-information .form  {
-        width:80%;
-        margin: auto;
+    .employee-information .form {
+      width: 80%;
+      margin: auto;
     }
     .employee-dashboard {
-        height: 300vh;
+      height: 300vh;
     }
     .employee .banner-section {
-        flex-direction:column;
+      flex-direction: column;
     }
     .employee .banner-section .routing {
-        margin: auto;
-        width: auto;
+      margin: auto;
+      width: auto;
     }
     .employee .banner-section .routing p {
-        display: none;
+      display: none;
     }
     .employee .search-name {
-        width:100%;
+      width: 100%;
     }
-}
-@media (max-width: 480px) {
+  }
+  @media (max-width: 480px) {
     .employee .banner-section {
-        flex-direction:column;
+      flex-direction: column;
     }
     .employee .banner-section .routing {
-        margin: auto;
-        width: auto;
+      margin: auto;
+      width: auto;
     }
     .employee .banner-section .routing p {
-        display: none;
+      display: none;
     }
     .employee .banner-section .routing .rout-button {
-        width: 10em;
-        height: 2.6em;
+      width: 8em;
+      height: 2.6em;
     }
     .employee .employee-information {
-        flex-direction: column;
-       
+      flex-direction: column;
     }
     .employee .employee-data {
-        width: 90%;
-        margin-left:10%;
-        border: 0px;
+      width: 90%;
+      margin-left: 10%;
+      border: 0px;
     }
-    .employee-information .form  {
-        width:80%;
-        margin: auto;
+    .employee-information .form {
+      width: 80%;
+      margin: auto;
     }
     .employee-dashboard {
-        height: 300vh;
+      height: 300vh;
     }
     .employee .search-name {
-        width:100%;
+      width: 100%;
     }
-   
-}
+    form .btn button {
+      margin-right: 10%;
+    }
+  }
+  

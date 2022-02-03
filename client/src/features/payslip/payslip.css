@@ -6,27 +6,20 @@
 .payslip .payslip-header {
     display: flex;
 }
-.payslip .top-banner {
-    margin-top: 2rem;
-    width: 80%;
-    margin: auto;
-    height: 3em;
-}
+
 .payslip img{
     display: block;
   height: 3rem;
   width: 8rem;
   object-fit: contain;
 }
-
 .payslip .payroll {
 text-align: center;
 color: #064420;
 font-size: 1.5rem;
 width: 90%;
 margin-left: 8vw;
-/* align-self: center; */
-/* background-color: blue; */
+
 }
  p strong {
 color: tomato;
@@ -35,7 +28,6 @@ font-size: 3.5rem;
 .payslip .employee-details {
     width: 100%;
     height: 12vw;
-    /* background-color: chartreuse; */
 }
 hr.top-underline, hr.employee-info-underline {
     border: 2px solid #064420;
@@ -53,7 +45,6 @@ hr.top-underline, hr.employee-info-underline {
 }
 .payslip .criterion {
     display: flex;
-    /* background-color: cadetblue; */
     justify-content:flex-start;
     width: 100%;
 }
@@ -81,6 +72,7 @@ hr.top-underline, hr.employee-info-underline {
 .payslip .datable .table-columns p{
     margin-left: 1em;
 }
+
  .payslip .totals {
      display: flex;
      justify-content:space-evenly;
@@ -101,6 +93,7 @@ hr.top-underline, hr.employee-info-underline {
      margin-top: 1em;
     
  }
+
  .payslip .calculations .line-1 {
      display: flex;
  }
@@ -112,6 +105,7 @@ hr.top-underline, hr.employee-info-underline {
  .payslip .calculations .line-1 .gross p{
     margin-left: .8em;;
  }
+ 
  .payslip .director {
      width: 50% ;
      margin: auto;
@@ -120,3 +114,85 @@ hr.top-underline, hr.employee-info-underline {
  .payslip .director p{
      letter-spacing: 1.5px;
  }
+ @media (max-width: 480px) {
+    .payslip {
+        width:90vw;
+    }
+    .payslip .payslip-header {
+        flex-direction: column;
+    }
+    .payslip img {
+        width: 30%;
+        margin: auto;
+    }
+    hr.top-underline, hr.employee-info-underline  {
+        width: 60vw;
+        margin: auto;
+    }
+
+    .center {
+        width: 80%;
+        margin: auto;
+        height: 4em;
+        margin-bottom: 1em;
+    }
+    .payslip .employee-details  {
+        width: 100%;
+
+    }
+    .payslip .criterion {
+        margin-top: 10em;
+    }
+    .payslip .criterion h5{
+        margin-right: 2.5em;
+        margin-left: 5px;
+    }
+    .payslip .datable .table-columns  {
+        width: 33%;
+    }
+    .payslip .totals {
+        width: 99%;
+    }
+    .payslip .totals .inner  {
+        margin-left: .1em;
+    }
+    .payslip .totals .inner p {
+        margin-left: .1em;
+    }
+    .payslip .calculations {
+        width: 90%;
+        margin: auto;
+    }
+    .payslip .calculations .line-1 .gross  {
+        width: 100%;
+        margin-right: 7em;
+    }
+    .payslip .calculations .line-1 .gross p{
+        margin-left: .8em;
+    }
+    .payslip .calculations .line-1 {
+        flex-direction: column;
+    }
+    .payslip .director {
+        width: 40% ;
+        margin: auto;
+        margin-top: 7em;
+    }
+    .employee-details .second-line {
+        display: flex;
+    }
+    .employee-details .second-line .employeeId {
+        display: flex;
+        flex-direction: column;
+    }
+    .datable .deductions p {
+        padding-bottom: 3.2vw;
+    }
+    .datable .earning  {
+    margin-top: .8em;
+
+    }
+    .datable .bonus {
+    margin-top: 1.1em;
+    }
+}

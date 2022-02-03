@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from "react";
-import Account from "./account";
+import React, { useState } from 'react';
+import Account from './account';
 
 const AccountLogics = () => {
-  const [paySlipMonth, setPaySlipMonth] = useState("");
+  const [paySlipMonth, setPaySlipMonth] = useState('');
   const [paySlipData, setPaySlipData] = useState([]);
 
   //handle input change
-  const handleMonthChange = (event) => {
+  const handleMonthChange = event => {
     const { value } = event.target;
     setPaySlipMonth(value);
   };
 
   //handle submit function
-  const handlePaySubmit = async (event) => {
+  const handlePaySubmit = async event => {
     event.preventDefault();
-    fetch("http://localhost:4000/ipayroll/api/v1/payslips/" + paySlipMonth)
+    fetch('/ipayroll/api/v1/payslips/' + paySlipMonth)
       .then(
-        (response) => {
+        response => {
           if (response.ok) {
             return response.json();
           }
-          throw new Error("Request failed");
+          throw new Error('Request failed');
         },
-        (networkError) => console.log(networkError.message)
+        networkError => console.log(networkError.message)
       )
-      .then((jsonResponse) => {
-        return setPaySlipData(jsonResponse);
-        // console.log(jsonResponse);
+      .then(jsonRes => {
+        return setPaySlipData(jsonRes);
       });
-    // window.location = "./accounts";
+    // window.location = '/dashboard/accounts';
   };
-
 
   return (
     <section>
