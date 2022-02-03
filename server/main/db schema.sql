@@ -13,13 +13,13 @@ CREATE TABLE levels(
 CREATE TABLE rates(
     id SERIAL PRIMARY KEY,
     level_id INTEGER REFERENCES levels(id) NOT NULL UNIQUE,
-    salary REAL,
-    loan_deduction REAL,
-    income_tax REAL,
-    tier_one REAL,
-    tier_two REAL,
-    tax_relief REAL,
-    bonus REAL
+    salary REAL NOT NULL,
+    loan_deduction REAL NOT NULL,
+    income_tax REAL NOT NULL,
+    tier_one REAL NOT NULL,
+    tier_two REAL NOT NULL,
+    tax_relief REAL NOT NULL,
+    bonus REAL NOT NULL
 );
 
 CREATE TABLE sex(
@@ -53,7 +53,7 @@ CREATE TABLE employees(
     level_id INTEGER REFERENCES levels(id) NOT NULL,
     phone_number VARCHAR(50) NOT NULL,
     start_work_date DATE NOT NULL,
-    snnit_num VARCHAR(20),
+    snnit_num VARCHAR(20) NOT NULL,
     on_loan BOOLEAN NOT NULL
 );
 
@@ -70,6 +70,7 @@ CREATE TABLE remunerations(
     employee_id INTEGER REFERENCES employees(id),
     month_year VARCHAR(10) NOT NULL,
     salary REAL NOT NULL,
+    loan REAL NOT NULL,
     tax_relief REAL NOT NULL,
     income_tax REAL NOT NULL,
     loan_deduction REAL NOT NULL,
@@ -95,8 +96,8 @@ CREATE extension IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE ipr_users(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    username VARCHAR(50),
-    email VARCHAR(50),
-    upassword VARCHAR(255),
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    upassword VARCHAR(255) NOT NULL,
     office VARCHAR(50)
 );

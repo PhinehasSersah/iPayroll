@@ -98,7 +98,7 @@ exports.createEmployee = async (req, res) => {
     onLoan,
   } = req.body;
   const newEmployee = await pool.query(
-    'INSERT INTO employees (firstname, lastname, date_of_birth, sex_id, department_id, email, level_id, phone_number, start_work_date, snnit_num, on_loan) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+    "INSERT INTO employees (firstname, lastname, date_of_birth, sex_id, department_id, email, level_id, phone_number, start_work_date, snnit_num, on_loan) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *",
     [
       fname,
       lname,
@@ -159,7 +159,6 @@ exports.updateEmployee = async (req, res) => {
 
 exports.updateEmpLoanStatus = async (req, res) => {
   try {
-    console.log(req.body);
     const { id } = req.params;
     const { onLoan } = req.body;
     await pool.query("UPDATE employees SET on_loan=$1 WHERE id=$2", [
